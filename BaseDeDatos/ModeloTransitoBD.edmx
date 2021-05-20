@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDTransitoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Conductor">
+          <Key>
+            <PropertyRef Name="idConductor" />
+          </Key>
+          <Property Name="idConductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroLicenciaConducir" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DelegacionesMunicipales">
+          <Key>
+            <PropertyRef Name="idDelegacion" />
+          </Key>
+          <Property Name="idDelegacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="colonia" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="calle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="codigoPostal" Type="int" Nullable="false" />
+          <Property Name="correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="municipio" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dictamen">
+          <Key>
+            <PropertyRef Name="folio" />
+          </Key>
+          <Property Name="folio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreCompletoPerito" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="idReporte" />
+          </Key>
+          <Property Name="idReporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="colonia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fotografia" Type="image" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="estatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idDelegacion" Type="int" Nullable="false" />
+          <Property Name="folio" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="contraseña" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar" MaxLength="50" />
+          <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="delegacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipoUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idDelegacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroPolizaSeguro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreAseguradora" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="año" Type="int" Nullable="false" />
+          <Property Name="modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numeroPlaca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idConductor" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VehiculoReporte">
+          <Key>
+            <PropertyRef Name="idReporte" />
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idReporte" Type="int" Nullable="false" />
+          <Property Name="idVehiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_conductor_vehiculos">
+          <End Role="Conductor" Type="Self.Conductor" Multiplicity="1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductor">
+              <PropertyRef Name="idConductor" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="idConductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dictamen_reporte">
+          <End Role="Dictamen" Type="Self.Dictamen" Multiplicity="1" />
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictamen">
+              <PropertyRef Name="folio" />
+            </Principal>
+            <Dependent Role="Reporte">
+              <PropertyRef Name="folio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reporte">
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="1" />
+          <End Role="VehiculoReporte" Type="Self.VehiculoReporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reporte">
+              <PropertyRef Name="idReporte" />
+            </Principal>
+            <Dependent Role="VehiculoReporte">
+              <PropertyRef Name="idReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reporte_delegacionesMunicipales">
+          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipales" Multiplicity="1" />
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DelegacionesMunicipales">
+              <PropertyRef Name="idDelegacion" />
+            </Principal>
+            <Dependent Role="Reporte">
+              <PropertyRef Name="idDelegacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_delegacionesMunicipales">
+          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipales" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DelegacionesMunicipales">
+              <PropertyRef Name="idDelegacion" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idDelegacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehiculos">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="VehiculoReporte" Type="Self.VehiculoReporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="idVehiculo" />
+            </Principal>
+            <Dependent Role="VehiculoReporte">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDTransitoModelStoreContainer">
+          <EntitySet Name="Conductor" EntityType="Self.Conductor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DelegacionesMunicipales" EntityType="Self.DelegacionesMunicipales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dictamen" EntityType="Self.Dictamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reporte" EntityType="Self.Reporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehiculoReporte" EntityType="Self.VehiculoReporte" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VehiculoReporte].[idReporte] AS [idReporte], 
+    [VehiculoReporte].[idVehiculo] AS [idVehiculo]
+    FROM [dbo].[VehiculoReporte] AS [VehiculoReporte]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_conductor_vehiculos" Association="Self.FK_conductor_vehiculos">
+            <End Role="Conductor" EntitySet="Conductor" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dictamen_reporte" Association="Self.FK_dictamen_reporte">
+            <End Role="Dictamen" EntitySet="Dictamen" />
+            <End Role="Reporte" EntitySet="Reporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reporte" Association="Self.FK_reporte">
+            <End Role="Reporte" EntitySet="Reporte" />
+            <End Role="VehiculoReporte" EntitySet="VehiculoReporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reporte_delegacionesMunicipales" Association="Self.FK_reporte_delegacionesMunicipales">
+            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
+            <End Role="Reporte" EntitySet="Reporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_delegacionesMunicipales" Association="Self.FK_usuario_delegacionesMunicipales">
+            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehiculos" Association="Self.FK_vehiculos">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="VehiculoReporte" EntitySet="VehiculoReporte" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDTransitoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Conductor">
+          <Key>
+            <PropertyRef Name="idConductor" />
+          </Key>
+          <Property Name="idConductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroLicenciaConducir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehiculoes" Relationship="Self.FK_conductor_vehiculos" FromRole="Conductor" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="DelegacionesMunicipale">
+          <Key>
+            <PropertyRef Name="idDelegacion" />
+          </Key>
+          <Property Name="idDelegacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="calle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codigoPostal" Type="Int32" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="municipio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Reportes" Relationship="Self.FK_reporte_delegacionesMunicipales" FromRole="DelegacionesMunicipales" ToRole="Reporte" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_usuario_delegacionesMunicipales" FromRole="DelegacionesMunicipales" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Dictaman">
+          <Key>
+            <PropertyRef Name="folio" />
+          </Key>
+          <Property Name="folio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombreCompletoPerito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Reportes" Relationship="Self.FK_dictamen_reporte" FromRole="Dictamen" ToRole="Reporte" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="idReporte" />
+          </Key>
+          <Property Name="idReporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="calle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fotografia" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DelegacionesMunicipale" Relationship="Self.FK_reporte_delegacionesMunicipales" FromRole="Reporte" ToRole="DelegacionesMunicipales" />
+          <NavigationProperty Name="Dictaman" Relationship="Self.FK_dictamen_reporte" FromRole="Reporte" ToRole="Dictamen" />
+          <NavigationProperty Name="Vehiculoes" Relationship="Self.VehiculoReporte" FromRole="Reporte" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="delegacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DelegacionesMunicipale" Relationship="Self.FK_usuario_delegacionesMunicipales" FromRole="Usuario" ToRole="DelegacionesMunicipales" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroPolizaSeguro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombreAseguradora" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="año" Type="Int32" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numeroPlaca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Conductor" Relationship="Self.FK_conductor_vehiculos" FromRole="Vehiculo" ToRole="Conductor" />
+          <NavigationProperty Name="Reportes" Relationship="Self.VehiculoReporte" FromRole="Vehiculo" ToRole="Reporte" />
+        </EntityType>
+        <Association Name="FK_conductor_vehiculos">
+          <End Role="Conductor" Type="Self.Conductor" Multiplicity="1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_reporte_delegacionesMunicipales">
+          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipale" Multiplicity="1" />
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_usuario_delegacionesMunicipales">
+          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipale" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_dictamen_reporte">
+          <End Role="Dictamen" Type="Self.Dictaman" Multiplicity="1" />
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+        </Association>
+        <Association Name="VehiculoReporte">
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BDTransitoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Conductors" EntityType="Self.Conductor" />
+          <EntitySet Name="DelegacionesMunicipales" EntityType="Self.DelegacionesMunicipale" />
+          <EntitySet Name="Dictamen" EntityType="Self.Dictaman" />
+          <EntitySet Name="Reportes" EntityType="Self.Reporte" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Vehiculoes" EntityType="Self.Vehiculo" />
+          <AssociationSet Name="FK_conductor_vehiculos" Association="Self.FK_conductor_vehiculos">
+            <End Role="Conductor" EntitySet="Conductors" />
+            <End Role="Vehiculo" EntitySet="Vehiculoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reporte_delegacionesMunicipales" Association="Self.FK_reporte_delegacionesMunicipales">
+            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
+            <End Role="Reporte" EntitySet="Reportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_delegacionesMunicipales" Association="Self.FK_usuario_delegacionesMunicipales">
+            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dictamen_reporte" Association="Self.FK_dictamen_reporte">
+            <End Role="Dictamen" EntitySet="Dictamen" />
+            <End Role="Reporte" EntitySet="Reportes" />
+          </AssociationSet>
+          <AssociationSet Name="VehiculoReporte" Association="Self.VehiculoReporte">
+            <End Role="Reporte" EntitySet="Reportes" />
+            <End Role="Vehiculo" EntitySet="Vehiculoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDTransitoModelStoreContainer" CdmEntityContainer="BDTransitoEntities">
+          <EntitySetMapping Name="Conductors">
+            <EntityTypeMapping TypeName="BDTransitoModel.Conductor">
+              <MappingFragment StoreEntitySet="Conductor">
+                <ScalarProperty Name="idConductor" ColumnName="idConductor" />
+                <ScalarProperty Name="numeroLicenciaConducir" ColumnName="numeroLicenciaConducir" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DelegacionesMunicipales">
+            <EntityTypeMapping TypeName="BDTransitoModel.DelegacionesMunicipale">
+              <MappingFragment StoreEntitySet="DelegacionesMunicipales">
+                <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dictamen">
+            <EntityTypeMapping TypeName="BDTransitoModel.Dictaman">
+              <MappingFragment StoreEntitySet="Dictamen">
+                <ScalarProperty Name="folio" ColumnName="folio" />
+                <ScalarProperty Name="nombreCompletoPerito" ColumnName="nombreCompletoPerito" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reportes">
+            <EntityTypeMapping TypeName="BDTransitoModel.Reporte">
+              <MappingFragment StoreEntitySet="Reporte">
+                <ScalarProperty Name="idReporte" ColumnName="idReporte" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="fotografia" ColumnName="fotografia" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BDTransitoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="delegacion" ColumnName="delegacion" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculoes">
+            <EntityTypeMapping TypeName="BDTransitoModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="numeroPolizaSeguro" ColumnName="numeroPolizaSeguro" />
+                <ScalarProperty Name="nombreAseguradora" ColumnName="nombreAseguradora" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="año" ColumnName="año" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="numeroPlaca" ColumnName="numeroPlaca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_conductor_vehiculos" TypeName="BDTransitoModel.FK_conductor_vehiculos" StoreEntitySet="Vehiculo">
+            <EndProperty Name="Conductor">
+              <ScalarProperty Name="idConductor" ColumnName="idConductor" />
+            </EndProperty>
+            <EndProperty Name="Vehiculo">
+              <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_reporte_delegacionesMunicipales" TypeName="BDTransitoModel.FK_reporte_delegacionesMunicipales" StoreEntitySet="Reporte">
+            <EndProperty Name="DelegacionesMunicipales">
+              <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
+            </EndProperty>
+            <EndProperty Name="Reporte">
+              <ScalarProperty Name="idReporte" ColumnName="idReporte" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_usuario_delegacionesMunicipales" TypeName="BDTransitoModel.FK_usuario_delegacionesMunicipales" StoreEntitySet="Usuario">
+            <EndProperty Name="DelegacionesMunicipales">
+              <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_dictamen_reporte" TypeName="BDTransitoModel.FK_dictamen_reporte" StoreEntitySet="Reporte">
+            <EndProperty Name="Dictamen">
+              <ScalarProperty Name="folio" ColumnName="folio" />
+            </EndProperty>
+            <EndProperty Name="Reporte">
+              <ScalarProperty Name="idReporte" ColumnName="idReporte" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="VehiculoReporte" TypeName="BDTransitoModel.VehiculoReporte" StoreEntitySet="VehiculoReporte">
+            <EndProperty Name="Reporte">
+              <ScalarProperty Name="idReporte" ColumnName="idReporte" />
+            </EndProperty>
+            <EndProperty Name="Vehiculo">
+              <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
