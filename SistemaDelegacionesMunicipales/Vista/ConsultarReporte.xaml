@@ -1,0 +1,42 @@
+﻿<Window x:Class="SistemaDelegacionesMunicipales.Vista.ConsultarReporte"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
+        mc:Ignorable="d"
+        Title="ConsultarReporte" Height="450" Width="800">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
+        </Grid.Background>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="267" Margin="127,74,0,0" Stroke="Black" VerticalAlignment="Top" Width="633"/>
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="10,20,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.46,0.23">
+            <Border.Background>
+                <ImageBrush ImageSource="Imagenes/veracruzlogo.png" Stretch="Uniform"/>
+            </Border.Background>
+        </Border>
+        <Label Content="Calle:" HorizontalAlignment="Left" Margin="148,81,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Colonia:" HorizontalAlignment="Left" Margin="148,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Estado:" HorizontalAlignment="Left" Margin="148,143,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.412,0.615"/>
+        <Label Content="Descripcion:" HorizontalAlignment="Left" Margin="148,205,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Fecha:" HorizontalAlignment="Left" Margin="148,174,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Estatus:" HorizontalAlignment="Left" Margin="470,174,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Informacion del reporte" HorizontalAlignment="Left" Margin="314,38,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="148,362,0,0" VerticalAlignment="Top" Width="107" FontWeight="Bold"/>
+        <TextBlock x:Name="TBDescripcion" HorizontalAlignment="Left" Margin="157,231,0,0" Text="El dictamen es..." VerticalAlignment="Top" Height="96" Width="537">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background>
+        </TextBlock>
+        <Label x:Name="LbCalle" Content="" HorizontalAlignment="Left" Margin="217,81,0,0" VerticalAlignment="Top" Width="513"/>
+        <Label x:Name="LbColonia" Content="" HorizontalAlignment="Left" Margin="217,112,0,0" VerticalAlignment="Top" Width="513"/>
+        <Label x:Name="LbEstado" Content="" HorizontalAlignment="Left" Margin="217,143,0,0" VerticalAlignment="Top" Width="513"/>
+        <Label x:Name="LbFecha" Content="" HorizontalAlignment="Left" Margin="217,174,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="LbEstatus" Content="" HorizontalAlignment="Left" Margin="543,174,0,0" VerticalAlignment="Top" Width="187"/>
+        <Button Content="Ver imagenes" HorizontalAlignment="Left" Margin="543,362,0,0" VerticalAlignment="Top" Width="110" Height="47" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
