@@ -12,16 +12,11 @@ namespace BaseDeDatos
     using System;
     using System.Collections.ObjectModel;
     
-    public partial class Usuario
+    public partial class Fotografia
     {
-        public int idUsuario { get; set; }
-        public string nombreUsuario { get; set; }
-        public string contraseña { get; set; }
-        public string apellidoMaterno { get; set; }
-        public string apellidoPaterno { get; set; }
-        public string nombres { get; set; }
-        public string tipoUsuario { get; set; }
+        public int idFotografia { get; set; }
+        public byte[] imagen { get; set; }
     
-        public virtual DelegacionMunicipal DelegacionMunicipal { get; set; }
+        public virtual Reporte Reporte { get; set; }
     }
 }

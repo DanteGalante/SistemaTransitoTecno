@@ -12,28 +12,21 @@ namespace BaseDeDatos
     using System;
     using System.Collections.ObjectModel;
     
-    public partial class DelegacionesMunicipale
+    public partial class Dictamen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DelegacionesMunicipale()
+        public Dictamen()
         {
             this.Reportes = new ObservableCollection<Reporte>();
-            this.Usuarios = new ObservableCollection<Usuario>();
         }
     
-        public int idDelegacion { get; set; }
-        public string nombre { get; set; }
-        public int numero { get; set; }
-        public string colonia { get; set; }
-        public string calle { get; set; }
-        public int codigoPostal { get; set; }
-        public string correo { get; set; }
-        public string telefono { get; set; }
-        public string municipio { get; set; }
+        public string folio { get; set; }
+        public string nombreCompletoPerito { get; set; }
+        public System.TimeSpan hora { get; set; }
+        public System.DateTime fecha { get; set; }
+        public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableCollection<Reporte> Reportes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Usuario> Usuarios { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDTransitoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDTransitoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Conductor">
           <Key>
             <PropertyRef Name="idConductor" />
@@ -16,7 +16,7 @@
           <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="DelegacionesMunicipales">
+        <EntityType Name="DelegacionMunicipal">
           <Key>
             <PropertyRef Name="idDelegacion" />
           </Key>
@@ -40,6 +40,14 @@
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
+        <EntityType Name="Fotografia">
+          <Key>
+            <PropertyRef Name="idFotografia" />
+          </Key>
+          <Property Name="idFotografia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imagen" Type="varbinary(max)" Nullable="false" />
+          <Property Name="idReporte" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Reporte">
           <Key>
             <PropertyRef Name="idReporte" />
@@ -47,7 +55,6 @@
           <Property Name="idReporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="calle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="colonia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fotografia" Type="image" Nullable="false" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
           <Property Name="estatus" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -64,7 +71,6 @@
           <Property Name="apellidoMaterno" Type="nvarchar" MaxLength="50" />
           <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="delegacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tipoUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="idDelegacion" Type="int" Nullable="false" />
         </EntityType>
@@ -82,8 +88,6 @@
           <Property Name="numeroPlaca" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="idConductor" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VehiculoReporte">
           <Key>
             <PropertyRef Name="idReporte" />
@@ -116,6 +120,18 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_fotografia_reporte">
+          <End Role="Reporte" Type="Self.Reporte" Multiplicity="1" />
+          <End Role="Fotografia" Type="Self.Fotografia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reporte">
+              <PropertyRef Name="idReporte" />
+            </Principal>
+            <Dependent Role="Fotografia">
+              <PropertyRef Name="idReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_reporte">
           <End Role="Reporte" Type="Self.Reporte" Multiplicity="1" />
           <End Role="VehiculoReporte" Type="Self.VehiculoReporte" Multiplicity="*" />
@@ -129,10 +145,10 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_reporte_delegacionesMunicipales">
-          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipales" Multiplicity="1" />
+          <End Role="DelegacionMunicipal" Type="Self.DelegacionMunicipal" Multiplicity="1" />
           <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DelegacionesMunicipales">
+            <Principal Role="DelegacionMunicipal">
               <PropertyRef Name="idDelegacion" />
             </Principal>
             <Dependent Role="Reporte">
@@ -141,10 +157,10 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario_delegacionesMunicipales">
-          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipales" Multiplicity="1" />
+          <End Role="DelegacionMunicipal" Type="Self.DelegacionMunicipal" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DelegacionesMunicipales">
+            <Principal Role="DelegacionMunicipal">
               <PropertyRef Name="idDelegacion" />
             </Principal>
             <Dependent Role="Usuario">
@@ -152,7 +168,7 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_vehiculos">
+        <Association Name="FK_vehiculo">
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
           <End Role="VehiculoReporte" Type="Self.VehiculoReporte" Multiplicity="*" />
           <ReferentialConstraint>
@@ -166,17 +182,13 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
         </Association>
         <EntityContainer Name="BDTransitoModelStoreContainer">
           <EntitySet Name="Conductor" EntityType="Self.Conductor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DelegacionesMunicipales" EntityType="Self.DelegacionesMunicipales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DelegacionMunicipal" EntityType="Self.DelegacionMunicipal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dictamen" EntityType="Self.Dictamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotografia" EntityType="Self.Fotografia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reporte" EntityType="Self.Reporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VehiculoReporte" EntityType="Self.VehiculoReporte" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VehiculoReporte].[idReporte] AS [idReporte], 
-    [VehiculoReporte].[idVehiculo] AS [idVehiculo]
-    FROM [dbo].[VehiculoReporte] AS [VehiculoReporte]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="VehiculoReporte" EntityType="Self.VehiculoReporte" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_conductor_vehiculos" Association="Self.FK_conductor_vehiculos">
             <End Role="Conductor" EntitySet="Conductor" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
@@ -185,25 +197,28 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
             <End Role="Dictamen" EntitySet="Dictamen" />
             <End Role="Reporte" EntitySet="Reporte" />
           </AssociationSet>
+          <AssociationSet Name="FK_fotografia_reporte" Association="Self.FK_fotografia_reporte">
+            <End Role="Reporte" EntitySet="Reporte" />
+            <End Role="Fotografia" EntitySet="Fotografia" />
+          </AssociationSet>
           <AssociationSet Name="FK_reporte" Association="Self.FK_reporte">
             <End Role="Reporte" EntitySet="Reporte" />
             <End Role="VehiculoReporte" EntitySet="VehiculoReporte" />
           </AssociationSet>
           <AssociationSet Name="FK_reporte_delegacionesMunicipales" Association="Self.FK_reporte_delegacionesMunicipales">
-            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
+            <End Role="DelegacionMunicipal" EntitySet="DelegacionMunicipal" />
             <End Role="Reporte" EntitySet="Reporte" />
           </AssociationSet>
           <AssociationSet Name="FK_usuario_delegacionesMunicipales" Association="Self.FK_usuario_delegacionesMunicipales">
-            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
+            <End Role="DelegacionMunicipal" EntitySet="DelegacionMunicipal" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK_vehiculos" Association="Self.FK_vehiculos">
+          <AssociationSet Name="FK_vehiculo" Association="Self.FK_vehiculo">
             <End Role="Vehiculo" EntitySet="Vehiculo" />
             <End Role="VehiculoReporte" EntitySet="VehiculoReporte" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDTransitoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -217,25 +232,9 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Vehiculoes" Relationship="Self.FK_conductor_vehiculos" FromRole="Conductor" ToRole="Vehiculo" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.FK_conductor_vehiculos" FromRole="Conductor" ToRole="Vehiculo" />
         </EntityType>
-        <EntityType Name="DelegacionesMunicipale">
-          <Key>
-            <PropertyRef Name="idDelegacion" />
-          </Key>
-          <Property Name="idDelegacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="numero" Type="Int32" Nullable="false" />
-          <Property Name="colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="calle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="codigoPostal" Type="Int32" Nullable="false" />
-          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="municipio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Reportes" Relationship="Self.FK_reporte_delegacionesMunicipales" FromRole="DelegacionesMunicipales" ToRole="Reporte" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK_usuario_delegacionesMunicipales" FromRole="DelegacionesMunicipales" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Dictaman">
+        <EntityType Name="Dictamen">
           <Key>
             <PropertyRef Name="folio" />
           </Key>
@@ -253,13 +252,13 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           <Property Name="idReporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="calle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fotografia" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DelegacionesMunicipale" Relationship="Self.FK_reporte_delegacionesMunicipales" FromRole="Reporte" ToRole="DelegacionesMunicipales" />
-          <NavigationProperty Name="Dictaman" Relationship="Self.FK_dictamen_reporte" FromRole="Reporte" ToRole="Dictamen" />
-          <NavigationProperty Name="Vehiculoes" Relationship="Self.VehiculoReporte" FromRole="Reporte" ToRole="Vehiculo" />
+          <NavigationProperty Name="Dictamen" Relationship="Self.FK_dictamen_reporte" FromRole="Reporte" ToRole="Dictamen" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.VehiculoReporte" FromRole="Reporte" ToRole="Vehiculo" />
+          <NavigationProperty Name="DelegacionMunicipal" Relationship="BDTransitoModel.FK_reporte_delegacionesMunicipales1" FromRole="Reporte" ToRole="DelegacionMunicipal" />
+          <NavigationProperty Name="Fotografias" Relationship="BDTransitoModel.FK_fotografia_reporte" FromRole="Reporte" ToRole="Fotografia1" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -271,9 +270,8 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           <Property Name="apellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="apellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="delegacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tipoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DelegacionesMunicipale" Relationship="Self.FK_usuario_delegacionesMunicipales" FromRole="Usuario" ToRole="DelegacionesMunicipales" />
+          <NavigationProperty Name="DelegacionMunicipal" Relationship="BDTransitoModel.FK_usuario_delegacionesMunicipales1" FromRole="Usuario" ToRole="DelegacionMunicipal" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
@@ -294,16 +292,8 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           <End Role="Conductor" Type="Self.Conductor" Multiplicity="1" />
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
         </Association>
-        <Association Name="FK_reporte_delegacionesMunicipales">
-          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipale" Multiplicity="1" />
-          <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_usuario_delegacionesMunicipales">
-          <End Role="DelegacionesMunicipales" Type="Self.DelegacionesMunicipale" Multiplicity="1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-        </Association>
         <Association Name="FK_dictamen_reporte">
-          <End Role="Dictamen" Type="Self.Dictaman" Multiplicity="1" />
+          <End Role="Dictamen" Type="BDTransitoModel.Dictamen" Multiplicity="1" />
           <End Role="Reporte" Type="Self.Reporte" Multiplicity="*" />
         </Association>
         <Association Name="VehiculoReporte">
@@ -311,40 +301,81 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
           <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
         </Association>
         <EntityContainer Name="BDTransitoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Conductors" EntityType="Self.Conductor" />
-          <EntitySet Name="DelegacionesMunicipales" EntityType="Self.DelegacionesMunicipale" />
-          <EntitySet Name="Dictamen" EntityType="Self.Dictaman" />
+          <EntitySet Name="Conductores" EntityType="Self.Conductor" />
+          <EntitySet Name="Dictamenes" EntityType="BDTransitoModel.Dictamen" />
           <EntitySet Name="Reportes" EntityType="Self.Reporte" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-          <EntitySet Name="Vehiculoes" EntityType="Self.Vehiculo" />
+          <EntitySet Name="Vehiculos" EntityType="Self.Vehiculo" />
           <AssociationSet Name="FK_conductor_vehiculos" Association="Self.FK_conductor_vehiculos">
-            <End Role="Conductor" EntitySet="Conductors" />
-            <End Role="Vehiculo" EntitySet="Vehiculoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_reporte_delegacionesMunicipales" Association="Self.FK_reporte_delegacionesMunicipales">
-            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
-            <End Role="Reporte" EntitySet="Reportes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_delegacionesMunicipales" Association="Self.FK_usuario_delegacionesMunicipales">
-            <End Role="DelegacionesMunicipales" EntitySet="DelegacionesMunicipales" />
-            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Conductor" EntitySet="Conductores" />
+            <End Role="Vehiculo" EntitySet="Vehiculos" />
           </AssociationSet>
           <AssociationSet Name="FK_dictamen_reporte" Association="Self.FK_dictamen_reporte">
-            <End Role="Dictamen" EntitySet="Dictamen" />
+            <End Role="Dictamen" EntitySet="Dictamenes" />
             <End Role="Reporte" EntitySet="Reportes" />
           </AssociationSet>
           <AssociationSet Name="VehiculoReporte" Association="Self.VehiculoReporte">
             <End Role="Reporte" EntitySet="Reportes" />
-            <End Role="Vehiculo" EntitySet="Vehiculoes" />
+            <End Role="Vehiculo" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <EntitySet Name="DelegacionesMunicipales" EntityType="BDTransitoModel.DelegacionMunicipal" />
+          <EntitySet Name="Fotografias" EntityType="BDTransitoModel.Fotografia" />
+          <AssociationSet Name="FK_reporte_delegacionesMunicipales1" Association="BDTransitoModel.FK_reporte_delegacionesMunicipales1">
+            <End Role="DelegacionMunicipal" EntitySet="DelegacionesMunicipales" />
+            <End Role="Reporte" EntitySet="Reportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_delegacionesMunicipales1" Association="BDTransitoModel.FK_usuario_delegacionesMunicipales1">
+            <End Role="DelegacionMunicipal" EntitySet="DelegacionesMunicipales" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fotografia_reporte" Association="BDTransitoModel.FK_fotografia_reporte">
+            <End Role="Reporte" EntitySet="Reportes" />
+            <End Role="Fotografia1" EntitySet="Fotografias" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="DelegacionMunicipal">
+          <Key>
+            <PropertyRef Name="idDelegacion" />
+          </Key>
+          <Property Name="idDelegacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="colonia" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="calle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="codigoPostal" Type="Int32" Nullable="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="municipio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reportes" Relationship="BDTransitoModel.FK_reporte_delegacionesMunicipales1" FromRole="DelegacionMunicipal" ToRole="Reporte" />
+          <NavigationProperty Name="Usuarios" Relationship="BDTransitoModel.FK_usuario_delegacionesMunicipales1" FromRole="DelegacionMunicipal" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Fotografia">
+          <Key>
+            <PropertyRef Name="idFotografia" />
+          </Key>
+          <Property Name="idFotografia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imagen" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Reporte" Relationship="BDTransitoModel.FK_fotografia_reporte" FromRole="Fotografia1" ToRole="Reporte" />
+        </EntityType>
+        <Association Name="FK_reporte_delegacionesMunicipales1">
+          <End Type="BDTransitoModel.DelegacionMunicipal" Role="DelegacionMunicipal" Multiplicity="1" />
+          <End Type="BDTransitoModel.Reporte" Role="Reporte" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_usuario_delegacionesMunicipales1">
+          <End Type="BDTransitoModel.DelegacionMunicipal" Role="DelegacionMunicipal" Multiplicity="1" />
+          <End Type="BDTransitoModel.Usuario" Role="Usuario" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_fotografia_reporte">
+          <End Type="BDTransitoModel.Reporte" Role="Reporte" Multiplicity="1" />
+          <End Type="BDTransitoModel.Fotografia" Role="Fotografia1" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BDTransitoModelStoreContainer" CdmEntityContainer="BDTransitoEntities">
-          <EntitySetMapping Name="Conductors">
+          <EntitySetMapping Name="Conductores">
             <EntityTypeMapping TypeName="BDTransitoModel.Conductor">
               <MappingFragment StoreEntitySet="Conductor">
                 <ScalarProperty Name="idConductor" ColumnName="idConductor" />
@@ -356,23 +387,8 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DelegacionesMunicipales">
-            <EntityTypeMapping TypeName="BDTransitoModel.DelegacionesMunicipale">
-              <MappingFragment StoreEntitySet="DelegacionesMunicipales">
-                <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="colonia" ColumnName="colonia" />
-                <ScalarProperty Name="calle" ColumnName="calle" />
-                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="municipio" ColumnName="municipio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Dictamen">
-            <EntityTypeMapping TypeName="BDTransitoModel.Dictaman">
+          <EntitySetMapping Name="Dictamenes">
+            <EntityTypeMapping TypeName="BDTransitoModel.Dictamen">
               <MappingFragment StoreEntitySet="Dictamen">
                 <ScalarProperty Name="folio" ColumnName="folio" />
                 <ScalarProperty Name="nombreCompletoPerito" ColumnName="nombreCompletoPerito" />
@@ -388,7 +404,6 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
                 <ScalarProperty Name="idReporte" ColumnName="idReporte" />
                 <ScalarProperty Name="calle" ColumnName="calle" />
                 <ScalarProperty Name="colonia" ColumnName="colonia" />
-                <ScalarProperty Name="fotografia" ColumnName="fotografia" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
@@ -404,12 +419,11 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
                 <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
                 <ScalarProperty Name="nombres" ColumnName="nombres" />
-                <ScalarProperty Name="delegacion" ColumnName="delegacion" />
                 <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vehiculoes">
+          <EntitySetMapping Name="Vehiculos">
             <EntityTypeMapping TypeName="BDTransitoModel.Vehiculo">
               <MappingFragment StoreEntitySet="Vehiculo">
                 <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
@@ -431,22 +445,6 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
               <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_reporte_delegacionesMunicipales" TypeName="BDTransitoModel.FK_reporte_delegacionesMunicipales" StoreEntitySet="Reporte">
-            <EndProperty Name="DelegacionesMunicipales">
-              <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
-            </EndProperty>
-            <EndProperty Name="Reporte">
-              <ScalarProperty Name="idReporte" ColumnName="idReporte" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_usuario_delegacionesMunicipales" TypeName="BDTransitoModel.FK_usuario_delegacionesMunicipales" StoreEntitySet="Usuario">
-            <EndProperty Name="DelegacionesMunicipales">
-              <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
-            </EndProperty>
-            <EndProperty Name="Usuario">
-              <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="FK_dictamen_reporte" TypeName="BDTransitoModel.FK_dictamen_reporte" StoreEntitySet="Reporte">
             <EndProperty Name="Dictamen">
               <ScalarProperty Name="folio" ColumnName="folio" />
@@ -461,6 +459,53 @@ warning 6002: The table/view 'BDTransito.dbo.VehiculoReporte' does not have a pr
             </EndProperty>
             <EndProperty Name="Vehiculo">
               <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="DelegacionesMunicipales">
+            <EntityTypeMapping TypeName="BDTransitoModel.DelegacionMunicipal">
+              <MappingFragment StoreEntitySet="DelegacionMunicipal">
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotografias">
+            <EntityTypeMapping TypeName="BDTransitoModel.Fotografia">
+              <MappingFragment StoreEntitySet="Fotografia">
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="idFotografia" ColumnName="idFotografia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_reporte_delegacionesMunicipales1" TypeName="BDTransitoModel.FK_reporte_delegacionesMunicipales1" StoreEntitySet="Reporte">
+            <EndProperty Name="Reporte">
+              <ScalarProperty Name="idReporte" ColumnName="idReporte" />
+            </EndProperty>
+            <EndProperty Name="DelegacionMunicipal">
+              <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_usuario_delegacionesMunicipales1" TypeName="BDTransitoModel.FK_usuario_delegacionesMunicipales1" StoreEntitySet="Usuario">
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+            </EndProperty>
+            <EndProperty Name="DelegacionMunicipal">
+              <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_fotografia_reporte" TypeName="BDTransitoModel.FK_fotografia_reporte" StoreEntitySet="Fotografia">
+            <EndProperty Name="Fotografia1">
+              <ScalarProperty Name="idFotografia" ColumnName="idFotografia" />
+            </EndProperty>
+            <EndProperty Name="Reporte">
+              <ScalarProperty Name="idReporte" ColumnName="idReporte" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
