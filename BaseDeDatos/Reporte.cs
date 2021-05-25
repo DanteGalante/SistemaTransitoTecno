@@ -17,20 +17,22 @@ namespace BaseDeDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Reporte()
         {
-            this.Vehiculoes = new ObservableCollection<Vehiculo>();
+            this.Vehiculos = new ObservableCollection<Vehiculo>();
+            this.Fotografias = new ObservableCollection<Fotografia>();
         }
     
         public int idReporte { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
-        public byte[] fotografia { get; set; }
         public string descripcion { get; set; }
         public System.DateTime fecha { get; set; }
         public string estatus { get; set; }
     
-        public virtual DelegacionesMunicipale DelegacionesMunicipale { get; set; }
-        public virtual Dictaman Dictaman { get; set; }
+        public virtual Dictamen Dictamen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Vehiculo> Vehiculoes { get; set; }
+        public virtual ObservableCollection<Vehiculo> Vehiculos { get; set; }
+        public virtual DelegacionMunicipal DelegacionMunicipal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableCollection<Fotografia> Fotografias { get; set; }
     }
 }

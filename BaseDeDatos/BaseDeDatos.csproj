@@ -53,14 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Conductor.cs">
       <DependentUpon>ModeloTransitoBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="DelegacionesMunicipale.cs">
+    <Compile Include="DelegacionMunicipal.cs">
       <DependentUpon>ModeloTransitoBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dictaman.cs">
+    <Compile Include="Dictamen.cs">
+      <DependentUpon>ModeloTransitoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fotografia.cs">
       <DependentUpon>ModeloTransitoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="ModeloTransitoBD.Context.cs">

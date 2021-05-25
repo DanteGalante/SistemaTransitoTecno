@@ -25,11 +25,12 @@ namespace BaseDeDatos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Conductor> Conductors { get; set; }
-        public virtual DbSet<DelegacionesMunicipale> DelegacionesMunicipales { get; set; }
-        public virtual DbSet<Dictaman> Dictamen { get; set; }
+        public virtual DbSet<Conductor> Conductores { get; set; }
+        public virtual DbSet<Dictamen> Dictamenes { get; set; }
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Vehiculo> Vehiculoes { get; set; }
+        public virtual DbSet<Vehiculo> Vehiculos { get; set; }
+        public virtual DbSet<DelegacionMunicipal> DelegacionesMunicipales { get; set; }
+        public virtual DbSet<Fotografia> Fotografias { get; set; }
     }
 }
