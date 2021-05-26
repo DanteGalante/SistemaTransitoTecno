@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,48 @@ namespace SistemaDelegacionesMunicipales.Vista
         public LevantarReporte()
         {
             InitializeComponent();
+        }
+
+        private void Regresar_Click(object sender, RoutedEventArgs e)
+        {
+            MenuAgente menuAgente = new MenuAgente();
+            this.Close();
+            menuAgente.Show();
+
+        }
+
+        private void Guardar_Cick(object sender, RoutedEventArgs e)
+        {
+            ComprobarCampos();
+        }
+
+        private bool ComprobarCampos()
+        {
+            bool resultado = false;
+            if (TbCalle.Text.Trim() != null && TbColonia.Text.Trim() != null && TbDescripcion.Text.Trim() != null)
+            {
+
+                resultado = true;
+            }
+            else
+            {
+                MessageBox.Show("Ingrese la informacion en los campos de texto");
+            }
+
+            return resultado;
+        }
+
+        private bool comprobarCalle()
+        {
+            bool resultado = false;
+
+            return resultado;
+        }
+
+        private void SubirImagen_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe");
+
         }
     }
 }

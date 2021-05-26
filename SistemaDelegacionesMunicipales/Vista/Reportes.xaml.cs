@@ -24,7 +24,15 @@ namespace SistemaDelegacionesMunicipales.Vista
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Regresar_Click(object sender, RoutedEventArgs e)
+        {
+            MenuAgente menuAgente = new MenuAgente();
+
+            this.Close();
+            menuAgente.Show();
+        }
+
+        private void ConsultarReporte_Click(object sender, RoutedEventArgs e)
         {
 
         }
