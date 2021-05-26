@@ -17,7 +17,7 @@ namespace BaseDeDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Conductor()
         {
-            this.Vehiculoes = new ObservableCollection<Vehiculo>();
+            this.Vehiculos = new ObservableCollection<Vehiculo>();
         }
     
         public int idConductor { get; set; }
@@ -28,6 +28,6 @@ namespace BaseDeDatos
         public string nombres { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Vehiculo> Vehiculoes { get; set; }
+        public virtual ObservableCollection<Vehiculo> Vehiculos { get; set; }
     }
 }
