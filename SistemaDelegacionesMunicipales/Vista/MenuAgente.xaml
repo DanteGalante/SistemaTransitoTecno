@@ -19,9 +19,9 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Bienvenido oficial Bernardo" HorizontalAlignment="Left" Margin="303,59,0,0" VerticalAlignment="Top" Width="163" HorizontalContentAlignment="Center"/>
-        <Button Content="Generar reporte" HorizontalAlignment="Left" Margin="98,317,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Ver dictamen de reporte" HorizontalAlignment="Left" Margin="566,317,0,0" VerticalAlignment="Top" Width="139"/>
-        <Button Content="Historial de reportes" HorizontalAlignment="Left" Margin="331,317,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button Content="Generar reporte" HorizontalAlignment="Left" Margin="98,317,0,0" VerticalAlignment="Top" Width="100" Click="GenerarReporte_Click"/>
+        <Button Content="Ver dictamen de reporte" HorizontalAlignment="Left" Margin="566,317,0,0" VerticalAlignment="Top" Width="139" Click="VerDictamen_Click"/>
+        <Button Content="Historial de reportes" HorizontalAlignment="Left" Margin="331,317,0,0" VerticalAlignment="Top" Width="117" Click="HistorialReportes_Click"/>
 
     </Grid>
 </Window>

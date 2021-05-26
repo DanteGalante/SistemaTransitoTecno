@@ -55,14 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Vista\ChatGeneral.xaml.cs">
+      <DependentUpon>ChatGeneral.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ConsultarDelegacionMunicipal_DireccionGeneral.xaml.cs">
       <DependentUpon>ConsultarDelegacionMunicipal_DireccionGeneral.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\ConsultarUsuario_DireccionGeneral.xaml.cs">
       <DependentUpon>ConsultarUsuario_DireccionGeneral.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\DictaminarReporte.xaml.cs">
+      <DependentUpon>DictaminarReporte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\IniciarSesion.xaml.cs">
+      <DependentUpon>IniciarSesion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\MenuAdministrativo_DireccionGeneral.xaml.cs">
       <DependentUpon>MenuAdministrativo_DireccionGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\MenuPerito.xaml.cs">
+      <DependentUpon>MenuPerito.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\ModificarDelegacionMunicipal_DireccionGeneral.xaml.cs">
       <DependentUpon>ModificarDelegacionMunicipal_DireccionGeneral.xaml</DependentUpon>
@@ -76,6 +88,15 @@
     <Compile Include="Vista\RegistrarUsuario_DireccionGeneral.xaml.cs">
       <DependentUpon>RegistrarUsuario_DireccionGeneral.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\VerDetalleReporte.xaml.cs">
+      <DependentUpon>VerDetalleReporte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\VerDictamenReporte.xaml.cs">
+      <DependentUpon>VerDictamenReporte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\VisualizarReportes.xaml.cs">
+      <DependentUpon>VisualizarReportes.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Vista\ChatGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\ConsultarDelegacionMunicipal_DireccionGeneral.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,7 +121,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Vista\DictaminarReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\IniciarSesion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\MenuAdministrativo_DireccionGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\MenuPerito.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -113,6 +150,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\RegistrarUsuario_DireccionGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\VerDetalleReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\VerDictamenReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\VisualizarReportes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -146,6 +195,12 @@
   <ItemGroup>
     <Resource Include="Imagenes\delegacion.png" />
     <Resource Include="Imagenes\Usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoBlanco.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\veracruzlogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
