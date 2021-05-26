@@ -17,11 +17,26 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// <summary>
     /// Interaction logic for RegistrarConductor.xaml
     /// </summary>
-    public partial class RegistrarConductor : Window
+    public partial class RegistrarConductorWindow : Window
     {
-        public RegistrarConductor()
+        public RegistrarConductorWindow()
         {
             InitializeComponent();
+        }
+
+        private void btn_salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_registrar_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrarConductor();
+        }
+
+        private void RegistrarConductor()
+        {
+            throw new NotImplementedException();
         }
     }
 }

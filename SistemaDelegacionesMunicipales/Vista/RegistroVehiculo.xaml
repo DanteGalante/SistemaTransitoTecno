@@ -1,11 +1,11 @@
-﻿<Window x:Class="SistemaDelegacionesMunicipales.Pantallas.RegistroVehiculo"
+﻿<Window x:Class="SistemaDelegacionesMunicipales.Vista.RegistroVehiculo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Pantallas"
+        xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="Registrar vehiculo" Width="386.678" Height="460" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registrar vehiculo" Width="386.678" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" SizeToContent="Height">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
@@ -18,11 +18,11 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <StackPanel Margin="50,25,50,25">
+        <StackPanel x:Name="sp_componentes" Margin="50,25,50,25">
             <Label Content="Número de placas"/>
             <TextBox x:Name="tb_numeroPlacas" Height="23" TextWrapping="Wrap"/>
-            <Label Content="Número de poliza de seguro"/>
-            <TextBox x:Name="tb_numeroPolizaSeguro" Height="23" TextWrapping="Wrap"/>
+            <Label Content="¿Tiene seguro?"/>
+            <CheckBox x:Name="c_seguro" Content="" HorizontalAlignment="Left" Margin="15,0,0,0" Checked="c_seguro_Checked" Unchecked="c_seguro_Unchecked"/>
             <Label Content="Color"/>
             <TextBox x:Name="tb_color" Height="23" TextWrapping="Wrap"/>
             <Label Content="Año"/>
@@ -33,13 +33,12 @@
             <TextBox x:Name="tb_marca" Height="23" TextWrapping="Wrap"/>
             <Label Content="Conductor"/>
             <ComboBox x:Name="cb_conductor" Height="23">
-                <ComboBoxItem>
-                    <TextBlock Text="Otro conductor"></TextBlock>
-                </ComboBoxItem>
+                <ComboBoxItem Content="Otro conductor"/>
             </ComboBox>
+
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Height="20" Margin="0,10,0,0">
-                <Button x:Name="btn_registrar" Content="Registrar" Width="75" Height="20" Margin="0,0,10,0"/>
-                <Button x:Name="btn_salir" Content="Salir" Width="75" Margin="0"/>
+                <Button x:Name="btn_registrar" Content="Registrar" Width="75" Height="20" Margin="0,0,10,0" Click="btn_registrar_Click"/>
+                <Button x:Name="btn_salir" Content="Salir" Width="75" Margin="0" Click="btn_salir_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
