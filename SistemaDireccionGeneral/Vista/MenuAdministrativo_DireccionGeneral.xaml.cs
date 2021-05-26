@@ -44,5 +44,12 @@ namespace SistemaDireccionGeneral.Vista
             consultarDelegacionMunicipal.Show();
             this.Close();
         }
+
+        private void btnConsultarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarUsuario_DireccionGeneral consultarUsuario = new ConsultarUsuario_DireccionGeneral();
+            consultarUsuario.Show();
+            this.Close();
+        }
     }
 }

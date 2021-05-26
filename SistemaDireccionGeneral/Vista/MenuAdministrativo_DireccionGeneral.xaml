@@ -30,7 +30,7 @@
         <Rectangle Grid.Column="3" Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="240"  Grid.Row="1" Grid.RowSpan="5" Stroke="Black" VerticalAlignment="Top" Width="144"/>
         <Label Content="Bienvenido Administrador" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
         <Button x:Name="btnRegistrarUsuario" Content="Registrar Usuario" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold" Click="btnRegistrarUsuario_Click"/>
-        <Button x:Name="btnConsultarUsuario" Content="Consultar Usuario" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold"/>
+        <Button x:Name="btnConsultarUsuario" Content="Consultar Usuario" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold" Click="btnConsultarUsuario_Click"/>
         <Button x:Name="btnRegistrarDelegacion" Content="Registrar Delegación" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="124" Height="50" FontWeight="Bold" Margin="10,0,10,5" Click="btnRegistrarDelegacion_Click"/>
         <Button x:Name="btnConsultarDelegacion" Content="Consultar Delegación" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold" Click="btnConsultarDelegacion_Click"/>
         <Button x:Name="btnChat" Content="Chat" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold"/>

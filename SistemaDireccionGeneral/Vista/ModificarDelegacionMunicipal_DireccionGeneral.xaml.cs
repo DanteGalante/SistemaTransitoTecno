@@ -21,10 +21,13 @@ namespace SistemaDireccionGeneral.Vista
     public partial class ModificarDelegacionMunicipal_DireccionGeneral : Window
     {
         BDTransitoEntities entidadesBD = new BDTransitoEntities();
+        DelegacionMunicipal delegacionElegida;
 
-        public ModificarDelegacionMunicipal_DireccionGeneral()
+        public ModificarDelegacionMunicipal_DireccionGeneral(DelegacionMunicipal delegacionElegida)
         {
             InitializeComponent();
+            this.delegacionElegida = delegacionElegida;
+            CargarDatosDelegacion();
         }
 
         public void ManejoModificacionDelegacion()
@@ -32,18 +35,16 @@ namespace SistemaDireccionGeneral.Vista
             VerificarDelegacion();
             if (DelegacionValida())
             {
-                DelegacionMunicipal nuevaDelegacion = new DelegacionMunicipal();
+                DelegacionMunicipal modificarDelegacion = entidadesBD.DelegacionesMunicipales.Find(delegacionElegida.idDelegacion);
 
-                nuevaDelegacion.nombre = tbNombreDelegacion.Text;
-                nuevaDelegacion.calle = tbCalle.Text;
-                nuevaDelegacion.colonia = tbColonia.Text;
-                nuevaDelegacion.numero = int.Parse(tbNumero.Text);
-                nuevaDelegacion.codigoPostal = int.Parse(tbCodigoPostal.Text);
-                nuevaDelegacion.correo = tbCorreoElectronico.Text;
-                nuevaDelegacion.telefono = tbTelefono.Text;
-                nuevaDelegacion.municipio = tbMunicipio.Text;
-
-                entidadesBD.DelegacionesMunicipales.Add(nuevaDelegacion);
+                modificarDelegacion.nombre = tbNombreDelegacion.Text;
+                modificarDelegacion.calle = tbCalle.Text;
+                modificarDelegacion.colonia = tbColonia.Text;
+                modificarDelegacion.numero = int.Parse(tbNumero.Text);
+                modificarDelegacion.codigoPostal = int.Parse(tbCodigoPostal.Text);
+                modificarDelegacion.correo = tbCorreoElectronico.Text;
+                modificarDelegacion.telefono = tbTelefono.Text;
+                modificarDelegacion.municipio = tbMunicipio.Text;
 
                 entidadesBD.SaveChanges();
 
@@ -224,6 +225,18 @@ namespace SistemaDireccionGeneral.Vista
             MenuAdministrativo_DireccionGeneral regresarMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
             regresarMenuAdministrativo.Show();
             this.Close();
+        }
+        
+        public void CargarDatosDelegacion()
+        {
+            tbNombreDelegacion.Text = delegacionElegida.nombre;
+            tbCalle.Text = delegacionElegida.calle;
+            tbColonia.Text = delegacionElegida.colonia;
+            tbNumero.Text = delegacionElegida.numero.ToString();
+            tbCodigoPostal.Text = delegacionElegida.codigoPostal.ToString();
+            tbCorreoElectronico.Text = delegacionElegida.correo;
+            tbTelefono.Text = delegacionElegida.telefono;
+            tbMunicipio.Text = delegacionElegida.municipio;
         }
     }
 }
