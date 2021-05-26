@@ -72,7 +72,7 @@
           <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tipoUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="idDelegacion" Type="int" Nullable="false" />
+          <Property Name="idDelegacion" Type="int" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
@@ -157,7 +157,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario_delegacionesMunicipales">
-          <End Role="DelegacionMunicipal" Type="Self.DelegacionMunicipal" Multiplicity="1" />
+          <End Role="DelegacionMunicipal" Type="Self.DelegacionMunicipal" Multiplicity="0..1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DelegacionMunicipal">
@@ -362,7 +362,7 @@
           <End Type="BDTransitoModel.Reporte" Role="Reporte" Multiplicity="*" />
         </Association>
         <Association Name="FK_usuario_delegacionesMunicipales1">
-          <End Type="BDTransitoModel.DelegacionMunicipal" Role="DelegacionMunicipal" Multiplicity="1" />
+          <End Type="BDTransitoModel.DelegacionMunicipal" Role="DelegacionMunicipal" Multiplicity="0..1" />
           <End Type="BDTransitoModel.Usuario" Role="Usuario" Multiplicity="*" />
         </Association>
         <Association Name="FK_fotografia_reporte">
@@ -499,6 +499,7 @@
             <EndProperty Name="DelegacionMunicipal">
               <ScalarProperty Name="idDelegacion" ColumnName="idDelegacion" />
             </EndProperty>
+            <Condition ColumnName="idDelegacion" IsNull="false" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_fotografia_reporte" TypeName="BDTransitoModel.FK_fotografia_reporte" StoreEntitySet="Fotografia">
             <EndProperty Name="Fotografia1">

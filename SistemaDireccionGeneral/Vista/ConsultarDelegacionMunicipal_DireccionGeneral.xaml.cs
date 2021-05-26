@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +74,8 @@ namespace SistemaDireccionGeneral.Vista
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             int indiceSeleccion = dgDelegaciones.SelectedIndex;
+            int idEliminar;
+
             if (indiceSeleccion >= 0)
             {
                 DelegacionMunicipal delegacionEliminar = listaDelegaciones[indiceSeleccion];
@@ -81,17 +84,28 @@ namespace SistemaDireccionGeneral.Vista
                     MessageBoxButton.OKCancel);
                 if (resultado == MessageBoxResult.OK)
                 {
-                    //RecuperarUsuariosDeDelegacion();
+                    idEliminar = delegacionEliminar.idDelegacion;
+                    
+                    RecuperarUsuariosDeDelegacion(idEliminar);
+                    
                     entidadesBD.DelegacionesMunicipales.Remove(delegacionEliminar);
-
-                    foreach (var item in listaUsuarios)
+                    try
                     {
-                        //usuario.
+                        entidadesBD.SaveChanges();
                     }
-                    
-                    //entidadesBD.Usuarios.Remove(usuario);
-                    
-                    entidadesBD.SaveChanges();
+                    catch (DbEntityValidationException a)
+                    {
+                        foreach (var eve in a.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entidad \"{0}\" Estado \"{1}\" ",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Propiedad: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                    }
                 }
             }
             else
@@ -100,24 +114,41 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
-        private List<Usuario> RecuperarUsuariosDeDelegacion()
+        private List<Usuario> RecuperarUsuariosDeDelegacion(int idEliminar)
         {
             DbSet<Usuario> usuarios = entidadesBD.Usuarios;
 
-            foreach (var item in entidadesBD.Usuarios)
+            foreach (var item in usuarios)
             {
                 listaUsuarios.Add(item);
-                Console.WriteLine(item);
             }
 
-            /*foreach (var item in listaUsuarios)
+            foreach (var usuario in listaUsuarios)
             {
-                if (delegacionElegida.idDelegacion == true)
+                if (usuario.DelegacionMunicipal.idDelegacion == idEliminar )
                 {
-
+                    usuario.DelegacionMunicipal = null;
                 }
-                l
-            }*/
+            }
+
+            try
+            { 
+                entidadesBD.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entidad \"{0}\" Estado \"{1}\" ",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Propiedad: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+            }
+
             return listaUsuarios;
         } 
 
