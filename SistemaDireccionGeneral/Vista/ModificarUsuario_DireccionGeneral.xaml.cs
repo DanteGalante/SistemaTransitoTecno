@@ -285,6 +285,18 @@ namespace SistemaDireccionGeneral.Vista
             ManejoModificacionUsuario();
         }
 
+        public int RecuperarDelegacion()
+        {
+            int res = 0;
+            if (usuarioElegido.DelegacionMunicipal != null)
+            {
+                res = usuarioElegido.DelegacionMunicipal.idDelegacion;
+                return res;
+            }
+
+            return res;
+        }
+
         public void CargarDatosUsuario()
         {
             tbNombreUsuario.Text = usuarioElegido.nombreUsuario;
@@ -293,7 +305,7 @@ namespace SistemaDireccionGeneral.Vista
             tbApellidoMaterno.Text = usuarioElegido.apellidoMaterno;
             cbUsuarios.Text = usuarioElegido.tipoUsuario;
             pbContrasenia.Password = usuarioElegido.contraseña;
-            cbDelegaciones.SelectedIndex = usuarioElegido.DelegacionMunicipal.idDelegacion;
+            cbDelegaciones.SelectedIndex = RecuperarDelegacion();
         }
     }
 }
