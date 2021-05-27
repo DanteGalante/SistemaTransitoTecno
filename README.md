@@ -5,6 +5,11 @@ Para ejecutar este proyecto se necesita:
 - Visual Studio 2019 (con .NET)
 - SQL Server
 
+Notas:
+- Se debe agregar system.windows.forms
+- Tambien se debe agregar manualmente el archivo .cs de "reportes"
+- Para utilizar la funcionalidad de "levantar reportes" se debe modificar la StartupUri en app.xaml a "Vista/MenuAgente.xaml" en el proyecto de "delegaciones municipales"
+
 Se utilizo ENTITY FRAMEWORK, y la conexión con este se realiza mediante un perfil que se creo. El perfil creado es el siguiente:
 - nombre de usuario: ProyectoTransito
 - contraseña: 123456x.
