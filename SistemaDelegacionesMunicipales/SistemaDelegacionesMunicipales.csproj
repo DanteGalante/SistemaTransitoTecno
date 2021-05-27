@@ -69,9 +69,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Vista\Reportes.xaml.cs">
+      <DependentUpon>Reportes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\VerDictamenReporte.xaml.cs">
+      <DependentUpon>VerDictamenReporte.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\ChatGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\ConsultarInfoConductorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\ConsultarInfoVehiculo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ConsultarReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\LevantarReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\ModificarConductor.xaml">
       <SubType>Designer</SubType>
@@ -103,9 +129,20 @@
     </Compile>
     <Compile Include="Vista\ConsultarInfoConductorWindow.xaml.cs">
       <DependentUpon>ConsultarInfoConductorWindow.xaml</DependentUpon>
+    <Compile Include="Vista\ChatGeneral.xaml.cs">
+      <DependentUpon>ChatGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ConsultarInfoConductor.xaml.cs">
+      <DependentUpon>ConsultarInfoConductor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\ConsultarInfoVehiculo.xaml.cs">
       <DependentUpon>ConsultarInfoVehiculo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ConsultarReporte.xaml.cs">
+      <DependentUpon>ConsultarReporte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\LevantarReporte.xaml.cs">
+      <DependentUpon>LevantarReporte.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\ModificarConductor.xaml.cs">
       <DependentUpon>ModificarConductor.xaml</DependentUpon>
@@ -128,6 +165,14 @@
     <Page Include="Vista\MenuAgente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Reportes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\VerDictamenReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

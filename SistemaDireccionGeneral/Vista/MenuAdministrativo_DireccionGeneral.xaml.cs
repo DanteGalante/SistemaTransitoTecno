@@ -23,5 +23,33 @@ namespace SistemaDireccionGeneral.Vista
         {
             InitializeComponent();
         }
+
+        private void btnRegistrarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrarUsuario_DireccionGeneral registrarUsuario = new RegistrarUsuario_DireccionGeneral();
+            registrarUsuario.Show();
+            this.Close();
+        }
+
+        private void btnRegistrarDelegacion_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrarDelegacionMunicipal_DireccionGeneral registrarDelegacionMunicipal = new RegistrarDelegacionMunicipal_DireccionGeneral();
+            registrarDelegacionMunicipal.Show();
+            this.Close();
+        }
+
+        private void btnConsultarDelegacion_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarDelegacionMunicipal_DireccionGeneral consultarDelegacionMunicipal = new ConsultarDelegacionMunicipal_DireccionGeneral();
+            consultarDelegacionMunicipal.Show();
+            this.Close();
+        }
+
+        private void btnConsultarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarUsuario_DireccionGeneral consultarUsuario = new ConsultarUsuario_DireccionGeneral();
+            consultarUsuario.Show();
+            this.Close();
+        }
     }
 }

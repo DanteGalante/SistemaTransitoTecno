@@ -18,18 +18,32 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Nombre de Usuario: " Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Nombre Completo: " Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Tipo de Usuario: " Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Nueva Contraseña: " Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Repetir Contraseña: " Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <TextBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <ComboBox Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="23" Width="150"/>
-        <PasswordBox Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150"/>
-        <PasswordBox Grid.Column="2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150"/>
-        <Button Content="Cancelar" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
-        <Button Content="Modificar" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
+        <Label Content="Nombre de Usuario: " Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Nombres: " Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Tipo de Usuario: " Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Contraseña: " Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Repetir Contraseña: " Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="tbNombreUsuario" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150"/>
+        <TextBox x:Name="tbNombres" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150"/>
+        <ComboBox x:Name="cbUsuarios" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="23" Width="150"/>
+        <PasswordBox x:Name="pbContrasenia" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150"/>
+        <PasswordBox x:Name="pbRepetirContrasenia" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" Click="btnCancelar_Click"/>
+        <Button x:Name="btnModificar" Content="Modificar" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" Click="btnModificar_Click"/>
+        <Label x:Name="lbErrorNombreUsuario" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="24,42,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label x:Name="lbErrorNombres" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="24,42,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label x:Name="lbErrorTipoUsuario" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="29,41,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label x:Name="lbErrorContrasenia" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="29,41,0,0" Grid.Row="3" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label x:Name="lbErrorRepetirContrasenia" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="29,41,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label Content="Apellido Paterno: " Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="39.5,17"/>
+        <TextBox x:Name="tbApellidoPaterno" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150" Margin="24.5,18.5"/>
+        <Label Content="Apellido Materno: " Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="47.5,17.5"/>
+        <TextBox x:Name="tbApellidoMaterno" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="150" Margin="24.5,19"/>
+        <Label Content="Delegación: " Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="49.5,17"/>
+        <ComboBox x:Name="cbDelegaciones" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="23" Width="150" Margin="24,18.5"/>
+        <Label x:Name="lbErrorApellidoPaterno" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="24,42,0,0" Grid.Row="3" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label x:Name="lbErrorApellidoMaterno" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="24,42,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
+        <Label x:Name="lbErrorDelegacion" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="29,42,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="343" Grid.RowSpan="2" Grid.ColumnSpan="2" Foreground="Red"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

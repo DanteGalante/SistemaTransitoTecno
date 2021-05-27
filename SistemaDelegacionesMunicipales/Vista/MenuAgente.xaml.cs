@@ -23,5 +23,29 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             InitializeComponent();
         }
+
+        private void GenerarReporte_Click(object sender, RoutedEventArgs e)
+        {
+            LevantarReporte levantarReporte = new LevantarReporte();
+            this.Close();
+            levantarReporte.Show();
+
+        }
+
+        private void HistorialReportes_Click(object sender, RoutedEventArgs e)
+        {
+            Reportes reportes = new Reportes();
+
+            this.Close();
+            reportes.Show();
+        }
+
+        private void VerDictamen_Click(object sender, RoutedEventArgs e)
+        {
+            VerDictamenReporte verDictamenReporte = new VerDictamenReporte();
+            this.Close();
+            verDictamenReporte.Show();
+
+        }
     }
 }
