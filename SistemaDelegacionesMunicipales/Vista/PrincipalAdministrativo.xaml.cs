@@ -23,17 +23,5 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             InitializeComponent();
         }
-
-        private void btn_agregarVehiculo_Click(object sender, RoutedEventArgs e)
-        {
-            RegistroVehiculo nuevaVentana = new RegistroVehiculo();
-            nuevaVentana.ShowDialog();
-        }
-
-        private void btn_agregarConductores_Click(object sender, RoutedEventArgs e)
-        {
-            RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
-            nuevaVentana.ShowDialog();
-        }
     }
 }

@@ -23,10 +23,5 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             InitializeComponent();
         }
-
-        private void btn_modificar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
