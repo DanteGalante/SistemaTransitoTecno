@@ -8,7 +8,7 @@
         Title="Registrar Delegación Municipal" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="D:\GitHub\ProyectoTransito\SistemaDelegacionesMunicipales\Imagenes\FondoBlanco.jpg"/>
+            <ImageBrush ImageSource="Imagenes\FondoBlanco.jpg"/>
         </Grid.Background>
         <Rectangle HorizontalAlignment="Left" Height="15" Stroke="Black" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="4">
             <Rectangle.Fill>
@@ -24,16 +24,27 @@
         <Label Content="Código Postal: " Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Correo Electrónico: " Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="Teléfono: " Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="Calle" Width="150"/>
-        <TextBox Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="Colonia" Width="150"/>
-        <TextBox Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="Número" Width="150"/>
-        <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <TextBox Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
-        <Button Content="Cancelar" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75"/>
-        <Button Content="Registrar" Grid.Column="3" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75"/>
+        <TextBox x:Name="tbNombreDelegacion" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <TextBox x:Name="tbMunicipio" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <TextBox x:Name="tbCalle" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <TextBox x:Name="tbColonia" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <TextBox x:Name="tbNumero" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150" Margin="30,15,18,15"/>
+        <TextBox x:Name="tbCodigoPostal" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <TextBox x:Name="tbCorreoElectronico" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <TextBox x:Name="tbTelefono" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Text="" Width="150"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75" Click="btnCancelar_Click"/>
+        <Button x:Name="btnRegistrar" Content="Registrar" Grid.Column="3" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" Click="btnRegistrar_Click"/>
+        <Label Content="Calle" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="184,13,179,14" Height="26" Grid.ColumnSpan="2"/>
+        <Label Content="Colonia" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="175,13,168,15" Height="25" Width="54" RenderTransformOrigin="0.451,0.56" Grid.ColumnSpan="2"/>
+        <Label Content="Número" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="174,13,168,15" Height="25" Width="54" Grid.ColumnSpan="2"/>
+        <Label x:Name="lbErrorNombreDelegacion" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="25,38,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorMunicipio" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="25,38,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorCalle" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="25,38,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorCodigoPostal" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="25,38,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorCorreoElectronico" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="25,38,0,0" Grid.Row="5" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorTelefono" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="25,37,0,0" Grid.Row="6" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorColonia" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="24,38,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
+        <Label x:Name="lbErrorNumero" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="30,38,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2" Width="150" Foreground="Red"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
