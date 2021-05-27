@@ -32,7 +32,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void btn_agregarConductores_Click(object sender, RoutedEventArgs e)
         {
-            RegistrarConductor nuevaVentana = new RegistrarConductor();
+            RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
             nuevaVentana.ShowDialog();
         }
     }

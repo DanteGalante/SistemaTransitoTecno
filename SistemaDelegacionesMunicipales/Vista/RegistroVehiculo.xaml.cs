@@ -39,6 +39,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         private void cargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = entidadesBD.Conductores;
+            cb_conductor.Items.Clear();
+            cb_conductor.Items.Add("Otro conductor");
 
             if (conductoresDBSet.Count() > 0)
             {
@@ -71,14 +73,24 @@ namespace SistemaDelegacionesMunicipales.Vista
                 nuevoVehiculo.modelo = tb_modelo.Text;
                 nuevoVehiculo.marca = tb_marca.Text;
                 nuevoVehiculo.numeroPlaca = tb_numeroPlacas.Text;
-                if ((string)cb_conductor.SelectedValue == "Otro conductor")
+                string seleccionComboBox = cb_conductor.Text;
+
+                if (("Otro conductor").Equals(seleccionComboBox))
                 {
                     MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?","",MessageBoxButton.YesNo);
                     if (respuesta == MessageBoxResult.Yes)
                     {
-                        RegistrarConductor nuevaVentana = new RegistrarConductor();
-                        nuevaVentana.ShowDialog();
-                        //FUNCIONALIDAD. abre la ventana de registrar conductor, cuando lo haya registrado regresa y carga de nuevo el combobox
+                        RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
+                        bool conductorRegistrado = (bool)nuevaVentana.ShowDialog();
+                        cargarConductores();
+                        if (conductorRegistrado)
+                        {
+                            cb_conductor.SelectedIndex = cb_conductor.Items.Count - 1;
+                        }
+                        else
+                        {
+                            cb_conductor.SelectedIndex = 0;
+                        }
                     }
                 }
                 else
@@ -94,8 +106,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                     }
                     else
                     {
-                        MessageBox.Show("Vehiculo ya esta registrado en el sistema");
-                        LimpiarVentana();
+                        MessageBox.Show("ERROR: El vehiculo ya esta registrado en el sistema");
                     }
                 }
             }
@@ -245,12 +256,14 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             lb_numPolizaSeguro.Content = "Número de poliza de seguro";
             lb_nombreAseguradora.Content = "Nombre de aseguradora";
+            tb_nombreAseguradora.Height = 23;
+            tb_numPolizaSeguro.Height = 23;
 
             UIElementCollection componentes = sp_componentes.Children;
-            componentes.Insert(componentes.IndexOf(c_seguro), lb_numPolizaSeguro);
-            componentes.Insert(componentes.IndexOf(lb_numPolizaSeguro), tb_numPolizaSeguro);
-            componentes.Insert(componentes.IndexOf(tb_numPolizaSeguro), lb_nombreAseguradora);
-            componentes.Insert(componentes.IndexOf(lb_nombreAseguradora), tb_nombreAseguradora);
+            componentes.Insert(componentes.IndexOf(lb_color), tb_numPolizaSeguro);
+            componentes.Insert(componentes.IndexOf(tb_numPolizaSeguro), lb_numPolizaSeguro);
+            componentes.Insert(componentes.IndexOf(lb_numPolizaSeguro), tb_nombreAseguradora);
+            componentes.Insert(componentes.IndexOf(tb_nombreAseguradora), lb_nombreAseguradora);
         }
 
         private void c_seguro_Unchecked(object sender, RoutedEventArgs e)
