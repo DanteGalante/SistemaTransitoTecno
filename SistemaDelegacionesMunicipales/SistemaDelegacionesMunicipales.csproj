@@ -73,6 +73,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\ConsultarReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\LevantarReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\ModificarConductor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +115,12 @@
     <Compile Include="Vista\ConsultarInfoVehiculo.xaml.cs">
       <DependentUpon>ConsultarInfoVehiculo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\ConsultarReporte.xaml.cs">
+      <DependentUpon>ConsultarReporte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\LevantarReporte.xaml.cs">
+      <DependentUpon>LevantarReporte.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ModificarConductor.xaml.cs">
       <DependentUpon>ModificarConductor.xaml</DependentUpon>
     </Compile>
@@ -128,6 +142,14 @@
     <Page Include="Vista\MenuAgente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Reportes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\VerDictamenReporte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
