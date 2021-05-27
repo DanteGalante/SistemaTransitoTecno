@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SistemaDelegacionesMunicipales.Pantallas
+namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
-    /// Lógica de interacción para IniciarSesion.xaml
+    /// Interaction logic for RegistrarConductor.xaml
     /// </summary>
-    public partial class RegistroVehiculo : Window
+    public partial class RegistrarConductor : Window
     {
-        public RegistroVehiculo()
+        public RegistrarConductor()
         {
             InitializeComponent();
         }
