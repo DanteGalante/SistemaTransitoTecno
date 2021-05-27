@@ -7,4 +7,4 @@ Para ejecutar este proyecto se necesita:
 
 Se utilizo ENTITY FRAMEWORK, y la conexión con este se realiza mediante un perfil que se creo. El perfil creado es el siguiente:
 - nombre de usuario: ProyectoTransito
-- contraseña 12345x.
+- contraseña: 123456x.
