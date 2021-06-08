@@ -1,4 +1,4 @@
-<Window x:Class="SistemaDelegacionesMunicipales.Vista.ConsultarReporte"
+﻿<Window x:Class="SistemaDelegacionesMunicipales.Vista.ConsultarReporte"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,23 +20,23 @@
         </Border>
         <Label Content="Calle:" HorizontalAlignment="Left" Margin="148,81,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Colonia:" HorizontalAlignment="Left" Margin="148,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Estado:" HorizontalAlignment="Left" Margin="148,143,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.412,0.615"/>
         <Label Content="Descripcion:" HorizontalAlignment="Left" Margin="148,205,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Fecha:" HorizontalAlignment="Left" Margin="148,174,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Estatus:" HorizontalAlignment="Left" Margin="148,143,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Estatus:" HorizontalAlignment="Left" Margin="470,174,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Informacion del reporte" HorizontalAlignment="Left" Margin="314,38,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Button Content="Regresar" HorizontalAlignment="Left" Height="40" Margin="148,362,0,0" VerticalAlignment="Top" Width="107" FontWeight="Bold" Click="Regresar_Click"/>
-        <TextBlock x:Name="TBDescripcion" HorizontalAlignment="Left" Margin="157,231,0,0" VerticalAlignment="Top" Height="96" Width="537">
+        <Button Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="148,362,0,0" VerticalAlignment="Top" Width="107" FontWeight="Bold"/>
+        <TextBlock x:Name="TBDescripcion" HorizontalAlignment="Left" Margin="157,231,0,0" Text="El dictamen es..." VerticalAlignment="Top" Height="96" Width="537">
             <TextBlock.Background>
                 <ImageBrush/>
             </TextBlock.Background>
         </TextBlock>
         <Label x:Name="LbCalle" Content="" HorizontalAlignment="Left" Margin="217,81,0,0" VerticalAlignment="Top" Width="513"/>
         <Label x:Name="LbColonia" Content="" HorizontalAlignment="Left" Margin="217,112,0,0" VerticalAlignment="Top" Width="513"/>
-        <Label x:Name="LbFecha" Content="" HorizontalAlignment="Left" Margin="217,174,0,0" VerticalAlignment="Top" Width="268"/>
-        <Label x:Name="LbEstatus" Content="" HorizontalAlignment="Left" Margin="217,143,0,0" VerticalAlignment="Top" Width="295"/>
-        <Button Content="Ver imagenes" HorizontalAlignment="Left" Margin="375,362,0,0" VerticalAlignment="Top" Width="110" Height="40" FontWeight="Bold"/>
-        <Button Content="Ver dictamen" HorizontalAlignment="Left" Margin="589,362,0,0" VerticalAlignment="Top" Width="116" Height="40" FontWeight="Bold" Click="VerDictamen_Click"/>
+        <Label x:Name="LbEstado" Content="" HorizontalAlignment="Left" Margin="217,143,0,0" VerticalAlignment="Top" Width="513"/>
+        <Label x:Name="LbFecha" Content="" HorizontalAlignment="Left" Margin="217,174,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="LbEstatus" Content="" HorizontalAlignment="Left" Margin="543,174,0,0" VerticalAlignment="Top" Width="187"/>
+        <Button Content="Ver imagenes" HorizontalAlignment="Left" Margin="543,362,0,0" VerticalAlignment="Top" Width="110" Height="47" FontWeight="Bold"/>
 
     </Grid>
 </Window>
-

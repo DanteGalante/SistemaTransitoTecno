@@ -51,15 +51,5 @@ namespace SistemaDireccionGeneral.Vista
             consultarUsuario.Show();
             this.Close();
         }
-
-        private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("No implemetnado aún");
-        }
-
-        private void btnChat_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("No implementado aún");
-        }
     }
 }

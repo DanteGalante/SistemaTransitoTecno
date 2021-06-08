@@ -204,20 +204,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Vista\Imagenes\delegacion.png" />
-    <Resource Include="Vista\Imagenes\Usuario.png" />
+    <Resource Include="Imagenes\delegacion.png" />
+    <Resource Include="Imagenes\Usuario.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseDeDatos\BaseDeDatos.csproj">
       <Project>{C2219594-842C-45B7-9C7F-DEBF84ABDCBF}</Project>
       <Name>BaseDeDatos</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Vista\Imagenes\FondoBlanco.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Vista\Imagenes\veracruzlogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

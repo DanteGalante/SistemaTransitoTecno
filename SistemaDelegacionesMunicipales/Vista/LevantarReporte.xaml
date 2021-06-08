@@ -1,44 +1,28 @@
-<Window x:Class="SistemaDelegacionesMunicipales.Vista.LevantarReporte"
+﻿<Window x:Class="SistemaDelegacionesMunicipales.Vista.LevantarReporte"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="LevantarReporte" Height="700" Width="800">
+        Title="LevantarReporte" Height="550" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
         </Grid.Background>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="487" Margin="81,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="649"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="347" Margin="81,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="649"/>
         <Label Content="Reportar problema" HorizontalAlignment="Left" Margin="308,31,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Label Content="Calle:" HorizontalAlignment="Left" Margin="177,80,0,0" VerticalAlignment="Top" Width="44" FontWeight="Bold"/>
-        <Label Content="Colonia:" HorizontalAlignment="Left" Margin="163,124,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
-        <Label Content="Descipcion:" HorizontalAlignment="Left" Margin="144,366,0,0" VerticalAlignment="Top" Width="77" FontWeight="Bold"/>
-        <Label Content="Fotografias:" HorizontalAlignment="Left" Margin="144,432,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="TbCalle" HorizontalAlignment="Left" Height="23" Margin="236,83,0,0" VerticalAlignment="Top" Width="420"/>
-        <TextBox x:Name="TbColonia" HorizontalAlignment="Left" Height="23" Margin="236,124,0,0" VerticalAlignment="Top" Width="420"/>
-        <TextBox x:Name="TbDescripcion" HorizontalAlignment="Left" Height="49" Margin="236,366,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="420"/>
-        <Button Content="Subir Imagen" HorizontalAlignment="Left" Margin="236,433,0,0" VerticalAlignment="Top" Width="102" Height="25" FontWeight="Bold" Click="SubirImagen_Click"/>
-        <Button Content="Regresar" HorizontalAlignment="Left" Margin="177,586,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Regresar_Click"/>
-        <Button Content="Guardar" HorizontalAlignment="Left" Margin="555,586,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Guardar_Cick"/>
-        <Image x:Name="ImgVehiculo" HorizontalAlignment="Left" Height="81" Margin="250,463,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.534,0.575"/>
-        <ComboBox x:Name="CbDelegacion" HorizontalAlignment="Left" Margin="236,172,0,0" VerticalAlignment="Top" Width="131"/>
-        <ComboBox x:Name="CbVehiculos" HorizontalAlignment="Left" Margin="498,168,0,0" VerticalAlignment="Top" Width="131"/>
-        <Label Content="Delegacion Municipal:" HorizontalAlignment="Left" Margin="89,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Vehiculo:" HorizontalAlignment="Left" Margin="432,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="645,170,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="Agregar_Click"/>
-        <DataGrid x:Name="dgVehiculo" HorizontalAlignment="Left" Height="119" Margin="236,220,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"  VerticalAlignment="Top" Width="420">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Placa" Width="*" Binding="{Binding numeroPlaca}"/>
-                <DataGridTextColumn Header="Color" Width="*" Binding="{Binding color}"/>
-                <DataGridTextColumn Header="Año" Width="*" Binding="{Binding año}"/>
-                <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding marca}"/>
-                <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding modelo}"/>
-
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBox x:Name="TbFile" HorizontalAlignment="Left" Height="23" Margin="360,436,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <Label Content="Calle:" HorizontalAlignment="Left" Margin="114,80,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
+        <Label Content="Colonia:" HorizontalAlignment="Left" Margin="114,124,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
+        <Label Content="Estado:" HorizontalAlignment="Left" Margin="114,168,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
+        <Label Content="Descipcion:" HorizontalAlignment="Left" Margin="114,212,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
+        <Label Content="Fotografias:" HorizontalAlignment="Left" Margin="114,328,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="TbCalle" HorizontalAlignment="Left" Height="23" Margin="206,83,0,0" VerticalAlignment="Top" Width="420"/>
+        <TextBox x:Name="TbColonia" HorizontalAlignment="Left" Height="23" Margin="206,124,0,0" VerticalAlignment="Top" Width="420"/>
+        <ComboBox x:Name="CbEstado" HorizontalAlignment="Left" Margin="206,172,0,0" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="TbDescripcion" HorizontalAlignment="Left" Height="85" Margin="206,216,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="420"/>
+        <Button Content="Subir Imagen" HorizontalAlignment="Left" Margin="206,329,0,0" VerticalAlignment="Top" Width="102" Height="25" FontWeight="Bold" Click="SubirImagen_Click"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Margin="185,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Regresar_Click"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="556,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Guardar_Cick"/>
     </Grid>
 </Window>
