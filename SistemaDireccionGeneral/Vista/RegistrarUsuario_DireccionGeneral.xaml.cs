@@ -63,7 +63,7 @@ namespace SistemaDireccionGeneral.Vista
         public void ManejoRegistroUsuario()
         {
             VerificarUsuario();
-            if (UsuarioValido())
+            if (UsuarioValido() && !UsuarioRepetido(RecuperarUsarioNuevo()))
             {
                 Usuario nuevoUsuario = new Usuario();
 
@@ -80,6 +80,10 @@ namespace SistemaDireccionGeneral.Vista
                 entidadesBD.SaveChanges();
 
                 MessageBox.Show("Registro Exitoso");
+            }
+            else
+            {
+                MessageBox.Show("Usuario ya existente en la base de datos");
             }
         }
 
@@ -273,6 +277,38 @@ namespace SistemaDireccionGeneral.Vista
             Console.WriteLine("Si llega a validar al usuario");
 
             return aux;
+        }
+
+        private Usuario RecuperarUsarioNuevo()
+        {
+            Usuario verificarUsuario = new Usuario();
+
+            verificarUsuario.nombreUsuario = tbNombreUsuario.Text;
+            verificarUsuario.nombres = tbNombres.Text;
+            verificarUsuario.apellidoPaterno = tbApellidoPaterno.Text;
+            verificarUsuario.apellidoMaterno = tbApellidoMaterno.Text;
+            verificarUsuario.tipoUsuario = cbUsuarios.Text;
+            verificarUsuario.contraseña = pbContrasenia.Password;
+            verificarUsuario.DelegacionMunicipal = RecuperarDelegacionMunicipalSeleccionada();
+
+            return verificarUsuario;
+        }
+
+        private Boolean UsuarioRepetido(Usuario nuevoUsuario)
+        {
+            bool usuarioRepetido = false;
+
+            if (entidadesBD.Usuarios.SingleOrDefault(
+                usuario =>
+                usuario.nombreUsuario == nuevoUsuario.nombreUsuario &&
+                usuario.nombres == nuevoUsuario.nombres &&
+                usuario.apellidoPaterno == nuevoUsuario.apellidoPaterno &&
+                usuario.apellidoMaterno == nuevoUsuario.apellidoMaterno &&
+                usuario.tipoUsuario == nuevoUsuario.tipoUsuario) != null)
+            {
+                usuarioRepetido = true;
+            }
+            return usuarioRepetido;
         }
 
         private void BtnRegistrar_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+using BaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,39 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// </summary>
     public partial class ConsultarReporte : Window
     {
-        public ConsultarReporte()
+        BDTransitoEntities entidadesBD = new BDTransitoEntities();
+        Reporte reporteElegido;
+
+        public ConsultarReporte(Reporte reporteElegido)
         {
             InitializeComponent();
+            this.reporteElegido = reporteElegido;
+            CargarDatosReporte();
+        }
+
+        private void CargarDatosReporte()
+        {
+            LbCalle.Content = reporteElegido.calle;
+            LbColonia.Content = reporteElegido.colonia;
+            LbFecha.Content = reporteElegido.fecha;
+            LbEstatus.Content = reporteElegido.estatus;
+            TBDescripcion.Text = reporteElegido.descripcion;
+        }
+
+        private void Regresar_Click(object sender, RoutedEventArgs e)
+        {
+            Reportes reportes = new Reportes();
+
+            this.Close();
+            reportes.Show();
+        }
+
+        private void VerDictamen_Click(object sender, RoutedEventArgs e)
+        {
+            VerDictamenReporte dictamenReporte = new VerDictamenReporte();
+
+            this.Close();
+            dictamenReporte.Show();
         }
     }
 }

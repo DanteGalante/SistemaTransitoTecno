@@ -1,8 +1,8 @@
-﻿<Application x:Class="SistemaDelegacionesMunicipales.App"
+<Application x:Class="SistemaDelegacionesMunicipales.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SistemaDelegacionesMunicipales"
-             StartupUri="Vista/MenuAgente.xaml">
+             StartupUri="Vista/PrincipalAdministrativo.xaml">
     <Application.Resources>
          
     </Application.Resources>
