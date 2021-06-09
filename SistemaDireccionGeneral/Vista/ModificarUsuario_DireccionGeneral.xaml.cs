@@ -279,8 +279,8 @@ namespace SistemaDireccionGeneral.Vista
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            MenuAdministrativo_DireccionGeneral ventanaMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
-            ventanaMenuAdministrativo.Show();
+            ConsultarUsuario_DireccionGeneral ventanaConsultarUsuairo = new ConsultarUsuario_DireccionGeneral();
+            ventanaConsultarUsuairo.Show();
             this.Close();
         }
 
