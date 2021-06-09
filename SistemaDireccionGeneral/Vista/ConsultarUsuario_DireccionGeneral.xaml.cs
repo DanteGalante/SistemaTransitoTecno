@@ -84,6 +84,8 @@ namespace SistemaDireccionGeneral.Vista
                     entidadesBD.Usuarios.Remove(usuarioEliminar);
 
                     entidadesBD.SaveChanges();
+
+                    LlenarTabla();
                 }
             }
             else

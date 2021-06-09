@@ -46,6 +46,13 @@ namespace SistemaDireccionGeneral.Vista
             dgDelegaciones.ItemsSource = listaDelegaciones;
         }
 
+        private void VaciarTabla()
+        {
+            listaDelegaciones.Clear();
+            dgDelegaciones.AutoGenerateColumns = false;
+            dgDelegaciones.ItemsSource = null;
+        }
+
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (dgDelegaciones.SelectedItem == null)
@@ -79,8 +86,8 @@ namespace SistemaDireccionGeneral.Vista
             if (indiceSeleccion >= 0)
             {
                 DelegacionMunicipal delegacionEliminar = listaDelegaciones[indiceSeleccion];
-                MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar la delegación?" +
-                    delegacionEliminar.nombre + "?", "Confirmar acción",
+                MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar la delegación? " +
+                    delegacionEliminar.nombre + "", "Confirmar acción",
                     MessageBoxButton.OKCancel);
                 if (resultado == MessageBoxResult.OK)
                 {
@@ -89,9 +96,12 @@ namespace SistemaDireccionGeneral.Vista
                     RecuperarUsuariosDeDelegacion(idEliminar);
                     
                     entidadesBD.DelegacionesMunicipales.Remove(delegacionEliminar);
+
                     try
                     {
                         entidadesBD.SaveChanges();
+                        VaciarTabla();
+                        LlenarTabla();
                     }
                     catch (DbEntityValidationException a)
                     {
@@ -125,9 +135,12 @@ namespace SistemaDireccionGeneral.Vista
 
             foreach (var usuario in listaUsuarios)
             {
-                if (usuario.DelegacionMunicipal.idDelegacion == idEliminar )
+                if(usuario.DelegacionMunicipal != null)
                 {
-                    usuario.DelegacionMunicipal = null;
+                    if (usuario.DelegacionMunicipal.idDelegacion == idEliminar)
+                    {
+                        usuario.DelegacionMunicipal = null;
+                    }
                 }
             }
 
