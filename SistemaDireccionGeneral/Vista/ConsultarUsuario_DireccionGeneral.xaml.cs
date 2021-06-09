@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,13 @@ namespace SistemaDireccionGeneral.Vista
             }
             dgUsuarios.AutoGenerateColumns = false;
             dgUsuarios.ItemsSource = listaUsuarios;
+        }
+
+        private void VaciarTabla()
+        {
+            listaUsuarios.Clear();
+            dgUsuarios.AutoGenerateColumns = false;
+            dgUsuarios.ItemsSource = null;
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
@@ -83,9 +91,25 @@ namespace SistemaDireccionGeneral.Vista
                 {
                     entidadesBD.Usuarios.Remove(usuarioEliminar);
 
-                    entidadesBD.SaveChanges();
-
-                    LlenarTabla();
+                    try
+                    {
+                        entidadesBD.SaveChanges();
+                        VaciarTabla();
+                        LlenarTabla();
+                    }
+                    catch (DbEntityValidationException a)
+                    {
+                        foreach (var eve in a.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entidad \"{0}\" Estado \"{1}\" ",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Propiedad: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                    }
                 }
             }
             else
