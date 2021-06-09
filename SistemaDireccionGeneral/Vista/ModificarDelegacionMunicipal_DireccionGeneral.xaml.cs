@@ -226,8 +226,8 @@ namespace SistemaDireccionGeneral.Vista
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            MenuAdministrativo_DireccionGeneral regresarMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
-            regresarMenuAdministrativo.Show();
+            ConsultarDelegacionMunicipal_DireccionGeneral regresarConsultarDelegaciones = new ConsultarDelegacionMunicipal_DireccionGeneral();
+            regresarConsultarDelegaciones.Show();
             this.Close();
         }
         
