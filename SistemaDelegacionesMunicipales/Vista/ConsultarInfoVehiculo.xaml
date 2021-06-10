@@ -19,15 +19,15 @@
             </Rectangle.Fill>
         </Rectangle>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" >
-            <DataGrid HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575">
+            <DataGrid HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="# de placa" Width="*"/>
-                    <DataGridTextColumn Header="# poliza de seguro" Width="*"/>
-                    <DataGridTextColumn Header="Color" Width="*"/>
-                    <DataGridTextColumn Header="Año" Width="*"/>
-                    <DataGridTextColumn Header="Modelo" Width="*"/>
-                    <DataGridTextColumn Header="Marca" Width="*"/>
-                    <DataGridTextColumn Header="Conductor" Width="*"/>
+                    <DataGridTextColumn Header="# de placa" Width="*" Binding="{Binding NumeroPlaca}"/>
+                    <DataGridTextColumn Header="# poliza de seguro" Width="*" Binding="{Binding NumeroPolizaSeguro}"/>
+                    <DataGridTextColumn Header="Color" Width="*" Binding="{Binding Color}"/>
+                    <DataGridTextColumn Header="Año" Width="*" Binding="{Binding Año}"/>
+                    <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding Modelo}"/>
+                    <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding Marca}"/>
+                    <DataGridTextColumn Header="Conductor" Width="*" Binding="{Binding Conductor.nombre}"/>
                     <DataGridCheckBoxColumn Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
