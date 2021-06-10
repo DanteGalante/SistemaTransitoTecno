@@ -19,7 +19,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" >
-            <DataGrid x:Name="dg_vehiculos" HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid x:Name="dg_vehiculos" HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="# de placa" Width="*" Binding="{Binding numeroPlaca}"/>
                     <DataGridTextColumn Header="# poliza de seguro" Width="*" Binding="{Binding numeroPolizaSeguro}"/>
@@ -28,7 +28,6 @@
                     <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding modelo}"/>
                     <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding marca}"/>
                     <DataGridTextColumn Header="Conductor" Width="*" Binding="{Binding Conductor.nombres}"/>
-                    <DataGridCheckBoxColumn Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Orientation="Horizontal" Margin="30,0,30,0" FlowDirection="RightToLeft">
