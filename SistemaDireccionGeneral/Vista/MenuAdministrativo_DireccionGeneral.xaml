@@ -8,7 +8,7 @@
         Title="Menu Principal Administrativo" Height="450" Width="600" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="D:\GitHub\ProyectoTransito\SistemaDelegacionesMunicipales\Imagenes\FondoBlanco.jpg"/>
+            <ImageBrush ImageSource="Imagenes\FondoBlanco.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -37,19 +37,19 @@
         <Button x:Name="btnCerrarSesion" Content="Cerrar Sesión" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold"/>
         <Image HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="100" VerticalAlignment="Center" Width="100">
             <Image.Source>
-                <BitmapImage UriSource="D:\GitHub\ProyectoTransito\SistemaDelegacionesMunicipales\Imagenes\veracruzlogo.png"/>
+                <BitmapImage UriSource="Imagenes\veracruzlogo.png"/>
             </Image.Source>
         </Image>
         <Label Content="Usuario" Grid.Column="1"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Delegación" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
         <Image Grid.Column="1" HorizontalAlignment="Center" Height="71" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" Width="82">
             <Image.Source>
-                <BitmapImage UriSource="D:\GitHub\SistemaTransitoTecno\SistemaDireccionGeneral\Imagenes\Usuario.png"/> 
+                <BitmapImage UriSource="Imagenes\Usuario.png"/> 
             </Image.Source>
         </Image>
         <Image Grid.Column="3" HorizontalAlignment="Center" Height="71" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" Width="82">
             <Image.Source>
-                <BitmapImage UriSource="D:\GitHub\SistemaTransitoTecno\SistemaDireccionGeneral\Imagenes\delegacion.png"/>
+                <BitmapImage UriSource="Imagenes\delegacion.png"/>
             </Image.Source>
         </Image>
     </Grid>
