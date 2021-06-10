@@ -8,7 +8,7 @@
         Title="Registrar Delegación Municipal" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Imagenes\FondoBlanco.jpg"/>
+            <ImageBrush ImageSource="D:\GitHub\ProyectoTransito\SistemaDelegacionesMunicipales\Imagenes\FondoBlanco.jpg"/>
         </Grid.Background>
         <Rectangle HorizontalAlignment="Left" Height="15" Stroke="Black" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="4">
             <Rectangle.Fill>

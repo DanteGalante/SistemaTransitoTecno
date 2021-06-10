@@ -23,5 +23,21 @@ namespace SistemaDireccionGeneral.Vista
         {
             InitializeComponent();
         }
+
+        private void CerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            IniciarSesion iniciarSesion = new IniciarSesion();
+
+            this.Close();
+            iniciarSesion.Show();
+        }
+
+        private void VisualizarReportes_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarReportes visualizarReportes = new VisualizarReportes();
+
+            this.Close();
+            visualizarReportes.Show();
+        }
     }
 }

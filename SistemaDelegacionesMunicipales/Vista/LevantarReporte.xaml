@@ -11,20 +11,18 @@
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
         </Grid.Background>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="347" Margin="81,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="649"/>
-
-        <Button Content="Regresar" HorizontalAlignment="Left" Margin="185,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold"/>
-        <Button Content="Guardar" HorizontalAlignment="Left" Margin="556,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold"/>
         <Label Content="Reportar problema" HorizontalAlignment="Left" Margin="308,31,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <Label Content="Calle:" HorizontalAlignment="Left" Margin="114,80,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
         <Label Content="Colonia:" HorizontalAlignment="Left" Margin="114,124,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
         <Label Content="Estado:" HorizontalAlignment="Left" Margin="114,168,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
         <Label Content="Descipcion:" HorizontalAlignment="Left" Margin="114,212,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
+        <Label Content="Fotografias:" HorizontalAlignment="Left" Margin="114,328,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="TbCalle" HorizontalAlignment="Left" Height="23" Margin="206,83,0,0" VerticalAlignment="Top" Width="420"/>
         <TextBox x:Name="TbColonia" HorizontalAlignment="Left" Height="23" Margin="206,124,0,0" VerticalAlignment="Top" Width="420"/>
         <ComboBox x:Name="CbEstado" HorizontalAlignment="Left" Margin="206,172,0,0" VerticalAlignment="Top" Width="195"/>
-        <TextBlock x:Name="TBDescripcion" HorizontalAlignment="Left" Margin="206,217,0,0" VerticalAlignment="Top" Height="89" Width="420"/>
-        <Button Content="Subir Imagen" HorizontalAlignment="Left" Margin="206,329,0,0" VerticalAlignment="Top" Width="102" Height="25" FontWeight="Bold"/>
-        <Label Content="Fotografia:" HorizontalAlignment="Left" Margin="114,328,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-
+        <TextBox x:Name="TbDescripcion" HorizontalAlignment="Left" Height="85" Margin="206,216,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="420"/>
+        <Button Content="Subir Imagen" HorizontalAlignment="Left" Margin="206,329,0,0" VerticalAlignment="Top" Width="102" Height="25" FontWeight="Bold" Click="SubirImagen_Click"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Margin="185,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Regresar_Click"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="556,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Guardar_Cick"/>
     </Grid>
 </Window>
