@@ -17,9 +17,9 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// <summary>
     /// Interaction logic for ConsultarInfoConductor.xaml
     /// </summary>
-    public partial class ConsultarInfoConductorWindow : Window
+    public partial class ConsultarInfoConductor : Window
     {
-        public ConsultarInfoConductorWindow()
+        public ConsultarInfoConductor()
         {
             InitializeComponent();
         }

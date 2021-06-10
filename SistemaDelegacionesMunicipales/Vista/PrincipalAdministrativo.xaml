@@ -35,7 +35,7 @@
                         <Image Source="Imagenes/vehiculo.png" Height="126" Margin="10,0"/>
                         <Label Content="VEHICULO" HorizontalAlignment="Center" Margin="0,10,0,10" FontWeight="Bold" FontSize="14"/>
                         <Button x:Name="btn_consultarVehiculos" Content="Consultar vehiculos" Height="23" Background="{x:Null}"/>
-                        <Button x:Name="btn_agregarVehiculo" Content="Agregar vehiculo" Height="23" Background="{x:Null}" Click="btn_agregarVehiculo_Click"/>
+                        <Button x:Name="btn_agregarVehiculo" Content="Agregar vehiculo" Height="23" Background="{x:Null}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
@@ -46,7 +46,7 @@
                         <Image Source="Imagenes/conductor.png" Height="126" Margin="10,0"/>
                         <Label Content="CONDUCTOR" HorizontalAlignment="Center" Margin="0,10,0,10" FontWeight="Bold" FontSize="14"/>
                         <Button x:Name="btn_consultarConductores" Content="Consultar conductores" Height="23" Background="{x:Null}"/>
-                        <Button x:Name="btn_agregarConductores" Content="Agregar conductores" Height="23" Background="{x:Null}" Click="btn_agregarConductores_Click"/>
+                        <Button x:Name="btn_agregarConductores" Content="Agregar conductores" Height="23" Background="{x:Null}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

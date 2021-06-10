@@ -25,8 +25,8 @@
                 <DataGridTextColumn Header="Estatus" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Regresar" HorizontalAlignment="Left" Height="40" Margin="138,430,0,0" VerticalAlignment="Top" Width="73" FontWeight="Bold" Click="Regresar_Click"/>
-        <Button Content="Consultar Reporte" HorizontalAlignment="Left" Margin="584,430,0,0" VerticalAlignment="Top" Width="108" Height="40" FontWeight="Bold" Click="ConsultarReporte_Click"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Height="40" Margin="138,430,0,0" VerticalAlignment="Top" Width="73" Click="Button_Click" FontWeight="Bold"/>
+        <Button Content="Consultar Reporte" HorizontalAlignment="Left" Margin="584,430,0,0" VerticalAlignment="Top" Width="108" Height="40" FontWeight="Bold"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="10,20,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.46,0.23">
             <Border.Background>
                 <ImageBrush ImageSource="Imagenes/veracruzlogo.png" Stretch="Uniform"/>
