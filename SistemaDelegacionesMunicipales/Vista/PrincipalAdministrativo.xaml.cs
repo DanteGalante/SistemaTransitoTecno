@@ -47,5 +47,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             ConsultarInfoVehiculo nuevaVentana = new ConsultarInfoVehiculo();
             nuevaVentana.ShowDialog();
         }
+
+        private void btn_chat_Click(object sender, RoutedEventArgs e)
+        {
+            ChatGeneral nuevaVentana = new ChatGeneral();
+            nuevaVentana.ShowDialog();
+        }
     }
 }

@@ -49,7 +49,7 @@
                         <Button x:Name="btn_agregarConductores" Content="Agregar conductores" Height="23" Background="{x:Null}" Click="btn_agregarConductores_Click"/>
                     </StackPanel>
                 </Grid>
-                <Button x:Name="btn_chat" Content="Chat" Margin="164,38,0,0" Height="28"/>
+                <Button x:Name="btn_chat" Content="Chat" Margin="164,38,0,0" Height="28" Click="btn_chat_Click"/>
             </StackPanel>
         </StackPanel>
 
