@@ -31,22 +31,21 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void LlenarTabla()
         {
-            using (BDTransitoEntities bdTransito = new BDTransitoEntities())
+            BDTransitoEntities bdTransito = new BDTransitoEntities();
+            
+            try
             {
-                try
+                foreach (Vehiculo vehiculoBD in bdTransito.Vehiculos)
                 {
-                    foreach (Vehiculo vehiculoBD in bdTransito.Vehiculos)
-                    {
-                        vehiculos.Add(vehiculoBD);
-                    }
+                    vehiculos.Add(vehiculoBD);
+                }
 
-                    dg_vehiculos.ItemsSource = vehiculos;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error en la conexion con la base de datos","Error",MessageBoxButton.OK);
-                    Console.WriteLine(ex.Message);
-                }
+                dg_vehiculos.ItemsSource = vehiculos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la conexion con la base de datos","Error",MessageBoxButton.OK);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -69,28 +68,32 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void btn_eliminar_Click(object sender, RoutedEventArgs e)
         {
-            if(dg_vehiculos.SelectedItems.Count > 0)
+            BDTransitoEntities bDTransito = new BDTransitoEntities();
+            if (dg_vehiculos.SelectedItems.Count > 0)
             {
                 List<Vehiculo> vehiculosSeleccionados = new List<Vehiculo>();
                 foreach (Vehiculo vehiculoDG in dg_vehiculos.SelectedItems)
                 {
                     vehiculosSeleccionados.Add(vehiculoDG);
                 }
-                using (BDTransitoEntities bDTransito = new BDTransitoEntities())
+
+                foreach (Vehiculo vehiculoAEliminar in vehiculosSeleccionados)
                 {
-                    foreach (Vehiculo vehiculoAEliminar in vehiculosSeleccionados)
-                    {
-                        bDTransito.Vehiculos.Remove(vehiculoAEliminar);
-                    }
-                    try
-                    {
-                        bDTransito.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
-                        Console.WriteLine(ex.StackTrace);
-                    }
+                    bDTransito.Vehiculos.Remove(vehiculoAEliminar);
+                }
+                
+                try
+                {
+                    bDTransito.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
+                    Console.WriteLine(ex.StackTrace);
+                }
+                finally
+                {
+                    bDTransito.Dispose();
                 }
             }
             else
