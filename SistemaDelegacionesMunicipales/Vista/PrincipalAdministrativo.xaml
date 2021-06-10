@@ -22,33 +22,34 @@
 
         <Grid Margin="0,15,0,333">
             <Rectangle Margin="0,30" Fill="#FFF1F1F6" Stroke="Black"/>
-            <StackPanel Margin="28,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="536">
+            <StackPanel Margin="28,0,0,10" Orientation="Horizontal" HorizontalAlignment="Left" Width="536">
                 <Image HorizontalAlignment="Left" Height="105" VerticalAlignment="Top" Width="85" Source="Imagenes/veracruzlogo.png" Margin="0,10,0,0"/>
                 <Label Content="BIENVENIDO ADMINISTRADOR (NOMBRE)" HorizontalAlignment="Left" Margin="0,37,-136,37" VerticalAlignment="Center" Width="450" HorizontalContentAlignment="Center"/>
             </StackPanel>
         </Grid>
-        <StackPanel Height="298" Margin="28,140,28,0" VerticalAlignment="Top" Orientation="Horizontal">
+        <StackPanel Margin="28,140,28,10" Orientation="Horizontal">
             <StackPanel Width="268" HorizontalAlignment="Right">
-                <Grid HorizontalAlignment="Right">
-                    <Rectangle Fill="#FFCFFFD6" Stroke="Black" Cursor="Arrow" Height="298" RadiusY="19.5" RadiusX="19.5" Margin="0,0,10,0"/>
-                    <StackPanel HorizontalAlignment="Left" Height="298" Margin="0,0,10,0" VerticalAlignment="Top" Width="152">
+                <Grid HorizontalAlignment="Right" Height="256">
+                    <Rectangle Fill="#FFCFFFD6" Stroke="Black" Cursor="Arrow" RadiusY="19.5" RadiusX="19.5" Margin="0,0,10,0"/>
+                    <StackPanel HorizontalAlignment="Left" Width="152" Margin="0,0,10,0">
                         <Image Source="Imagenes/vehiculo.png" Height="126" Margin="10,0"/>
                         <Label Content="VEHICULO" HorizontalAlignment="Center" Margin="0,10,0,10" FontWeight="Bold" FontSize="14"/>
-                        <Button x:Name="btn_consultarVehiculos" Content="Consultar vehiculos" Height="23" Background="{x:Null}"/>
+                        <Button x:Name="btn_consultarVehiculos" Content="Consultar vehiculos" Height="23" Background="{x:Null}" Click="btn_consultarVehiculos_Click"/>
                         <Button x:Name="btn_agregarVehiculo" Content="Agregar vehiculo" Height="23" Background="{x:Null}" Click="btn_agregarVehiculo_Click"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
             <StackPanel Width="268" HorizontalAlignment="Left">
-                <Grid Height="298" HorizontalAlignment="Left" Width="159">
-                    <Rectangle Fill="#FFA2D8FD" Stroke="Black" Cursor="Arrow" Height="298" RadiusY="19.5" RadiusX="19.5" Margin="0,0,10,0"/>
-                    <StackPanel HorizontalAlignment="Left" Height="298" Margin="0,0,10,0" VerticalAlignment="Top" Width="152">
+                <Grid Height="256" HorizontalAlignment="Left" Width="159">
+                    <Rectangle Fill="#FFA2D8FD" Stroke="Black" Cursor="Arrow" RadiusY="19.5" RadiusX="19.5" Margin="10,0,0,0"/>
+                    <StackPanel HorizontalAlignment="Left" Width="152" Margin="10,0,0,0">
                         <Image Source="Imagenes/conductor.png" Height="126" Margin="10,0"/>
                         <Label Content="CONDUCTOR" HorizontalAlignment="Center" Margin="0,10,0,10" FontWeight="Bold" FontSize="14"/>
-                        <Button x:Name="btn_consultarConductores" Content="Consultar conductores" Height="23" Background="{x:Null}"/>
+                        <Button x:Name="btn_consultarConductores" Content="Consultar conductores" Height="23" Background="{x:Null}" Click="btn_consultarConductores_Click"/>
                         <Button x:Name="btn_agregarConductores" Content="Agregar conductores" Height="23" Background="{x:Null}" Click="btn_agregarConductores_Click"/>
                     </StackPanel>
                 </Grid>
+                <Button x:Name="btn_chat" Content="Chat" Margin="164,38,0,0" Height="28"/>
             </StackPanel>
         </StackPanel>
 
