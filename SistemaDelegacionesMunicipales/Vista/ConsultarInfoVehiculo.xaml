@@ -19,22 +19,23 @@
             </Rectangle.Fill>
         </Rectangle>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" >
-            <DataGrid HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575" AutoGenerateColumns="False">
+            <DataGrid x:Name="dg_vehiculos" HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="# de placa" Width="*" Binding="{Binding NumeroPlaca}"/>
-                    <DataGridTextColumn Header="# poliza de seguro" Width="*" Binding="{Binding NumeroPolizaSeguro}"/>
-                    <DataGridTextColumn Header="Color" Width="*" Binding="{Binding Color}"/>
-                    <DataGridTextColumn Header="Año" Width="*" Binding="{Binding Año}"/>
-                    <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding Modelo}"/>
-                    <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding Marca}"/>
+                    <DataGridTextColumn Header="# de placa" Width="*" Binding="{Binding numeroPlaca}"/>
+                    <DataGridTextColumn Header="# poliza de seguro" Width="*" Binding="{Binding numeroPolizaSeguro}"/>
+                    <DataGridTextColumn Header="Color" Width="*" Binding="{Binding color}"/>
+                    <DataGridTextColumn Header="Año" Width="*" Binding="{Binding año}"/>
+                    <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding modelo}"/>
+                    <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding marca}"/>
                     <DataGridTextColumn Header="Conductor" Width="*" Binding="{Binding Conductor.nombres}"/>
                     <DataGridCheckBoxColumn Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Orientation="Horizontal" Margin="30,0,30,0" FlowDirection="RightToLeft">
-                <Button x:Name="btn_registrar" Content="Registrar vehiculos" Margin="5,0,0,0"/>
-                <Button x:Name="btn_modificar" Content="Modificar registro" Margin="5,0,0,0"/>
-                <Button x:Name="btn_eliminar" Content="Eliminar registro" Margin="5,0,0,0"/>
+                <Button x:Name="btn_registrar" Content="Registrar vehiculos" Margin="5,0,0,0" Click="btn_registrar_Click"/>
+                <Button x:Name="btn_modificar" Content="Modificar registro" Margin="5,0,0,0" Click="btn_modificar_Click"/>
+                <Button x:Name="btn_eliminar" Content="Eliminar registro" Margin="5,0,0,0" Click="btn_eliminar_Click"/>
+                <Button x:Name="btn_regresar" Content="Regresar" Margin="5,0,0,0" Width="65" Click="btn_regresar_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
