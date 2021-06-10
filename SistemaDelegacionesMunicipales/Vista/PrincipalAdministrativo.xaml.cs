@@ -35,5 +35,17 @@ namespace SistemaDelegacionesMunicipales.Vista
             RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
             nuevaVentana.ShowDialog();
         }
+
+        private void btn_consultarConductores_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarInfoConductorWindow nuevaVentana = new ConsultarInfoConductorWindow();
+            nuevaVentana.ShowDialog();
+        }
+
+        private void btn_consultarVehiculos_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarInfoVehiculo nuevaVentana = new ConsultarInfoVehiculo();
+            nuevaVentana.ShowDialog();
+        }
     }
 }

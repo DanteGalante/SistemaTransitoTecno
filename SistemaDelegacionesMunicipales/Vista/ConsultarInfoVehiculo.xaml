@@ -1,9 +1,9 @@
-﻿<Window x:Class="SistemaDelegacionesMunicipales.Pantallas.ConsultarInfoVehiculo"
+﻿<Window x:Class="SistemaDelegacionesMunicipales.Vista.ConsultarInfoVehiculo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Pantallas"
+        xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
         Title="Informacion del vehiculo"  Width="678.707" Height="441.754" ResizeMode="NoResize">
     <Grid>
