@@ -21,6 +21,7 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// </summary>
     public partial class ConsultarInfoVehiculo : Window
     {
+        BDTransitoEntities bdTransito = new BDTransitoEntities();
         List<Vehiculo> vehiculos = new List<Vehiculo>();
 
         public ConsultarInfoVehiculo()
@@ -31,8 +32,6 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void LlenarTabla()
         {
-            BDTransitoEntities bdTransito = new BDTransitoEntities();
-            
             try
             {
                 foreach (Vehiculo vehiculoBD in bdTransito.Vehiculos)
@@ -42,7 +41,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
                 dg_vehiculos.ItemsSource = vehiculos;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Error en la conexion con la base de datos","Error",MessageBoxButton.OK);
                 Console.WriteLine(ex.Message);
@@ -58,17 +57,18 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             ModificarRegistroVehiculo nuevaVentana = new ModificarRegistroVehiculo();
             nuevaVentana.ShowDialog();
+            ActualizarTabla();
         }
 
         private void btn_registrar_Click(object sender, RoutedEventArgs e)
         {
             RegistroVehiculo nuevaVentana = new RegistroVehiculo();
             nuevaVentana.ShowDialog();
+            ActualizarTabla();
         }
 
         private void btn_eliminar_Click(object sender, RoutedEventArgs e)
         {
-            BDTransitoEntities bDTransito = new BDTransitoEntities();
             if (dg_vehiculos.SelectedItems.Count > 0)
             {
                 List<Vehiculo> vehiculosSeleccionados = new List<Vehiculo>();
@@ -77,29 +77,53 @@ namespace SistemaDelegacionesMunicipales.Vista
                     vehiculosSeleccionados.Add(vehiculoDG);
                 }
 
-                foreach (Vehiculo vehiculoAEliminar in vehiculosSeleccionados)
+
+                MessageBoxResult respuesta;
+                if(dg_vehiculos.SelectedItems.Count > 1)
                 {
-                    bDTransito.Vehiculos.Remove(vehiculoAEliminar);
+                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar los vehiculos seleccionados?","",MessageBoxButton.YesNo);
                 }
-                
-                try
+                else
                 {
-                    bDTransito.SaveChanges();
+                    respuesta = MessageBox.Show("Estas seguroq que quieres eliminar el vehiculo seleccionado", "", MessageBoxButton.YesNo);
                 }
-                catch (Exception ex)
+
+                if (respuesta == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
-                    Console.WriteLine(ex.StackTrace);
-                }
-                finally
-                {
-                    bDTransito.Dispose();
+                    foreach (Vehiculo vehiculoAEliminar in vehiculosSeleccionados)
+                    {
+                        bdTransito.Vehiculos.Remove(vehiculoAEliminar);
+                    }
+
+                    try
+                    {
+                        bdTransito.SaveChanges();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
+                        Console.WriteLine(ex.StackTrace);
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("No se ha seleccionado ningún vehiculo para eliminar", "Error", MessageBoxButton.OK);
             }
+
+            ActualizarTabla();
+        }
+
+        private void ActualizarTabla()
+        {
+            vehiculos.Clear();
+            dg_vehiculos.ItemsSource = vehiculos;
+            LlenarTabla();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            bdTransito.Dispose();
         }
     }
 }

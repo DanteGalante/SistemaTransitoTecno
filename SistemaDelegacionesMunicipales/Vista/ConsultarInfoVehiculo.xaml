@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="Informacion del vehiculo"  Width="678.707" Height="441.754" ResizeMode="NoResize">
+        Title="Informacion del vehiculo"  Width="678.707" Height="441.754" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
