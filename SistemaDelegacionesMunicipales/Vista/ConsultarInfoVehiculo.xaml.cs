@@ -69,7 +69,34 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void btn_eliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            if(dg_vehiculos.SelectedItems.Count > 0)
+            {
+                List<Vehiculo> vehiculosSeleccionados = new List<Vehiculo>();
+                foreach (Vehiculo vehiculoDG in dg_vehiculos.SelectedItems)
+                {
+                    vehiculosSeleccionados.Add(vehiculoDG);
+                }
+                using (BDTransitoEntities bDTransito = new BDTransitoEntities())
+                {
+                    foreach (Vehiculo vehiculoAEliminar in vehiculosSeleccionados)
+                    {
+                        bDTransito.Vehiculos.Remove(vehiculoAEliminar);
+                    }
+                    try
+                    {
+                        bDTransito.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ningún vehiculo para eliminar", "Error", MessageBoxButton.OK);
+            }
         }
     }
 }
