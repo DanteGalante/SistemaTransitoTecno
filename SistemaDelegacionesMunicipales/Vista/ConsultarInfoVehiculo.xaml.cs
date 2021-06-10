@@ -117,7 +117,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         private void ActualizarTabla()
         {
             vehiculos.Clear();
-            dg_vehiculos.ItemsSource = vehiculos;
+            //dg_vehiculos.Items.Refresh();
+            dg_vehiculos.ItemsSource = null;
             LlenarTabla();
         }
 
