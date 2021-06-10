@@ -27,7 +27,7 @@
                     <DataGridTextColumn Header="Año" Width="*" Binding="{Binding Año}"/>
                     <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding Modelo}"/>
                     <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding Marca}"/>
-                    <DataGridTextColumn Header="Conductor" Width="*" Binding="{Binding Conductor.nombre}"/>
+                    <DataGridTextColumn Header="Conductor" Width="*" Binding="{Binding Conductor.nombres}"/>
                     <DataGridCheckBoxColumn Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
