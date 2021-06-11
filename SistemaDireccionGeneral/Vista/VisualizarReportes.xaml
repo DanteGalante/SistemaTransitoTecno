@@ -1,4 +1,4 @@
-﻿<Window x:Class="SistemaDireccionGeneral.Vista.VisualizarReportes"
+<Window x:Class="SistemaDireccionGeneral.Vista.VisualizarReportes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,25 +8,23 @@
         Title="VisualizarReportes" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/SistemaDireccionGeneral;component/Imagenes/FondoBlanco.jpg"/>
+            <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
         </Grid.Background>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="10,20,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.46,0.23">
             <Border.Background>
-                <ImageBrush ImageSource="/SistemaDireccionGeneral;component/Imagenes/veracruzlogo.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Imagenes/veracruzlogo.png" Stretch="Uniform"/>
             </Border.Background>
         </Border>
-        <DataGrid HorizontalAlignment="Left" Height="198" Margin="153,90,0,0" VerticalAlignment="Top" Width="548">
+        <DataGrid x:Name="dgReportes" HorizontalAlignment="Left" Height="198" Margin="153,90,0,0" VerticalAlignment="Top" Width="548">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Delegacion" Width="*"/>
-                <DataGridTextColumn Header="Fecha" Width="*"/>
-                <DataGridTextColumn Header="Estatus" Width="*"/>
-
+                <DataGridTextColumn Header="Fecha" Width="*" Binding="{Binding fecha}"/>
+                <DataGridTextColumn Header="Estatus" Width="*" Binding="{Binding estatus}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Reportes" HorizontalAlignment="Left" Margin="374,37,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Button Content="Regresar" HorizontalAlignment="Left" Margin="153,344,0,0" VerticalAlignment="Top" Width="86" Height="40" FontWeight="Bold"/>
-        <Button Content="Ver reporte" HorizontalAlignment="Left" Margin="615,344,0,0" VerticalAlignment="Top" Width="86" Height="40" FontWeight="Bold"/>
-        <Button Content="Dictaminar" HorizontalAlignment="Left" Margin="386,344,0,0" VerticalAlignment="Top" Width="75" Height="40" FontWeight="Bold"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Margin="153,344,0,0" VerticalAlignment="Top" Width="86" Height="40" FontWeight="Bold"  Click="Regresar_Click"/>
+        <Button Content="Ver reporte" HorizontalAlignment="Left" Margin="615,344,0,0" VerticalAlignment="Top" Width="86" Height="40" FontWeight="Bold" Click="VerReporte_Click"/>
+        <Button Content="Dictaminar" HorizontalAlignment="Left" Margin="386,344,0,0" VerticalAlignment="Top" Width="75" Height="40" FontWeight="Bold" Click="Dictaminar_Click"/>
 
     </Grid>
 </Window>
