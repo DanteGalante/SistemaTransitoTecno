@@ -51,5 +51,12 @@ namespace SistemaDireccionGeneral.Vista
             consultarUsuario.Show();
             this.Close();
         }
+
+        private void btnChat_Click(object sender, RoutedEventArgs e)
+        {
+            ChatGeneral ventanaChatGeneral = new ChatGeneral();
+            ventanaChatGeneral.Show();
+            this.Close();
+        }
     }
 }
