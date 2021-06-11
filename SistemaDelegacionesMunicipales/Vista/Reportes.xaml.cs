@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Alan Adai Morgado Morales
     /// Lógica de interacción para Reportes.xaml
     /// </summary>
     public partial class Reportes : Window
@@ -31,10 +32,17 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             InitializeComponent();
             this.usuarioIniciado = usuarioIniciado;
-            this.reporteElegido = reporteElegido;
             LlenarTabla();
         }
 
+        public Reportes(Reporte reporteElegido)
+        {
+            this.reporteElegido = reporteElegido;
+        }
+
+        /// <summary>
+        /// Llena la tabla con los reportes del sistema
+        /// </summary>
         private void LlenarTabla()
         {
             DbSet<Reporte> reporte = entidadesBD.Reportes;
@@ -48,16 +56,21 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         }
 
+        /// <summary>
+        /// Recupera la instancia de un reporte seleccionado
+        /// </summary>
+        /// <returns></returns>
         private Reporte RecuperarReporte()
         {
             return reporteElegido = listaReportes.ElementAt<Reporte>(dgReportes.SelectedIndex);
         }
 
-        public Reportes(Reporte reporteElegido)
-        {
-            this.reporteElegido = reporteElegido;
-        }
 
+        /// <summary>
+        /// Controla el regreso a la ventana MenuAgente.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
             MenuAgente menuAgente = new MenuAgente(usuarioIniciado);
@@ -66,6 +79,12 @@ namespace SistemaDelegacionesMunicipales.Vista
             menuAgente.Show();
         }
 
+        /// <summary>
+        /// Controla la consulta de un reporte seleccionado
+        /// en la ventana ConsultarReporte.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConsultarReporte_Click(object sender, RoutedEventArgs e)
         {
             if (dgReportes.SelectedItem == null)
@@ -81,6 +100,12 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// Controla la consulta del dictamen de un reporte seleccionado
+        /// en la ventana VerDictamen.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerDictamen_Click(object sender, RoutedEventArgs e)
         {
             if (dgReportes.SelectedItem == null)

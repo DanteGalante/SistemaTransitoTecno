@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Dan Javier Olvera Vileda
     /// Interaction logic for ConsultarInfoVehiculo.xaml
     /// </summary>
     public partial class ConsultarInfoVehiculo : Window
@@ -30,9 +31,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             LlenarTabla();
         }
         
-        /**
-         * Llena el datagrid dg_vehiculo con informacion de los vehiculos sacada de la base de datos
-         */
+        /// <summary>
+        /// Llena el datagrid dg_vehiculo con informacion de los vehiculos sacada de la base de datos
+        /// </summary>
         private void LlenarTabla()
         {
             try
@@ -50,17 +51,22 @@ namespace SistemaDelegacionesMunicipales.Vista
                 Console.WriteLine(ex.Message);
             }
         }
-        /**
-         * Cierra la pantalla pantalla actual y vuelve a la anterior
-         */
+        
+        /// <summary>
+        /// Cierra la pantalla pantalla actual y vuelve a la anterior
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_regresar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        /**
-         * Abre la pantalla de ModificarRegistroVehiculo. Una vez se cierra la ventana de modificar vehiculos, se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
-         */
+        /// <summary>
+        /// Abre la pantalla de ModificarRegistroVehiculo.Una vez se cierra la ventana de modificar vehiculos, se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
         {
             if (SoloUnVehiculoSeleccionado())
@@ -71,9 +77,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
-        /**
-         *  Verifica que solo se haya seleccionado un vehiculo en el datagrid
-         */
+        /// <summary>
+        /// Verifica que solo se haya seleccionado un vehiculo en el datagrid
+        /// </summary>
+        /// <returns></returns>
         private bool SoloUnVehiculoSeleccionado()
         {
             if (dg_vehiculos.SelectedItems.Count == 1)
@@ -92,9 +99,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             return false;
         }
 
-        /**
-         * Abre la ventana RegistroVehiculo. Una vez se cierra ventana de agregar vehiculos, se regresa a esta pantalla y se actualiza la tabla
-         */
+        /// <summary>
+        /// Abre la ventana RegistroVehiculo.Una vez se cierra ventana de agregar vehiculos, se regresa a esta pantalla y se actualiza la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_registrar_Click(object sender, RoutedEventArgs e)
         {
             RegistroVehiculo nuevaVentana = new RegistroVehiculo();
@@ -103,9 +112,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             ActualizarTabla();
         }
 
-        /**
-         *  Elimina el o los vehiculos seleccionados en el datagrid previo a darle clic al boton btn_eliminar
-         */
+        /// <summary>
+        /// Elimina el o los vehiculos seleccionados en el datagrid previo a darle clic al boton btn_eliminar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_eliminar_Click(object sender, RoutedEventArgs e)
         {
             if (dg_vehiculos.SelectedItems.Count > 0)
@@ -153,9 +164,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             ActualizarTabla();
         }
         
-        /**
-         * Se actualiza el datagrid de la ventana. Para esto reinicia el proceso de llenado de tablas, borrando el contenido tabla y volviendolo con una mejor
-         */
+        /// <summary>
+        /// Se actualiza el datagrid de la ventana.Para esto reinicia el proceso de llenado de tablas, borrando el contenido tabla y volviendolo con una mejor
+        /// </summary>
         private void ActualizarTabla()
         {
             vehiculos.Clear();
@@ -166,6 +177,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             LlenarTabla();
         }
 
+        /// <summary>
+        /// Encargado de cerrar la coneion con la base de datos para evitar el uso de recurso de forma innecesaria
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             bdTransito.Dispose();
