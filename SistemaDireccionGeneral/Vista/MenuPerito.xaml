@@ -30,7 +30,7 @@
             </Border.Background>
         </Border>
         <Button Content="Cerrar Sesion" HorizontalAlignment="Left" Margin="141,358,0,0" VerticalAlignment="Top" Width="88" Height="40" FontWeight="Bold" Click="CerrarSesion_Click"/>
-        <Button Content="Chat" HorizontalAlignment="Left" Margin="319,358,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold"/>
+        <Button Content="Chat" HorizontalAlignment="Left" Margin="319,358,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Button_Click"/>
         <Rectangle Fill="#FF2CD834" HorizontalAlignment="Left" Height="176" Margin="192,128,0,0" RadiusY="19.5" RadiusX="19.5" Stroke="Black" VerticalAlignment="Top" Width="144"/>
         <Button Content="Visualizar reportes" HorizontalAlignment="Left" Margin="192,244,0,0" VerticalAlignment="Top" Width="144" Height="40" FontWeight="Bold" Click="VisualizarReportes_Click"  Background="{x:Null}"/>
 

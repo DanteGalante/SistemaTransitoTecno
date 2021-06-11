@@ -42,5 +42,11 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
             visualizarReportes.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);
+            nuevaVentana.ShowDialog();
+        }
     }
 }
