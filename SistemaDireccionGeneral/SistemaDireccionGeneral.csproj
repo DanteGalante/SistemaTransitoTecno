@@ -101,9 +101,6 @@
     <Compile Include="Vista\VerDetalleReporte.xaml.cs">
       <DependentUpon>VerDetalleReporte.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\VerDictamenReporte.xaml.cs">
-      <DependentUpon>VerDictamenReporte.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Vista\VisualizarReportes.xaml.cs">
       <DependentUpon>VisualizarReportes.xaml</DependentUpon>
     </Compile>
@@ -164,10 +161,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\VerDetalleReporte.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Vista\VerDictamenReporte.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

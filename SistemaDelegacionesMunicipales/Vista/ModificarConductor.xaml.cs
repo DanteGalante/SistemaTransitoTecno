@@ -108,7 +108,9 @@ namespace SistemaDelegacionesMunicipales.Vista
 
             return valida;
         }
-
+        /**
+         * Se toma la infomracion de los campos de texto y se actualiza con eso al conductor
+         */
         private void ModificarAConductor()
         {
             try
@@ -135,6 +137,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /**
+         * Busca en la BD la existencia de otra entidad con los mismos atributos
+         */
         private bool ConductorRepetido(Conductor conductorAModificar)
         {
             bool vehiculoRepetido = false;

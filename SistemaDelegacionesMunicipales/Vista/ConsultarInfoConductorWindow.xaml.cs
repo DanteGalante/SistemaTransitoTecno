@@ -111,7 +111,7 @@ namespace SistemaDelegacionesMunicipales.Vista
          */
         private void btn_registrar_Click(object sender, RoutedEventArgs e)
         {
-            RegistroVehiculo nuevaVentana = new RegistroVehiculo();
+            RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
             nuevaVentana.ShowDialog();
             ActualizarTabla();
         }
