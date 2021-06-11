@@ -39,6 +39,7 @@ namespace SistemaDelegacionesMunicipales.Vista
         private void cargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = entidadesBD.Conductores;
+            conductores.Clear();
             cb_conductor.Items.Clear();
             cb_conductor.Items.Add("Otro conductor");
 
