@@ -63,7 +63,7 @@ namespace SistemaDireccionGeneral.Vista
         public void ManejoModificacionUsuario()
         {
             VerificarUsuario();
-            if (UsuarioValido())
+            if (UsuarioValido()  && !UsuarioRepetido(RecuperarUsarioNuevo()))
             {
                 Usuario modificarUsuario = entidadesBD.Usuarios.Find(usuarioElegido.idUsuario);
 
@@ -78,6 +78,10 @@ namespace SistemaDireccionGeneral.Vista
                 entidadesBD.SaveChanges();
 
                 MessageBox.Show("Modificación de usuario Exitosa");
+            }
+            else
+            {
+                MessageBox.Show("Usuario ya existente en la base de datos");
             }
         }
 
@@ -306,6 +310,38 @@ namespace SistemaDireccionGeneral.Vista
             cbUsuarios.Text = usuarioElegido.tipoUsuario;
             pbContrasenia.Password = usuarioElegido.contraseña;
             cbDelegaciones.SelectedIndex = RecuperarDelegacion();
+        }
+
+        private Boolean UsuarioRepetido(Usuario nuevoUsuario)
+        {
+            bool usuarioRepetido = false;
+
+            if (entidadesBD.Usuarios.SingleOrDefault(
+                usuario =>
+                usuario.nombreUsuario == nuevoUsuario.nombreUsuario &&
+                usuario.nombres == nuevoUsuario.nombres &&
+                usuario.apellidoPaterno == nuevoUsuario.apellidoPaterno &&
+                usuario.apellidoMaterno == nuevoUsuario.apellidoMaterno &&
+                usuario.tipoUsuario == nuevoUsuario.tipoUsuario) != null)
+            {
+                usuarioRepetido = true;
+            }
+            return usuarioRepetido;
+        }
+
+        private Usuario RecuperarUsarioNuevo()
+        {
+            Usuario verificarUsuario = new Usuario();
+
+            verificarUsuario.nombreUsuario = tbNombreUsuario.Text;
+            verificarUsuario.nombres = tbNombres.Text;
+            verificarUsuario.apellidoPaterno = tbApellidoPaterno.Text;
+            verificarUsuario.apellidoMaterno = tbApellidoMaterno.Text;
+            verificarUsuario.tipoUsuario = cbUsuarios.Text;
+            verificarUsuario.contraseña = pbContrasenia.Password;
+            verificarUsuario.DelegacionMunicipal = RecuperarDelegacionMunicipalSeleccionada();
+
+            return verificarUsuario;
         }
     }
 }
