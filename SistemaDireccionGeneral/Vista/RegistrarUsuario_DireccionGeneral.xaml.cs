@@ -1,23 +1,13 @@
 ﻿using BaseDeDatos;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SistemaDireccionGeneral.Vista
 {
     /// <summary>
+    /// Autor: Emilio Antonio Alarcon Santos
     /// Lógica de interacción para RegistrarUsuario_DireccionGeneral.xaml
     /// </summary>
     public partial class RegistrarUsuario_DireccionGeneral : Window
@@ -34,7 +24,9 @@ namespace SistemaDireccionGeneral.Vista
             CargarListaUsuarios();
             CargarListaDelegaciones();
         }
-
+        /// <summary>
+        /// Carga la combobox con una lista de tipos de usuario
+        /// </summary>
         public void CargarListaUsuarios()
         {
             List<string> usuarios = new List<string>();
@@ -45,7 +37,9 @@ namespace SistemaDireccionGeneral.Vista
 
             cbUsuarios.ItemsSource = usuarios;
         }
-
+        /// <summary>
+        /// Carga la lista de delecaciones de la base de datos y la agrega a otra 
+        /// </summary>
         public void CargarListaDelegaciones()
         {
             foreach (var item in entidadesBD.DelegacionesMunicipales)
@@ -59,7 +53,9 @@ namespace SistemaDireccionGeneral.Vista
             }
             cbDelegaciones.ItemsSource = listaNombreDelegaciones;
         }
-
+        /// <summary>
+        /// Administra el reigstro de nuevo usuario
+        /// </summary>
         public void ManejoRegistroUsuario()
         {
             VerificarUsuario();
@@ -83,6 +79,10 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Recupera del combobox, la delegaciaon seleccionado
+        /// </summary>
+        /// <returns>Delegacion municipal recuperada de la base de datos</returns>
         private DelegacionMunicipal RecuperarDelegacionMunicipalSeleccionada()
         {
             DelegacionMunicipal item = new DelegacionMunicipal();
@@ -98,6 +98,9 @@ namespace SistemaDireccionGeneral.Vista
             return item;
         }
 
+        /// <summary>
+        /// Maneja las validaciones del usuario que va a ser registrado
+        /// </summary>
         public void VerificarUsuario()
         {
             NombreUsuarioValido();
@@ -109,7 +112,10 @@ namespace SistemaDireccionGeneral.Vista
             ContraseniaValida();
             RepetirContraseniaValida();
         }
-
+        /// <summary>
+        /// Verifica que el nombre del usuario nuevo sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre del usuario</returns>
         private Boolean NombreUsuarioValido()
         {
             if (tbNombreUsuario.Text.Length >= 5 && tbNombreUsuario.Text.Length <= 15)
@@ -124,6 +130,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que los nombres reales del nuevo usuario sean validos
+        /// </summary>
+        /// <returns>Booleano que representa que sea valido o no </returns>
         private Boolean NombresValidos()
         {
             if (tbNombres.Text.Length >= 3 && tbNombres.Text.Length <= 30)
@@ -138,6 +148,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el apellido paterno de un nuevo usuario sea valido
+        /// </summary>
+        /// <returns> Booleano que representa el apeliido paterno de un nuevo usuario</returns>
         private Boolean ApellidoPaternoValido()
         {
             if (tbApellidoPaterno.Text.Length >= 3 && tbApellidoPaterno.Text.Length <= 30)
@@ -152,6 +166,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el apellido materno de un nuevo usuario sea valido
+        /// </summary>
+        /// <returns> Booleano que representa la validdez del apellido paterno de un nuevo usuario</returns>
         private Boolean ApellidoMaternoValido()
         {
             if (tbApellidoMaterno.Text.Length >= 3 && tbApellidoMaterno.Text.Length <= 30)
@@ -166,6 +184,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el tipo de usuario de un nuevo usuario sea valido
+        /// </summary>
+        /// <returns> Booeleano que representa el tipo de usaurio elegido por el usuario</returns>
         private Boolean TipoUsuarioValido()
         {
             bool tipoUsuarioValido = false;
@@ -183,6 +205,10 @@ namespace SistemaDireccionGeneral.Vista
             return tipoUsuarioValido;
         }
 
+        /// <summary>
+        /// Verifica que la delegacion de un nuevo usuario sea valida
+        /// </summary>
+        /// <returns></returns>
         private Boolean DelegacionValida()
         {
             bool delegacionValida = false;
@@ -200,6 +226,10 @@ namespace SistemaDireccionGeneral.Vista
             return delegacionValida;
         }
 
+        /// <summary>
+        /// Verifica que la contraseña sea valida
+        /// </summary>
+        /// <returns>Booelano que indica la validez de la contraseña</returns>
         private Boolean ContraseniaValida()
         {
             if(pbContrasenia.Password.Length > 6 && pbContrasenia.Password.Length < 30)
@@ -214,6 +244,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que la contraseña coincida con la contraseña repetida posteriormente
+        /// </summary>
+        /// <returns>Booleano que representa la validez de la contraseña</returns>
         private Boolean RepetirContraseniaValida()
         {
             if(pbRepetirContrasenia.Password == "")
