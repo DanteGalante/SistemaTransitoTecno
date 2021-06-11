@@ -41,7 +41,7 @@ namespace SistemaDireccionGeneral.Vista
                 Console.WriteLine("Conectando al servidor...");
                 clientSocket.Connect("127.0.0.1", 1234);
                 serverStream = clientSocket.GetStream();
-                string nombreChat = usuario.nombreUsuario; //Falta checar, no va a regresar nada. Solo un bonito "null"
+                string nombreChat = "Emilio"; //usuario.nombreUsuario; //Falta checar, no va a regresar nada. Solo un bonito "null"
                 byte[] outStream = Encoding.ASCII.GetBytes(nombreChat + "$");
                 serverStream.Write(outStream, 0, outStream.Length);
                 serverStream.Flush();
