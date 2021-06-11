@@ -266,7 +266,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que el usuario sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del usuario</returns>
         private Boolean UsuarioValido()
         {
             bool aux = true;
@@ -308,19 +311,31 @@ namespace SistemaDireccionGeneral.Vista
 
             return aux;
         }
-
+        /// <summary>
+        /// Maneja el evento del clic en el boton "Registrar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             ManejoRegistroUsuario();
         }
-
+        /// <summary>
+        /// Maneja el evento del clic en el boton "Cancelar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             MenuAdministrativo_DireccionGeneral ventanaMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
             ventanaMenuAdministrativo.Show();
             this.Close();
         }
-
+        /// <summary>
+        /// Verifica si el usuario esta repetido
+        /// </summary>
+        /// <param name="nuevoUsuario"></param>
+        /// <returns></returns>
         private Boolean UsuarioRepetido(Usuario nuevoUsuario)
         {
             bool usuarioRepetido = false;
@@ -337,7 +352,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return usuarioRepetido;
         }
-
+        /// <summary>
+        /// Recupera un usuario nuevo, con los elementos de la pantalla como atributos
+        /// </summary>
+        /// <returns>Usuario nuevo</returns>
         private Usuario RecuperarUsarioNuevo()
         {
             Usuario verificarUsuario = new Usuario();
