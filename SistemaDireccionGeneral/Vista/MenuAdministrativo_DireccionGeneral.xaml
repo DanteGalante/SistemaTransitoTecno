@@ -34,7 +34,7 @@
         <Button x:Name="btnRegistrarDelegacion" Content="Registrar Delegación" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="124" Height="50" FontWeight="Bold" Margin="10,0,10,5" Click="btnRegistrarDelegacion_Click"/>
         <Button x:Name="btnConsultarDelegacion" Content="Consultar Delegación" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold" Click="btnConsultarDelegacion_Click"/>
         <Button x:Name="btnChat" Content="Chat" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold" Click="btnChat_Click"/>
-        <Button x:Name="btnCerrarSesion" Content="Cerrar Sesión" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold"/>
+        <Button x:Name="btnCerrarSesion" Content="Cerrar Sesión" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="125" Height="50" FontWeight="Bold" Click="btnCerrarSesion_Click"/>
         <Image HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="100" VerticalAlignment="Center" Width="100">
             <Image.Source>
                 <BitmapImage UriSource="Imagenes\veracruzlogo.png"/>

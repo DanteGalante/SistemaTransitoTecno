@@ -65,5 +65,12 @@ namespace SistemaDireccionGeneral.Vista
             ChatGeneral ventanaChatGeneral = new ChatGeneral(usuarioIniciado);
             ventanaChatGeneral.ShowDialog();
         }
+
+        private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            IniciarSesion iniciarSesion = new IniciarSesion();
+            iniciarSesion.Show();
+            this.Close();
+        }
     }
 }
