@@ -62,6 +62,7 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             IniciarSesion nuevaVentana = new IniciarSesion();
             nuevaVentana.Show();
+            this.Close();
         }
     }
 }
