@@ -53,7 +53,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void btn_chat_Click(object sender, RoutedEventArgs e)
         {
-            ChatGeneral nuevaVentana = new ChatGeneral();
+            ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);
             nuevaVentana.ShowDialog();
         }
     }
