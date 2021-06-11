@@ -102,7 +102,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void IrPantallaMenuAgente()
         {
-            MenuAgente ventanaMenuAgente = new MenuAgente();
+            MenuAgente ventanaMenuAgente = new MenuAgente(usuarioEncontrado);
             ventanaMenuAgente.Show();
             this.Close();
         }

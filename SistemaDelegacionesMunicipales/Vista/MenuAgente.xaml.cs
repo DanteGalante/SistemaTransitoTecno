@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,13 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// </summary>
     public partial class MenuAgente : Window
     {
+        Usuario usuarioIniciado;
+        public MenuAgente(Usuario usuarioIniciado)
+        {
+            InitializeComponent();
+            this.usuarioIniciado = usuarioIniciado;
+        }
+
         public MenuAgente()
         {
             InitializeComponent();
@@ -43,6 +51,12 @@ namespace SistemaDelegacionesMunicipales.Vista
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);
+            nuevaVentana.ShowDialog();
         }
     }
 }
