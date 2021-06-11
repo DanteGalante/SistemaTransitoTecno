@@ -1,4 +1,5 @@
-﻿using System;
+using BaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,37 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// </summary>
     public partial class VerDictamenReporte : Window
     {
-        public VerDictamenReporte()
+
+        BDTransitoEntities entidadesBD = new BDTransitoEntities();
+        Reporte reporteElegido;
+        Dictamen dictamenRecuperado;
+
+        public VerDictamenReporte(Reporte reporteElegido)
         {
             InitializeComponent();
+            this.reporteElegido = reporteElegido;
+            CargarDatosDictamen();
         }
+
+
+        private void Regresar_Click(object sender, RoutedEventArgs e)
+        {
+            MenuAgente menuAgente = new MenuAgente();
+
+            this.Close();
+            menuAgente.Show();
+        }
+
+        private void CargarDatosDictamen()
+        {
+            dictamenRecuperado = reporteElegido.Dictamen;
+
+            LbNombrePerito.Content = dictamenRecuperado.nombreCompletoPerito;
+            LbFecha.Content = dictamenRecuperado.fecha;
+            LbHora.Content = dictamenRecuperado.hora;
+            LbFolio.Content = dictamenRecuperado.folio;
+            TBDescripcion.Text = dictamenRecuperado.descripcion;
+        }
+
     }
 }
