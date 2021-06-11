@@ -14,7 +14,7 @@
         <Label x:Name="lbNombreCliente" Content="Nombre Usuario: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbContenido" HorizontalAlignment="Left" Height="192" Margin="67,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="665" IsReadOnly="True" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
         <TextBox x:Name="tbMensaje" HorizontalAlignment="Left" Height="23" Margin="67,335,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="569"/>
-        <Button x:Name="btnEnviarMsj" Content="Enviar" HorizontalAlignment="Left" Margin="657,335,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="btnEnviarMsj" Content="Enviar" HorizontalAlignment="Left" Margin="657,335,0,0" VerticalAlignment="Top" Width="76" Click="btnEnviarMsj_Click"/>
         <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="657,36,0,0" VerticalAlignment="Top" Width="76" Click="btnSalir_Click"/>
     </Grid>
     
