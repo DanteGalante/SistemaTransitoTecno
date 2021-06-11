@@ -39,8 +39,6 @@ namespace SistemaDelegacionesMunicipales.Vista
         private void cargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = entidadesBD.Conductores;
-            conductores.Clear();
-            cb_conductor.Items.Clear();
             cb_conductor.Items.Add("Otro conductor");
 
             if (conductoresDBSet.Count() > 0)
@@ -83,7 +81,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                     {
                         RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
                         bool conductorRegistrado = (bool)nuevaVentana.ShowDialog();
-                        cargarConductores();
+                        actualizarConductores();
                         if (conductorRegistrado)
                         {
                             cb_conductor.SelectedIndex = cb_conductor.Items.Count - 1;
@@ -124,6 +122,13 @@ namespace SistemaDelegacionesMunicipales.Vista
                     }
                 }
             }
+        }
+
+        private void actualizarConductores()
+        {
+            conductores.Clear();
+            cb_conductor.Items.Clear();
+            cargarConductores();
         }
 
         private bool VehiculoRepetido(Vehiculo nuevoVehiculo)
