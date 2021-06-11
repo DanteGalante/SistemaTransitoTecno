@@ -1,4 +1,4 @@
-﻿using BaseDeDatos;
+using BaseDeDatos;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,10 +36,12 @@ namespace SistemaDelegacionesMunicipales.Vista
         OpenFileDialog openFileDialog = new OpenFileDialog();
         List<byte[]> imagenes = new List<byte[]>();
 
+        Usuario usuarioIniciado;
 
-        public LevantarReporte()
+        public LevantarReporte(Usuario usuarioIniciado)
         {
             InitializeComponent();
+            this.usuarioIniciado = usuarioIniciado;
             dgVehiculo.ItemsSource = new List<Vehiculo>();
             LlenarComboVehiculos();
             LlenarComboDelegaciones();
@@ -346,7 +348,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void cerrarVentana()
         {
-            MenuAgente menuAgente = new MenuAgente();
+            MenuAgente menuAgente = new MenuAgente(usuarioIniciado);
             this.Close();
             menuAgente.Show();
         }
