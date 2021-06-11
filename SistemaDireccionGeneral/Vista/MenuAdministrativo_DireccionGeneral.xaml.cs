@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,13 @@ namespace SistemaDireccionGeneral.Vista
     /// </summary>
     public partial class MenuAdministrativo_DireccionGeneral : Window
     {
+        Usuario usuarioIniciado;
+        public MenuAdministrativo_DireccionGeneral(Usuario usuarioIniciado)
+        {
+            InitializeComponent();
+            this.usuarioIniciado = usuarioIniciado;
+        }
+
         public MenuAdministrativo_DireccionGeneral()
         {
             InitializeComponent();

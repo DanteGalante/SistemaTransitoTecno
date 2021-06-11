@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace SistemaDireccionGeneral.Vista
     /// </summary>
     public partial class MenuPerito : Window
     {
-        public MenuPerito()
+        Usuario usuarioIniciado;
+        public MenuPerito(Usuario usuarioIniciado)
         {
             InitializeComponent();
+            this.usuarioIniciado = usuarioIniciado;
         }
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
