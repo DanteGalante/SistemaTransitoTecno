@@ -19,12 +19,12 @@
             </Rectangle.Fill>
         </Rectangle>
         <StackPanel VerticalAlignment="Bottom" Margin="10,0,10,30" >
-            <DataGrid Height="308" Margin="10,0,10,10" VerticalAlignment="Top" AutoGenerateColumns="False">
+            <DataGrid x:Name="dg_conductor" Height="308" Margin="10,0,10,10" VerticalAlignment="Top" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre/s" Width="*" Binding="{Binding nombres}"/>
                     <DataGridTextColumn Header="Apellido paterno" Width="*" Binding="{Binding apellidoPaterno}"/>
                     <DataGridTextColumn Header="Apellido materno" Width="*" Binding="{Binding apellidoMaterno}"/>
-                    <DataGridTextColumn Header="Fecha de nacimiento" Width="*" Binding="{Binding fechaNacimiento}"/>
+                    <DataGridTextColumn Header="Fecha de nacimiento" Width="*" Binding="{Binding fechaNacimiento, StringFormat={}{0:dd/MM/yy}}"/>
                     <DataGridTextColumn Header="# licencia de conducir" Width="*" Binding="{Binding numeroLicenciaConducir}"/>
                 </DataGrid.Columns>
             </DataGrid>
