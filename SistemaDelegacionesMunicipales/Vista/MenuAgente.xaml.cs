@@ -36,7 +36,7 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             LevantarReporte levantarReporte = new LevantarReporte(usuarioIniciado);
             this.Close();
-            levantarReporte.Show();
+            levantarReporte.ShowDialog();
 
         }
 
@@ -45,11 +45,13 @@ namespace SistemaDelegacionesMunicipales.Vista
             Reportes reportes = new Reportes(usuarioIniciado);
 
             this.Close();
-            reportes.Show();
+            reportes.ShowDialog();
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
+            IniciarSesion iniciarSesion = new IniciarSesion();
+            iniciarSesion.Show();
             this.Close();
         }
 
