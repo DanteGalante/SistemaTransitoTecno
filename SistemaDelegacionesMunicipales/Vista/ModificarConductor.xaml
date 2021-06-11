@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="Modificar conductor" Width="386.678" Height="258.871" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Modificar conductor" Width="386.678" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Height">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
@@ -19,14 +19,18 @@
             </Rectangle.Fill>
         </Rectangle>
         <StackPanel Margin="50,25,50,25">
-            <Label Content="Nombre completo"/>
-            <TextBox x:Name="tb_nombreCompleto" Height="23" TextWrapping="Wrap"/>
+            <Label Content="Nombre"/>
+            <TextBox x:Name="tb_nombre" Height="23" TextWrapping="Wrap"/>
+            <Label Content="Apellido paterno"/>
+            <TextBox x:Name="tb_apellidoPat" Height="23" TextWrapping="Wrap"/>
+            <Label Content="Apellido materno"/>
+            <TextBox x:Name="tb_apellidoMat" Height="23" TextWrapping="Wrap"/>
             <Label Content="Fecha de nacimiento"/>
             <DatePicker x:Name="dp_fechaNacimiento" Height="23"/>
             <Label Content="Numero de licencia de conducir"/>
-            <TextBox x:Name="tb_color" Height="23" TextWrapping="Wrap"/>
+            <TextBox x:Name="tb_licenciaCond" Height="23" TextWrapping="Wrap"/>
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Height="20" Margin="0,10,0,0">
-                <Button x:Name="btn_modificar" Content="Modificar" Width="75" Height="20" Margin="0,0,10,0"/>
+                <Button x:Name="btn_modificar" Content="Modificar" Width="75" Height="20" Margin="0,0,10,0" VerticalAlignment="Top" Click="btn_modificar_Click"/>
                 <Button x:Name="btn_salir" Content="Salir" Width="75" Margin="0"/>
             </StackPanel>
         </StackPanel>
