@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="Menu" Height="450" Width="800">
+        Title="Menu" Height="450" Width="600">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
@@ -18,10 +18,15 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Bienvenido oficial Bernardo" HorizontalAlignment="Left" Margin="303,59,0,0" VerticalAlignment="Top" Width="163" HorizontalContentAlignment="Center"/>
-        <Button Content="Generar reporte" HorizontalAlignment="Left" Margin="98,317,0,0" VerticalAlignment="Top" Width="100" Click="GenerarReporte_Click"/>
-        <Button Content="Ver dictamen de reporte" HorizontalAlignment="Left" Margin="566,317,0,0" VerticalAlignment="Top" Width="139" Click="VerDictamen_Click"/>
-        <Button Content="Historial de reportes" HorizontalAlignment="Left" Margin="331,317,0,0" VerticalAlignment="Top" Width="117" Click="HistorialReportes_Click"/>
+        <Label Content="¡Bienvenido agente!" HorizontalAlignment="Left" Margin="218,43,0,0" VerticalAlignment="Top" Width="163" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16"/>
+        <Rectangle Fill="#FF3D8FE2" HorizontalAlignment="Left" Height="189" Margin="344,128,0,0" RadiusY="19.5" RadiusX="19.5" Stroke="Black" VerticalAlignment="Top" Width="127"/>
+        <Rectangle Fill="#FFD82C2C" HorizontalAlignment="Left" Height="189" Margin="123,128,0,0" RadiusY="19.5" RadiusX="19.5" Stroke="Black" VerticalAlignment="Top" Width="126"/>
+        <Button Content="Generar reporte" HorizontalAlignment="Left" Margin="123,268,0,0" VerticalAlignment="Top" Width="126"  Click="GenerarReporte_Click" Background="{x:Null}" FontWeight="Bold"/>
+        <Button Content="Historial de reportes" HorizontalAlignment="Left" Margin="344,268,0,0" VerticalAlignment="Top" Width="127" Click="HistorialReportes_Click" Background="{x:Null}" FontWeight="Bold"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="136,147,0,0" VerticalAlignment="Top" Width="100" Source="Imagenes/reporte.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="360,147,0,0" VerticalAlignment="Top" Width="100" Source="Imagenes/historial.png"/>
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="259,356,0,0" VerticalAlignment="Top" Width="75" Height="40" FontWeight="Bold" Click="Salir_Click"/>
 
     </Grid>
 </Window>
+
