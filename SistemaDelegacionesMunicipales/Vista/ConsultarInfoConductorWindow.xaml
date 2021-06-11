@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="ConsultarInfoConductor" Height="450" Width="642.551">
+        Title="ConsultarInfoConductor" Height="450" Width="801.673">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
@@ -18,18 +18,21 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" >
-            <DataGrid HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575">
+        <StackPanel VerticalAlignment="Bottom" Margin="10,0,10,30" >
+            <DataGrid x:Name="dg_conductor" Height="308" Margin="10,0,10,10" VerticalAlignment="Top" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nombre completo" Width="*"/>
-                    <DataGridTextColumn Header="Fecha de nacimiento" Width="*"/>
-                    <DataGridTextColumn Header="# licencia de conducir" Width="*"/>
+                    <DataGridTextColumn Header="Nombre/s" Width="*" Binding="{Binding nombres}"/>
+                    <DataGridTextColumn Header="Apellido paterno" Width="*" Binding="{Binding apellidoPaterno}"/>
+                    <DataGridTextColumn Header="Apellido materno" Width="*" Binding="{Binding apellidoMaterno}"/>
+                    <DataGridTextColumn Header="Fecha de nacimiento" Width="*" Binding="{Binding fechaNacimiento, StringFormat={}{0:dd/MM/yy}}"/>
+                    <DataGridTextColumn Header="# licencia de conducir" Width="*" Binding="{Binding numeroLicenciaConducir}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" Margin="30,0,30,0" FlowDirection="RightToLeft">
-                <Button x:Name="btn_registrar" Content="Registrar conductor" Margin="5,0,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="10,0,10,0" FlowDirection="RightToLeft">
+                <Button x:Name="btn_registrar" Content="Registrar conductor" Margin="5,0,0,0" Click="btn_registrar_Click"/>
                 <Button x:Name="btn_modificar" Content="Modificar registro" Margin="5,0,0,0"/>
-                <Button x:Name="btn_eliminar" Content="Eliminar registro" Margin="5,0,0,0"/>
+                <Button x:Name="btn_eliminar" Content="Eliminar registro" Margin="5,0,0,0" Click="btn_eliminar_Click"/>
+                <Button x:Name="btn_regresar" Content="Regresar" Margin="5,0,0,0" Width="76" Click="btn_regresar_Click"/>
             </StackPanel>
 
         </StackPanel>
