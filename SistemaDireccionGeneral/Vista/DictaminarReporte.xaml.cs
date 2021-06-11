@@ -37,15 +37,17 @@ namespace SistemaDireccionGeneral.Vista
             {
                 Dictamen nuevoDictamen = new Dictamen();
 
-                reporteElegido.estatus = "Dictaminado";
+                string nombreCompleto = usuarioIniciado.nombres + " " + usuarioIniciado.apellidoPaterno + " " + usuarioIniciado.apellidoMaterno;
+
                 nuevoDictamen.descripcion = TbDescripcion.Text;
                 nuevoDictamen.fecha = DateTime.Today;
                 nuevoDictamen.hora = DateTime.Now.TimeOfDay;
                 nuevoDictamen.folio = GenerarFolio();
-                nuevoDictamen.nombreCompletoPerito = usuarioIniciado.nombres;
+                nuevoDictamen.nombreCompletoPerito = nombreCompleto;
                 entidadesBD.Dictamenes.Add(nuevoDictamen);
-                //entidadesBD.Reportes.Add(reporteElegido);
+
                 entidadesBD.SaveChanges();
+                ActualizarReporte(nuevoDictamen);
 
                 MessageBox.Show("Dictamen registrado con exito");
                 cerrarVentana();
@@ -57,6 +59,16 @@ namespace SistemaDireccionGeneral.Vista
                 MessageBox.Show("Debe ingresar un dictamen");
             }
 
+        }
+
+        private void ActualizarReporte(Dictamen nuevoDictamen)
+        {
+            Reporte modificarReporte = entidadesBD.Reportes.Find(reporteElegido.idReporte);
+
+            modificarReporte.estatus = "Dictaminado";
+            modificarReporte.Dictamen = nuevoDictamen;
+
+            entidadesBD.SaveChanges();
         }
 
         private string GenerarFolio()
@@ -101,3 +113,4 @@ namespace SistemaDireccionGeneral.Vista
         }
     }
 }
+
