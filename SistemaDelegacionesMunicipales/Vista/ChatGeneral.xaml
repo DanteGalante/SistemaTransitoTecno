@@ -5,33 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="ChatGeneral" Height="450" Width="600">
+        Title="ChatGeneral" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
         </Grid.Background>
-        <Rectangle HorizontalAlignment="Left" Height="15" Stroke="Black" VerticalAlignment="Top" Width="592">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFBAFD07" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="10,20,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.46,0.23">
-            <Border.Background>
-                <ImageBrush ImageSource="Imagenes/veracruzlogo.png" Stretch="Uniform"/>
-            </Border.Background>
-        </Border>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="0,384,0,0" Text="Escribe algo..." VerticalAlignment="Top" Width="522"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="35" Margin="522,384,0,0" VerticalAlignment="Top" Width="70">
-            <Border.Background>
-                <ImageBrush ImageSource="Imagenes/IconoEnviar.png" Stretch="Uniform"/>
-            </Border.Background>
-        </Border>
-        <TextBlock HorizontalAlignment="Left" Margin="128,81,0,0" VerticalAlignment="Top" Height="275" Width="366"><InlineUIContainer>
-                <Rectangle Fill="#FFF4F4F5" Height="268" Stroke="Black" Width="364"/>
-            </InlineUIContainer></TextBlock>
-
+        <Label x:Name="lbNombreCliente" Content="Nombre Usuario: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbContenido" HorizontalAlignment="Left" Height="192" Margin="67,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="665" IsReadOnly="True" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+        <TextBox x:Name="tbMensaje" HorizontalAlignment="Left" Height="23" Margin="67,335,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="569"/>
+        <Button x:Name="btnEnviarMsj" Content="Enviar" HorizontalAlignment="Left" Margin="657,335,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="657,36,0,0" VerticalAlignment="Top" Width="76"/>
     </Grid>
 </Window>
