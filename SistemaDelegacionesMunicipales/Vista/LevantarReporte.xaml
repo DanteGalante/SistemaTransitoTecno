@@ -5,24 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="LevantarReporte" Height="550" Width="800">
+        Title="LevantarReporte" Height="750" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
         </Grid.Background>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="347" Margin="81,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="649"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="595" Margin="81,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="649"/>
         <Label Content="Reportar problema" HorizontalAlignment="Left" Margin="308,31,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Label Content="Calle:" HorizontalAlignment="Left" Margin="114,80,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
-        <Label Content="Colonia:" HorizontalAlignment="Left" Margin="114,124,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
-        <Label Content="Estado:" HorizontalAlignment="Left" Margin="114,168,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
-        <Label Content="Descipcion:" HorizontalAlignment="Left" Margin="114,212,0,0" VerticalAlignment="Top" Width="81" FontWeight="Bold"/>
-        <Label Content="Fotografias:" HorizontalAlignment="Left" Margin="114,328,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="TbCalle" HorizontalAlignment="Left" Height="23" Margin="206,83,0,0" VerticalAlignment="Top" Width="420"/>
-        <TextBox x:Name="TbColonia" HorizontalAlignment="Left" Height="23" Margin="206,124,0,0" VerticalAlignment="Top" Width="420"/>
-        <ComboBox x:Name="CbEstado" HorizontalAlignment="Left" Margin="206,172,0,0" VerticalAlignment="Top" Width="195"/>
-        <TextBox x:Name="TbDescripcion" HorizontalAlignment="Left" Height="85" Margin="206,216,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="420"/>
-        <Button Content="Subir Imagen" HorizontalAlignment="Left" Margin="206,329,0,0" VerticalAlignment="Top" Width="102" Height="25" FontWeight="Bold" Click="SubirImagen_Click"/>
-        <Button Content="Regresar" HorizontalAlignment="Left" Margin="185,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Regresar_Click"/>
-        <Button Content="Guardar" HorizontalAlignment="Left" Margin="556,448,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Guardar_Cick"/>
+        <Label Content="Calle:" HorizontalAlignment="Left" Margin="177,80,0,0" VerticalAlignment="Top" Width="44" FontWeight="Bold"/>
+        <Label Content="Colonia:" HorizontalAlignment="Left" Margin="163,124,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <Label Content="Descripcion:" HorizontalAlignment="Left" Margin="147,355,0,0" VerticalAlignment="Top" Width="77" FontWeight="Bold"/>
+        <Label Content="Fotografias:" HorizontalAlignment="Left" Margin="144,415,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="TbCalle" HorizontalAlignment="Left" Height="23" Margin="236,83,0,0" VerticalAlignment="Top" Width="420"/>
+        <TextBox x:Name="TbColonia" HorizontalAlignment="Left" Height="23" Margin="236,124,0,0" VerticalAlignment="Top" Width="420"/>
+        <TextBox x:Name="TbDescripcion" HorizontalAlignment="Left" Height="49" Margin="236,355,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="420"/>
+        <Button Content="Agregar fotografia" HorizontalAlignment="Left" Margin="236,415,0,0" VerticalAlignment="Top" Width="131" Height="23" FontWeight="Bold" Click="AbrirExplorador_Click"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Margin="177,669,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Regresar_Click"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="555,669,0,0" VerticalAlignment="Top" Width="74" Height="40" FontWeight="Bold" Click="Guardar_Cick"/>
+        <ComboBox x:Name="CbDelegacion" HorizontalAlignment="Left" Margin="236,172,0,0" VerticalAlignment="Top" Width="131"/>
+        <ComboBox x:Name="CbVehiculos" HorizontalAlignment="Left" Margin="498,168,0,0" VerticalAlignment="Top" Width="131"/>
+        <Label Content="Delegacion Municipal:" HorizontalAlignment="Left" Margin="89,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Vehiculo:" HorizontalAlignment="Left" Margin="432,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="645,170,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="Agregar_Click"/>
+        <DataGrid x:Name="dgVehiculo" HorizontalAlignment="Left" Height="119" Margin="236,220,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"  VerticalAlignment="Top" Width="420">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Placa" Width="*" Binding="{Binding numeroPlaca}"/>
+                <DataGridTextColumn Header="Color" Width="*" Binding="{Binding color}"/>
+                <DataGridTextColumn Header="Año" Width="*" Binding="{Binding año}"/>
+                <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding marca}"/>
+                <DataGridTextColumn Header="Modelo" Width="*" Binding="{Binding modelo}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Image Name="imagen1" HorizontalAlignment="Left" Height="83" Margin="236,457,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen2" HorizontalAlignment="Left" Height="83" Margin="340,457,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen3" HorizontalAlignment="Left" Height="83" Margin="458,457,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen4" HorizontalAlignment="Left" Height="83" Margin="577,457,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen5" HorizontalAlignment="Left" Height="83" Margin="236,562,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen6" HorizontalAlignment="Left" Height="83" Margin="340,562,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen7" HorizontalAlignment="Left" Height="83" Margin="458,562,0,0" VerticalAlignment="Top" Width="79"/>
+        <Image Name="imagen8" HorizontalAlignment="Left" Height="83" Margin="577,562,0,0" VerticalAlignment="Top" Width="79"/>
     </Grid>
 </Window>
