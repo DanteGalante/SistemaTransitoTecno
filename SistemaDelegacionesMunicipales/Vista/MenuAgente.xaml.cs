@@ -40,12 +40,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             reportes.Show();
         }
 
-        private void VerDictamen_Click(object sender, RoutedEventArgs e)
+        private void Salir_Click(object sender, RoutedEventArgs e)
         {
-            VerDictamenReporte verDictamenReporte = new VerDictamenReporte();
             this.Close();
-            verDictamenReporte.Show();
-
         }
     }
 }

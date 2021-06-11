@@ -123,9 +123,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-	  <Compile Include="Vista\ConsultarInfoConductorWindow.xaml.cs">
-		  <DependentUpon>ConsultarInfoConductorWindow.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="Vista\ConsultarInfoConductorWindow.xaml.cs">
+      <DependentUpon>ConsultarInfoConductorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ChatGeneral.xaml.cs">
       <DependentUpon>ChatGeneral.xaml</DependentUpon>
     </Compile>
@@ -219,6 +219,12 @@
       <Project>{c2219594-842c-45b7-9c7f-debf84abdcbf}</Project>
       <Name>BaseDeDatos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vista\Imagenes\reporte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Vista\Imagenes\historial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
