@@ -29,7 +29,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             InitializeComponent();
             LlenarTabla();
         }
-
+        
+        /**
+         * Este metodo se encarga de llenar el datagrid dg_vehiculo con informacion de los vehiculos sacada de la base de datos
+         */
         private void LlenarTabla()
         {
             try
@@ -47,23 +50,50 @@ namespace SistemaDelegacionesMunicipales.Vista
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /**
+         *  Este metodo cierra la pantalla pantalla actual y vuelve a la anterior
+         */
         private void btn_regresar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /**
+         *  Este metodo abre la pantalla de ModificarRegistroVehiculo. Una vez se cierra la ventana de modificar vehiculos, se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
+         */
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
         {
-            ModificarRegistroVehiculo nuevaVentana = new ModificarRegistroVehiculo();
-            nuevaVentana.ShowDialog();
-            ActualizarTabla();
+            if (SoloUnVehiculoSeleccionado())
+            {
+                ModificarRegistroVehiculo nuevaVentana = new ModificarRegistroVehiculo((Vehiculo)dg_vehiculos.SelectedItem);
+                nuevaVentana.ShowDialog();
+                ActualizarTabla();
+            }
+        }
+
+        private bool SoloUnVehiculoSeleccionado()
+        {
+            if (dg_vehiculos.SelectedItems.Count == 1)
+            {
+                return true;
+            }
+            else if (dg_vehiculos.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Se ha seleccionado mas de un vehiculo para modificar, favor de solo seleccionar uno", "Error", MessageBoxButton.OK);
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ningun vehiculo", "Error", MessageBoxButton.OK);
+            }
+            
+            return false;
         }
 
         private void btn_registrar_Click(object sender, RoutedEventArgs e)
         {
             RegistroVehiculo nuevaVentana = new RegistroVehiculo();
             nuevaVentana.ShowDialog();
+            
             ActualizarTabla();
         }
 
@@ -85,7 +115,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                 }
                 else
                 {
-                    respuesta = MessageBox.Show("Estas seguroq que quieres eliminar el vehiculo seleccionado", "", MessageBoxButton.YesNo);
+                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar el vehiculo seleccionado?", "", MessageBoxButton.YesNo);
                 }
 
                 if (respuesta == MessageBoxResult.Yes)
@@ -118,6 +148,9 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             vehiculos.Clear();
             //dg_vehiculos.Items.Refresh();
+            bdTransito.Dispose();
+            bdTransito = null;
+            bdTransito = new BDTransitoEntities();
             dg_vehiculos.ItemsSource = null;
             LlenarTabla();
         }
