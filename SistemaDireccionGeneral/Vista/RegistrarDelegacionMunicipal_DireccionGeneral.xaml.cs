@@ -29,7 +29,7 @@ namespace SistemaDireccionGeneral.Vista
         public void ManejoRegistroDelegacion()
         {
             VerificarDelegacion();
-            if (DelegacionValida())
+            if (DelegacionValida() && !DelegacionRepetida(RecuperarDelegacionNuevo()))
             {
                 DelegacionMunicipal nuevaDelegacion = new DelegacionMunicipal();
 
@@ -223,6 +223,42 @@ namespace SistemaDireccionGeneral.Vista
             MenuAdministrativo_DireccionGeneral regresarMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
             regresarMenuAdministrativo.Show();
             this.Close();
+        }
+
+        private Boolean DelegacionRepetida(DelegacionMunicipal nuevaDelegacion)
+        {
+            bool delegacionRepetido = false;
+
+            if (entidadesBD.DelegacionesMunicipales.SingleOrDefault(
+                delegacion =>
+                delegacion.nombre == nuevaDelegacion.nombre &&
+                delegacion.calle == nuevaDelegacion.calle &&
+                delegacion.colonia == nuevaDelegacion.colonia &&
+                delegacion.numero == nuevaDelegacion.numero &&
+                delegacion.codigoPostal == nuevaDelegacion.codigoPostal &&
+                delegacion.correo == nuevaDelegacion.correo &&
+                delegacion.telefono == nuevaDelegacion.telefono &&
+                delegacion.municipio == nuevaDelegacion.municipio) != null)
+            {
+                delegacionRepetido = true;
+            }
+            return delegacionRepetido;
+        }
+
+        private DelegacionMunicipal RecuperarDelegacionNuevo()
+        {
+            DelegacionMunicipal verificarDelegacion = new DelegacionMunicipal();
+
+            verificarDelegacion.nombre = tbNombreDelegacion.Text;
+            verificarDelegacion.calle = tbCalle.Text;
+            verificarDelegacion.colonia = tbColonia.Text;
+            verificarDelegacion.numero = int.Parse(tbNumero.Text);
+            verificarDelegacion.codigoPostal = int.Parse(tbCodigoPostal.Text);
+            verificarDelegacion.correo = tbCorreoElectronico.Text;
+            verificarDelegacion.telefono = tbTelefono.Text;
+            verificarDelegacion.municipio = tbMunicipio.Text;
+
+            return verificarDelegacion;
         }
     }
 }
