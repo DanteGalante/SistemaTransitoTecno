@@ -25,8 +25,8 @@
         <Button Content="Historial de reportes" HorizontalAlignment="Left" Margin="344,268,0,0" VerticalAlignment="Top" Width="127" Click="HistorialReportes_Click" Background="{x:Null}" FontWeight="Bold"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="136,147,0,0" VerticalAlignment="Top" Width="100" Source="Imagenes/reporte.png"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="360,147,0,0" VerticalAlignment="Top" Width="100" Source="Imagenes/historial.png"/>
-        <Button Content="Salir" HorizontalAlignment="Left" Margin="259,356,0,0" VerticalAlignment="Top" Width="75" Height="40" FontWeight="Bold" Click="Salir_Click"/>
-
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="195,356,0,0" VerticalAlignment="Top" Width="75" Height="40" FontWeight="Bold" Click="Salir_Click"/>
+        <Button Content="Chat" HorizontalAlignment="Left" Margin="321,356,0,0" VerticalAlignment="Top" Width="75" Height="40" FontWeight="Bold" Click="Button_Click"/>
     </Grid>
 </Window>
 
