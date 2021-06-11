@@ -25,12 +25,13 @@ namespace SistemaDireccionGeneral.Vista
         TcpClient clientSocket = new TcpClient();
         NetworkStream serverStream = default(NetworkStream);
         BDTransitoEntities entidadesBD = new BDTransitoEntities();
-        Usuario usuario;
+        Usuario usuarioIniciado;
         string msjServidor = "";
 
-        public ChatGeneral()
+        public ChatGeneral(Usuario usuarioIniciado)
         {
             InitializeComponent();
+            this.usuarioIniciado = usuarioIniciado;
             InicializarChat();
         }
 
@@ -41,7 +42,7 @@ namespace SistemaDireccionGeneral.Vista
                 Console.WriteLine("Conectando al servidor...");
                 clientSocket.Connect("127.0.0.1", 1234);
                 serverStream = clientSocket.GetStream();
-                string nombreChat = "Emilio"; //usuario.nombreUsuario; //Falta checar, no va a regresar nada. Solo un bonito "null"
+                string nombreChat = usuarioIniciado.nombreUsuario;
                 byte[] outStream = Encoding.ASCII.GetBytes(nombreChat + "$");
                 serverStream.Write(outStream, 0, outStream.Length);
                 serverStream.Flush();
