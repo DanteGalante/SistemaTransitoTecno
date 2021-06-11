@@ -30,11 +30,11 @@ namespace SistemaDelegacionesMunicipales.Vista
         public ModificarRegistroVehiculo(Vehiculo vehiculoAModificar)
         {
             InitializeComponent();
-            cargarConductores();
-            cargarDatosVehiculoMod(vehiculoAModificar);
+            CargarConductores();
+            CargarDatosVehiculoMod(vehiculoAModificar);
         }
 
-        private void cargarDatosVehiculoMod(Vehiculo vehiculoMod)
+        private void CargarDatosVehiculoMod(Vehiculo vehiculoMod)
         {
             this.vehiculoAModificar = bdTransitoEntities.Vehiculos.SingleOrDefault(vehiculo =>
             vehiculo.idVehiculo == vehiculoMod.idVehiculo);
@@ -143,7 +143,7 @@ namespace SistemaDelegacionesMunicipales.Vista
             return vehiculoRepetido;
         }
 
-        private void cargarConductores()
+        private void CargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = bdTransitoEntities.Conductores;
 
@@ -237,7 +237,7 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             conductores.Clear();
             cb_conductor.Items.Clear();
-            cargarConductores();
+            CargarConductores();
         }
     }
 }
