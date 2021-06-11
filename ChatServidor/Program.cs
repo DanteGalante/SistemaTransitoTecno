@@ -6,7 +6,7 @@ namespace ChatServidor
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            SocketServer.Conectar();
         }
     }
 }
