@@ -24,10 +24,13 @@ namespace SistemaDelegacionesMunicipales.Vista
         Usuario usuario;
         List<Usuario> usuarios = new List<Usuario>();
         Usuario usuarioEncontrado;
+        List<DelegacionMunicipal> delegaciones = new List<DelegacionMunicipal>();
+        List<string> listaNombreDelegaciones = new List<string>();
 
         public IniciarSesion()
         {
             InitializeComponent();
+            CargarListaDelegaciones();
         }
 
         private void btnIniciarSesion_Click(object sender, RoutedEventArgs e)
@@ -50,14 +53,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                 }else if(usuarioEncontrado.tipoUsuario == "Transito")
                 {
                     IrPantallaMenuAgente();
-                }else if(usuario.tipoUsuario == null)
-                {
-                    MessageBox.Show("Delegación invalida, por favor comuniquese con la dirección general", "Delegación invalida");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Datos incorrectos, porfavor verifique sus datos", "Datos incorrectos");
             }
         }
 
@@ -99,7 +95,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void IrPantallaPrincipalAdministrativo()
         {
-            PrincipalAdministrativo ventanaPrincipalAdministrativo = new PrincipalAdministrativo();
+            PrincipalAdministrativo ventanaPrincipalAdministrativo = new PrincipalAdministrativo(usuarioEncontrado);
             ventanaPrincipalAdministrativo.Show();
             this.Close();
         }
@@ -122,16 +118,26 @@ namespace SistemaDelegacionesMunicipales.Vista
 
             foreach (var item in usuarios)
             {
-                if(nombre == item.nombreUsuario && pbContrasenia.Password == item.contraseña)
+                if(nombre == item.nombreUsuario && pbContrasenia.Password == item.contraseña) //Agregar lo del comboBox
                 {
-                    return existeUsuario = true;
-                }
-                else
-                {
-                    return existeUsuario = false;
+                    if(item.DelegacionMunicipal != null)
+                    {
+                        if (item.DelegacionMunicipal.nombre == (string)cbDelegacion.SelectedValue)
+                        {
+                            return existeUsuario = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delegación invalida, por favor comuniquese con la dirección general", "Delegación invalida");
+                        return existeUsuario = false;
+                    }
                 }
             }
-
+            if(existeUsuario == false)
+            {
+                MessageBox.Show("Datos incorrectos, porfavor verifique sus datos", "Datos incorrectos");
+            }
             return existeUsuario;
         }
 
@@ -153,6 +159,20 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
 
             return usuarioEncontrado;
+        }
+
+        public void CargarListaDelegaciones()
+        {
+            foreach (var item in entidadesBD.DelegacionesMunicipales)
+            {
+                delegaciones.Add(item);
+            }
+
+            foreach (var item in delegaciones)
+            {
+                listaNombreDelegaciones.Add(item.nombre);
+            }
+            cbDelegacion.ItemsSource = listaNombreDelegaciones;
         }
     }
 }
