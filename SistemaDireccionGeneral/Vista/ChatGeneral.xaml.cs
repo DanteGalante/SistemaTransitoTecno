@@ -23,5 +23,12 @@ namespace SistemaDireccionGeneral.Vista
         {
             InitializeComponent();
         }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            MenuAdministrativo_DireccionGeneral ventanaMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
+            ventanaMenuAdministrativo.Show();
+            this.Close();
+        }
     }
 }
