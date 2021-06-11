@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDeDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace SistemaDelegacionesMunicipales.Vista
     /// </summary>
     public partial class PrincipalAdministrativo : Window
     {
-        public PrincipalAdministrativo()
+        Usuario usuarioIniciado;
+        public PrincipalAdministrativo(Usuario usuarioIniciado )
         {
             InitializeComponent();
+            this.usuarioIniciado = usuarioIniciado;
         }
 
         private void btn_agregarVehiculo_Click(object sender, RoutedEventArgs e)
