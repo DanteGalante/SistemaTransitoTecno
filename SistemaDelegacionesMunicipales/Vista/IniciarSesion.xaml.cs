@@ -118,7 +118,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
             foreach (var item in usuarios)
             {
-                if(nombre == item.nombreUsuario && pbContrasenia.Password == item.contraseña) //Agregar lo del comboBox
+                if(nombre == item.nombreUsuario && pbContrasenia.Password == item.contraseña)
                 {
                     if(item.DelegacionMunicipal != null)
                     {
