@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="Informacion del vehiculo"  Width="678.707" Height="441.754" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="Informacion del vehiculo"  Width="824.297" Height="441.754" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
@@ -18,10 +18,11 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" >
-            <DataGrid x:Name="dg_vehiculos" HorizontalAlignment="Left" Height="308" Margin="30,0,30,10" VerticalAlignment="Top" Width="575" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended">
+        <StackPanel VerticalAlignment="Bottom" Margin="10,0,10,30" >
+            <DataGrid x:Name="dg_vehiculos" HorizontalAlignment="Left" Height="308" Margin="10,0,0,10" VerticalAlignment="Top" Width="778" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="# de placa" Width="*" Binding="{Binding numeroPlaca}"/>
+                    <DataGridTextColumn Header="Aseguradora" Width="*" Binding="{Binding nombreAseguradora}"/>
                     <DataGridTextColumn Header="# poliza de seguro" Width="*" Binding="{Binding numeroPolizaSeguro}"/>
                     <DataGridTextColumn Header="Color" Width="*" Binding="{Binding color}"/>
                     <DataGridTextColumn Header="Año" Width="*" Binding="{Binding año}"/>
@@ -30,7 +31,7 @@
                     <DataGridTextColumn Header="Conductor" Width="*" Binding="{Binding Conductor.nombres}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" Margin="30,0,30,0" FlowDirection="RightToLeft">
+            <StackPanel Orientation="Horizontal" Margin="15,0,0,0" FlowDirection="RightToLeft" HorizontalAlignment="Left" Width="766">
                 <Button x:Name="btn_registrar" Content="Registrar vehiculos" Margin="5,0,0,0" Click="btn_registrar_Click"/>
                 <Button x:Name="btn_modificar" Content="Modificar registro" Margin="5,0,0,0" Click="btn_modificar_Click"/>
                 <Button x:Name="btn_eliminar" Content="Eliminar registro" Margin="5,0,0,0" Click="btn_eliminar_Click"/>

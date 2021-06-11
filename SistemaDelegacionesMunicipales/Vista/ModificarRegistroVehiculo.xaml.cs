@@ -30,11 +30,14 @@ namespace SistemaDelegacionesMunicipales.Vista
         public ModificarRegistroVehiculo(Vehiculo vehiculoAModificar)
         {
             InitializeComponent();
-            cargarConductores();
-            cargarDatosVehiculoMod(vehiculoAModificar);
+            CargarConductores();
+            CargarDatosVehiculoMod(vehiculoAModificar);
         }
 
-        private void cargarDatosVehiculoMod(Vehiculo vehiculoMod)
+        /**
+         * Llena la ventana de los datos del vehiculo que se desea modificar
+         */
+        private void CargarDatosVehiculoMod(Vehiculo vehiculoMod)
         {
             this.vehiculoAModificar = bdTransitoEntities.Vehiculos.SingleOrDefault(vehiculo =>
             vehiculo.idVehiculo == vehiculoMod.idVehiculo);
@@ -72,6 +75,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                 vehiculoAModificar.numeroPlaca = tb_numeroPlacas.Text;
                 string seleccionComboBox = cb_conductor.Text;
 
+                //Si en el combobox decide darle a la opción otro, tiene la posibilidad de crear un conductor desde aqui
                 if (("Otro conductor").Equals(seleccionComboBox))
                 {
                     MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?", "", MessageBoxButton.YesNo);
@@ -110,7 +114,10 @@ namespace SistemaDelegacionesMunicipales.Vista
                 MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
             }
         }
-
+        
+        /**
+         * Recupera un conductor dado una seleccion en el combobox
+         */
         private Conductor RecuperarConductor()
         {
             Conductor conductorRecuperado = null;
@@ -123,6 +130,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             return conductorRecuperado;
         }
 
+        /**
+         * Busca en la BD la existencia de otra entidad con los mismos atributos
+         */
         private bool VehiculoRepetido(Vehiculo vehiculoModificado)
         {
             bool vehiculoRepetido = false;
@@ -143,7 +153,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return vehiculoRepetido;
         }
 
-        private void cargarConductores()
+        /**
+         * Carga los conductores que exiten en la BD y los muestra en el combobox
+         */
+        private void CargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = bdTransitoEntities.Conductores;
 
@@ -171,6 +184,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return valido;
         }
 
+
+        /**
+         * Verifica que no se introduzcan datos incorrectos en los campos de texto. Por ejemplo, un numero donde solo se permiten letras, o viceversa
+         */
         private bool ValidezInfoCamposTexto()
         {
             bool valida = true;
@@ -208,6 +225,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             return conductorElegido;
         }
 
+        /**
+         * Verifica que los campos de texto de la ventana no esten vacios
+         */
         private bool CamposTextoVacios()
         {
             bool camposTextoVacio = true;
@@ -237,7 +257,7 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             conductores.Clear();
             cb_conductor.Items.Clear();
-            cargarConductores();
+            CargarConductores();
         }
     }
 }
