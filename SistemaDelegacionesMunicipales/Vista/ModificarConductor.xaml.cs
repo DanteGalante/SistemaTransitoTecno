@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Dan Javier Olvera Villeda
     /// Interaction logic for ModificarConductor.xaml
     /// </summary>
     public partial class ModificarConductor : Window
@@ -30,9 +31,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             CargarDatosConductorMod(conductorAModificar);
         }
 
-        /**
-         * Llena la ventana de los datos del conductor que se desea modificar
-         */
+        /// <summary>
+        /// Llena la ventana de los datos del conductor que se desea modificar
+        /// </summary>
+        /// <param name="conductorMod"></param>
         private void CargarDatosConductorMod(Conductor conductorMod)
         {
             this.conductorAModificar = bdTransitoEntities.Conductores.SingleOrDefault(conductor =>
@@ -46,6 +48,12 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         }
 
+        /// <summary>
+        /// Comprueba que la informacion es valida y si regresa true
+        /// modifica la informacion del conducotr seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
         {
             if (ValidarInformacion())
@@ -54,6 +62,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// COmprueba que la informacion ingresada sea valida para 
+        /// realizar el registro
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarInformacion()
         {
             bool valido = false;
@@ -65,9 +78,11 @@ namespace SistemaDelegacionesMunicipales.Vista
 
             return valido;
         }
-        /**
-         * Verifica que los campos de texto de la ventana no esten vacios
-         */
+        
+        /// <summary>
+        /// Verifica que los campos de texto de la ventana no esten vacios
+        /// </summary>
+        /// <returns></returns>
         private bool CamposTextoVacios()
         {
             bool camposTextoVacio = true;
@@ -89,9 +104,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             return camposTextoVacio;
         }
 
-        /**
-         * Verifica que no se introduzcan datos incorrectos en los campos de texto. Por ejemplo, un numero donde solo se permiten letras, o viceversa
-         */
+        /// <summary>
+        /// Verifica que no se introduzcan datos incorrectos en los campos de texto
+        /// Por ejemplo, un numero donde solo se permiten letras, o viceversa
+        /// </summary>
+        /// <returns></returns>
         private bool ValidezInfoCamposTexto()
         {
             bool valida = true;
@@ -108,9 +125,10 @@ namespace SistemaDelegacionesMunicipales.Vista
 
             return valida;
         }
-        /**
-         * Se toma la infomracion de los campos de texto y se actualiza con eso al conductor
-         */
+        
+        /// <summary>
+        /// Se toma la informacion de los campos de texto y se actualiza con eso al conductor
+        /// </summary>
         private void ModificarAConductor()
         {
             try
@@ -137,9 +155,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
-        /**
-         * Busca en la BD la existencia de otra entidad con los mismos atributos
-         */
+        /// <summary>
+        /// Busca en la BD la existencia de otra entidad con los mismos atributos
+        /// </summary>
+        /// <param name="conductorAModificar"></param>
+        /// <returns></returns>
         private bool ConductorRepetido(Conductor conductorAModificar)
         {
             bool vehiculoRepetido = false;
@@ -158,6 +178,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             return vehiculoRepetido;
         }
 
+        /// <summary>
+        /// Controla la detencion de la ejecuciond el programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

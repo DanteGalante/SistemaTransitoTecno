@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Alan Adair Morgado Morales
     /// Lógica de interacción para Menu.xaml
     /// </summary>
     public partial class MenuAgente : Window
@@ -32,6 +33,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Controlador para cambiar a la pantalla "LevantarReporte.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenerarReporte_Click(object sender, RoutedEventArgs e)
         {
             LevantarReporte levantarReporte = new LevantarReporte(usuarioIniciado);
@@ -40,6 +46,11 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         }
 
+        /// <summary>
+        /// Conrolador para cambiar a la pantalla Reportes.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HistorialReportes_Click(object sender, RoutedEventArgs e)
         {
             Reportes reportes = new Reportes(usuarioIniciado);
@@ -48,6 +59,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             reportes.ShowDialog();
         }
 
+        /// <summary>
+        /// Conntrolador para mostrar el IniciarSesion.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
             IniciarSesion iniciarSesion = new IniciarSesion();
@@ -55,6 +71,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Muestra la ventana del ChatGneral.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);

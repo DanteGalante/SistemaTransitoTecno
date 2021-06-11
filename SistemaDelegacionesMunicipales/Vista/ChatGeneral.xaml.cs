@@ -24,6 +24,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Emilio Antonio Santos Alarcon
     /// Lógica de interacción para ChatGeneral.xaml
     /// </summary>
     public partial class ChatGeneral : Window
@@ -41,11 +42,16 @@ namespace SistemaDelegacionesMunicipales.Vista
             InicializarChat();
         }
 
+        /// <summary>
+        /// Se encarga de inciarlizar el chat mediante la creacion del cliente y conectandolo al servior de
+        /// mensajes de chat donde se puede indentificar
+        /// </summary>
         private void InicializarChat()
         {
             try
             {
                 Console.WriteLine("Conectando al servidor...");
+                //local host y un puerto
                 clientSocket.Connect("127.0.0.1", 1234);
                 serverStream = clientSocket.GetStream();
                 string nombreChat = usuarioIniciado.nombreUsuario;
@@ -63,11 +69,21 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// Controlador para finalizar la ejecucion del programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Metodo para el envio de mensajes mediante un sockets
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnviarMsj_Click(object sender, RoutedEventArgs e)
         {
             if (tbMensaje.Text.Length > 0)
@@ -83,6 +99,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// Se encarga de escuchar los mensajes que recibe de otro mienbro del chat
+        /// </summary>
         public void escucharMensajes()
         {
             while (true)

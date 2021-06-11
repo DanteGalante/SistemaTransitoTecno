@@ -24,6 +24,7 @@ using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Alan Adair Morgado Morales
     /// Lógica de interacción para LevantarReporte.xaml
     /// </summary>
     public partial class LevantarReporte : Window
@@ -47,6 +48,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             LlenarComboDelegaciones();
         }
 
+        /// <summary>
+        /// Llena el comboBox con los vehiculos que esten registrados en la base de datos del sistema
+        /// </summary>
         private void LlenarComboVehiculos()
         {
             DbSet<Vehiculo> vehiculos = entidadesBD.Vehiculos;
@@ -62,6 +66,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             CbVehiculos.ItemsSource = listaPlacaVehiculos;
         }
 
+        /// <summary>
+        /// Llena el ComboBox con las delegaciones que estan registradas en la base de datos del sistema
+        /// </summary>
         private void LlenarComboDelegaciones()
         {
             foreach (var item in entidadesBD.DelegacionesMunicipales)
@@ -76,6 +83,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             CbDelegacion.ItemsSource = listaNombreDelegaciones;
         }
 
+        /// <summary>
+        /// Guarda un reporte con la informacion una vez validada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Guardar_Cick(object sender, RoutedEventArgs e)
         {
             if (ComprobarCampos())
@@ -102,7 +114,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
-
+        /// <summary>
+        /// Recupera la instancia de una delegacion municipal que ha sido
+        /// seleccionada en el combobox
+        /// </summary>
+        /// <returns></returns>
         private DelegacionMunicipal RecuperarDelegacionMunicipalSeleccionada()
         {
             DelegacionMunicipal item = new DelegacionMunicipal();
@@ -114,6 +130,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return item;
         }
 
+        /// <summary>
+        /// Recupera la instacion de un vehiculo que ha sido seleccionado del combobox
+        /// </summary>
+        /// <returns></returns>
         private ObservableCollection<Vehiculo> RecuperarVehiculos()
         {
             ObservableCollection<Vehiculo> vehiculos = new ObservableCollection<Vehiculo>();
@@ -124,6 +144,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return vehiculos;
         }
 
+        /// <summary>
+        /// Comprueba que los campos son validos mediante el tamaño minio y maximo
+        /// </summary>
+        /// <returns></returns>
         private bool ComprobarCampos()
         {
             bool aux = true;
@@ -162,7 +186,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return aux;
         }
 
-
+        /// <summary>
+        /// Comprueba que los campos no esten vacios para realizar el registro del reporte
+        /// </summary>
+        /// <returns></returns>
         private bool CamposVacios()
         {
             bool resultado = true;
@@ -173,6 +200,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return resultado;
         }
 
+        /// <summary>
+        /// Comprueba que el tamaño del texto es valido
+        /// </summary>
+        /// <returns></returns>
         private bool ComprobarCalle()
         {
             bool resultado = false;
@@ -185,6 +216,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return resultado;
         }
 
+        /// <summary>
+        /// Comprueba que el tamaño del texto es valido
+        /// </summary>
+        /// <returns></returns>
         private bool ComprobarColonia()
         {
             bool resultado = false;
@@ -197,6 +232,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return resultado;
         }
 
+        /// <summary>
+        /// Comprueba que el tamaño del texto es valido
+        /// </summary>
+        /// <returns></returns>
         private bool ComprobarDescripcion()
         {
             bool resultado = false;
@@ -209,6 +248,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return resultado;
         }
 
+        /// <summary>
+        /// Comprueba que hay almenos 3 fotografias para realizar el registro del reporte
+        /// </summary>
+        /// <returns></returns>
         private bool ComprobarFotografia()
         {
             bool resultado = false;
@@ -221,6 +264,12 @@ namespace SistemaDelegacionesMunicipales.Vista
             return resultado;
         }
 
+        /// <summary>
+        /// Agrega el vehiculo seleccionado del combobo a un datagrid y comprobando que 
+        /// esta seleccion no se repita
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Agregar_Click(object sender, RoutedEventArgs e)
         {
             if (CbVehiculos.SelectedItem != null)
@@ -259,6 +308,12 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         }
 
+        /// <summary>
+        /// Abre el explorador de archivos con un opendialog para seleccionar una imagen del archivo local
+        /// , la cual formara parte del reporte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AbrirExplorador_Click(object sender, RoutedEventArgs e)
         {
 
@@ -325,7 +380,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
-
+        /// <summary>
+        /// Recibe la el uevo reporte creado para guardar las fotografias asociadas a el
+        /// </summary>
+        /// <param name="nuevoReporte"></param>
         private void GuardarImagen(Reporte nuevoReporte)
         {
 
@@ -341,11 +399,19 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         }
 
+        /// <summary>
+        /// Controlador para cerrar la ventana actual
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
             cerrarVentana();
         }
 
+        /// <summary>
+        /// Cierra la ventana actual y uestra la ventana MenuAgente.xaml
+        /// </summary>
         private void cerrarVentana()
         {
             MenuAgente menuAgente = new MenuAgente(usuarioIniciado);
