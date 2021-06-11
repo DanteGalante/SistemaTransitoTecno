@@ -1,4 +1,4 @@
-﻿using BaseDeDatos;
+using BaseDeDatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void GenerarReporte_Click(object sender, RoutedEventArgs e)
         {
-            LevantarReporte levantarReporte = new LevantarReporte();
+            LevantarReporte levantarReporte = new LevantarReporte(usuarioIniciado);
             this.Close();
             levantarReporte.Show();
 
@@ -42,7 +42,7 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         private void HistorialReportes_Click(object sender, RoutedEventArgs e)
         {
-            Reportes reportes = new Reportes();
+            Reportes reportes = new Reportes(usuarioIniciado);
 
             this.Close();
             reportes.Show();
