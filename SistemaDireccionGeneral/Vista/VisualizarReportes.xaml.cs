@@ -17,15 +17,16 @@ using System.Windows.Shapes;
 namespace SistemaDireccionGeneral.Vista
 {
     /// <summary>
+    /// Autor: Alan Adair Morgado Morales
     /// Lógica de interacción para VisualizarReportes.xaml
     /// </summary>
     public partial class VisualizarReportes : Window
     {
-        BDTransitoEntities entidadesBD = new BDTransitoEntities();
-        List<Reporte> listaReportes = new List<Reporte>();
-        Reporte reporte = new Reporte();
-        Reporte reporteElegido;
-        Usuario usuarioIniciado;
+        private BDTransitoEntities entidadesBD = new BDTransitoEntities();
+        private List<Reporte> listaReportes = new List<Reporte>();
+        private Reporte reporte = new Reporte();
+        private Reporte reporteElegido;
+        private Usuario usuarioIniciado;
 
         public VisualizarReportes(Usuario usuarioIniciado)
         {
@@ -34,6 +35,9 @@ namespace SistemaDireccionGeneral.Vista
             LlenarTabla();
         }
 
+        /// <summary>
+        /// Llena el datagrid de los reporte obtenidos de la base de datos
+        /// </summary>
         private void LlenarTabla()
         {
             DbSet<Reporte> reporte = entidadesBD.Reportes;
@@ -46,17 +50,29 @@ namespace SistemaDireccionGeneral.Vista
             dgReportes.ItemsSource = listaReportes;
 
         }
-
+        /// <summary>
+        /// Recupera un reporte de la lista de reportes, obtenida de la base de datos
+        /// </summary>
+        /// <returns>
+        /// Reporte recuperado 
+        /// </returns>
         private Reporte RecuperarReporte()
         {
             return reporteElegido = listaReportes.ElementAt<Reporte>(dgReportes.SelectedIndex);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reporteElegido"></param>
         public VisualizarReportes(Reporte reporteElegido)
         {
             this.reporteElegido = reporteElegido;
         }
-
+        /// <summary>
+        /// Maneja el evento de un clic sobre el boton "Dictaminar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Dictaminar_Click(object sender, RoutedEventArgs e)
         {
             if (dgReportes.SelectedItem == null)
@@ -80,6 +96,11 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Maneja el evento de un clic sobre el boton "VerReporte"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerReporte_Click(object sender, RoutedEventArgs e)
         {
 
@@ -96,6 +117,11 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Maneja el evento de un clic sobre el boton "Regresar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
             MenuPerito menuPerito = new MenuPerito(usuarioIniciado);
