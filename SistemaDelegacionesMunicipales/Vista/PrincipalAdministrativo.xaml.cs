@@ -57,5 +57,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);
             nuevaVentana.ShowDialog();
         }
+
+        private void btn_cerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            IniciarSesion nuevaVentana = new IniciarSesion();
+            nuevaVentana.Show();
+        }
     }
 }

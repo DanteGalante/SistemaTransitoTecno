@@ -31,7 +31,7 @@
             <TextBox x:Name="tb_licenciaCond" Height="23" TextWrapping="Wrap"/>
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Height="20" Margin="0,10,0,0">
                 <Button x:Name="btn_modificar" Content="Modificar" Width="75" Height="20" Margin="0,0,10,0" VerticalAlignment="Top" Click="btn_modificar_Click"/>
-                <Button x:Name="btn_salir" Content="Salir" Width="75" Margin="0"/>
+                <Button x:Name="btn_salir" Content="Salir" Width="75" Margin="0" Click="btn_salir_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

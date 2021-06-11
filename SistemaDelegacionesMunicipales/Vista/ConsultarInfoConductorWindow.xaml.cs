@@ -86,7 +86,7 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
         /**
-         *  Verifica que solo se haya seleccionado un vehiculo en el datagrid
+         *  Verifica que solo se haya seleccionado un conductor en el datagrid
          */
         private bool SoloUnConductorSeleccionado()
         {
@@ -96,11 +96,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
             else if (dg_conductor.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Se ha seleccionado mas de un vehiculo para modificar, favor de solo seleccionar uno", "Error", MessageBoxButton.OK);
+                MessageBox.Show("Se ha seleccionado mas de un conductor para modificar, favor de solo seleccionar uno", "Error", MessageBoxButton.OK);
             }
             else
             {
-                MessageBox.Show("No se ha seleccionado ningun vehiculo", "Error", MessageBoxButton.OK);
+                MessageBox.Show("No se ha seleccionado ningun conductor", "Error", MessageBoxButton.OK);
             }
 
             return false;
@@ -176,7 +176,7 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
             else
             {
-                MessageBox.Show("No se ha seleccionado ningún vehiculo para eliminar", "Error", MessageBoxButton.OK);
+                MessageBox.Show("No se ha seleccionado ningún conductor para eliminar", "Error", MessageBoxButton.OK);
             }
 
             ActualizarTabla();
