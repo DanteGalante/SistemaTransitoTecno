@@ -62,9 +62,8 @@ namespace SistemaDireccionGeneral.Vista
 
         private void btnChat_Click(object sender, RoutedEventArgs e)
         {
-            ChatGeneral ventanaChatGeneral = new ChatGeneral();
-            ventanaChatGeneral.Show();
-            this.Close();
+            ChatGeneral ventanaChatGeneral = new ChatGeneral(usuarioIniciado);
+            ventanaChatGeneral.ShowDialog();
         }
     }
 }
