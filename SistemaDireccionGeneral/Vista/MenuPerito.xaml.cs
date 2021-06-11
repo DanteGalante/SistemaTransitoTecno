@@ -21,6 +21,7 @@ namespace SistemaDireccionGeneral.Vista
     public partial class MenuPerito : Window
     {
         Usuario usuarioIniciado;
+
         public MenuPerito(Usuario usuarioIniciado)
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace SistemaDireccionGeneral.Vista
 
         private void VisualizarReportes_Click(object sender, RoutedEventArgs e)
         {
-            VisualizarReportes visualizarReportes = new VisualizarReportes();
+            VisualizarReportes visualizarReportes = new VisualizarReportes(usuarioIniciado);
 
             this.Close();
             visualizarReportes.Show();
