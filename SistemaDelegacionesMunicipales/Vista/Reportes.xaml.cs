@@ -77,8 +77,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                 reporteElegido = RecuperarReporte();
 
                 ConsultarReporte consultarReporte = new ConsultarReporte(reporteElegido);
-                consultarReporte.Show();
-                this.Close();
+                consultarReporte.ShowDialog();
             }
         }
 
@@ -99,8 +98,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                 else
                 {
                     VerDictamenReporte verDictamenReporte = new VerDictamenReporte(reporteElegido);
-                    verDictamenReporte.Show();
-                    this.Close();
+                    verDictamenReporte.ShowDialog();
                 }
 
             }

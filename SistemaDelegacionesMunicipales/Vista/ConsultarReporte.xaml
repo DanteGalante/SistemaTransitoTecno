@@ -34,8 +34,7 @@
             <Label x:Name="LbColonia" Content="" HorizontalAlignment="Left" Margin="239,112,0,0" VerticalAlignment="Top" Width="477"/>
             <Label x:Name="LbFecha" Content="" HorizontalAlignment="Left" Margin="239,179,0,0" VerticalAlignment="Top" Width="180"/>
             <Label x:Name="LbEstatus" Content="" HorizontalAlignment="Left" Margin="239,146,0,0" VerticalAlignment="Top" Width="180"/>
-        <Button Content="Ver imagenes" HorizontalAlignment="Left" Margin="584,536,0,0" VerticalAlignment="Top" Width="110" Height="47" FontWeight="Bold" Click="VerImagenes_Click"/>
-            <DataGrid x:Name="dgVehiculo" HorizontalAlignment="Left" Height="110" Margin="186,369,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"  VerticalAlignment="Top" Width="489">
+        <DataGrid x:Name="dgVehiculo" HorizontalAlignment="Left" Height="110" Margin="186,369,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"  VerticalAlignment="Top" Width="489">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Placa" Width="*" Binding="{Binding numeroPlaca}"/>
                     <DataGridTextColumn Header="Color" Width="*" Binding="{Binding color}"/>

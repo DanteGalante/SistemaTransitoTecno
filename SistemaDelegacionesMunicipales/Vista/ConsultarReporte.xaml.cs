@@ -52,12 +52,5 @@ namespace SistemaDelegacionesMunicipales.Vista
             this.Close();
            
         }
-
-
-        private void VerImagenes_Click(object sender, RoutedEventArgs e)
-        {
-
-            this.Close();
-        }
     }
 }
