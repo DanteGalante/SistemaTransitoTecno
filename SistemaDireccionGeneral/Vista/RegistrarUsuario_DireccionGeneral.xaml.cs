@@ -266,6 +266,7 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
+
         /// <summary>
         /// Verifica que el usuario sea valido
         /// </summary>

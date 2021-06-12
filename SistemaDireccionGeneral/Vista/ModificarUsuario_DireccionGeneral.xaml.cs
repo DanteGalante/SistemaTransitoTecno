@@ -35,6 +35,9 @@ namespace SistemaDireccionGeneral.Vista
             CargarDatosUsuario();
         }
 
+        /// <summary>
+        /// Carga la lista de tipos de usuarios y la agrega
+        /// </summary>
         public void CargarListaUsuarios()
         {
             List<string> usuarios = new List<string>();
@@ -46,6 +49,9 @@ namespace SistemaDireccionGeneral.Vista
             cbUsuarios.ItemsSource = usuarios;
         }
 
+        /// <summary>
+        /// Carga la lista de delegaciones. Sacado de la base de datos
+        /// </summary>
         public void CargarListaDelegaciones()
         {
             foreach (var item in entidadesBD.DelegacionesMunicipales)
@@ -60,9 +66,11 @@ namespace SistemaDireccionGeneral.Vista
             cbDelegaciones.ItemsSource = listaNombreDelegaciones;
         }
 
+        /// <summary>
+        /// Manejo de la funcionalidad del manejo de modificacion de usuario
+        /// </summary>
         public void ManejoModificacionUsuario()
         {
-            VerificarUsuario();
             if (UsuarioValido()  && !UsuarioRepetido(RecuperarUsarioNuevo()))
             {
                 Usuario modificarUsuario = entidadesBD.Usuarios.Find(usuarioElegido.idUsuario);
@@ -85,6 +93,10 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Recupera la delegacion municipal del componente combobox
+        /// </summary>
+        /// <returns>Delegacion municipal recuperada mediante el indice del combobox</returns>
         private DelegacionMunicipal RecuperarDelegacionMunicipalSeleccionada()
         {
             DelegacionMunicipal item = new DelegacionMunicipal();
@@ -100,18 +112,10 @@ namespace SistemaDireccionGeneral.Vista
             return item;
         }
 
-        public void VerificarUsuario()
-        {
-            NombreUsuarioValido();
-            NombresValidos();
-            ApellidoPaternoValido();
-            ApellidoMaternoValido();
-            TipoUsuarioValido();
-            DelegacionValida();
-            ContraseniaValida();
-            RepetirContraseniaValida();
-        }
-
+        /// <summary>
+        /// Verifica que el nombre de usuario sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre de usuario</returns>
         private Boolean NombreUsuarioValido()
         {
             if (tbNombreUsuario.Text.Length >= 5 && tbNombreUsuario.Text.Length <= 15)
@@ -126,6 +130,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que los nombres sean validos
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre</returns>
         private Boolean NombresValidos()
         {
             if (tbNombres.Text.Length >= 3 && tbNombres.Text.Length <= 30)
@@ -140,6 +148,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el apellido paterno de un nuevo usuario sea valido
+        /// </summary>
+        /// <returns> Booleano que representa el apeliido paterno de un nuevo usuario</returns>
         private Boolean ApellidoPaternoValido()
         {
             if (tbApellidoPaterno.Text.Length >= 3 && tbApellidoPaterno.Text.Length <= 30)
@@ -154,6 +166,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el apellido materno de un nuevo usuario sea valido
+        /// </summary>
+        /// <returns> Booleano que representa la validdez del apellido paterno de un nuevo usuario</returns>
         private Boolean ApellidoMaternoValido()
         {
             if (tbApellidoMaterno.Text.Length >= 3 && tbApellidoMaterno.Text.Length <= 30)
@@ -168,6 +184,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el tipo de usuario de un nuevo usuario sea valido
+        /// </summary>
+        /// <returns> Booeleano que representa el tipo de usaurio elegido por el usuario</returns>
         private Boolean TipoUsuarioValido()
         {
             bool tipoUsuarioValido = false;
@@ -185,6 +205,10 @@ namespace SistemaDireccionGeneral.Vista
             return tipoUsuarioValido;
         }
 
+        /// <summary>
+        /// Verifica que la delegacion de un nuevo usuario sea valida
+        /// </summary>
+        /// <returns></returns>
         private Boolean DelegacionValida()
         {
             bool delegacionValida = false;
@@ -202,6 +226,10 @@ namespace SistemaDireccionGeneral.Vista
             return delegacionValida;
         }
 
+        /// <summary>
+        /// Verifica que la contraseña sea valida
+        /// </summary>
+        /// <returns>Booelano que indica la validez de la contraseña</returns>
         private Boolean ContraseniaValida()
         {
             if (pbContrasenia.Password.Length > 6 && pbContrasenia.Password.Length < 30)
@@ -216,6 +244,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que la contraseña coincida con la contraseña repetida posteriormente
+        /// </summary>
+        /// <returns>Booleano que representa la validez de la contraseña</returns>
         private Boolean RepetirContraseniaValida()
         {
             if (pbRepetirContrasenia.Password == "")
@@ -235,6 +267,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el usuario sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del usuario</returns>
         private Boolean UsuarioValido()
         {
             bool aux = true;
@@ -277,18 +313,31 @@ namespace SistemaDireccionGeneral.Vista
             return aux;
         }
 
+        /// <summary>
+        /// Maneja el evento del clic en el boton "Cancelar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             ConsultarUsuario_DireccionGeneral ventanaConsultarUsuairo = new ConsultarUsuario_DireccionGeneral();
             ventanaConsultarUsuairo.Show();
             this.Close();
         }
-
+        /// <summary>
+        /// Maneja el evento del clic en el boton "Modificar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             ManejoModificacionUsuario();
         }
 
+        /// <summary>
+        /// Recupera el id de la delegacion
+        /// </summary>
+        /// <returns>id de la delegacion</returns>
         public int RecuperarDelegacion()
         {
             int res = 0;
@@ -300,7 +349,9 @@ namespace SistemaDireccionGeneral.Vista
 
             return res;
         }
-
+        /// <summary>
+        /// Carga los datos del usuario en la ventana
+        /// </summary>
         public void CargarDatosUsuario()
         {
             tbNombreUsuario.Text = usuarioElegido.nombreUsuario;
@@ -312,6 +363,11 @@ namespace SistemaDireccionGeneral.Vista
             cbDelegaciones.SelectedIndex = RecuperarDelegacion();
         }
 
+        /// <summary>
+        /// Busca si existe un usuario repetido con los datos modificados
+        /// </summary>
+        /// <param name="nuevoUsuario"></param>
+        /// <returns>Booleano que representa si encuentra un usuario repetido</returns>
         private Boolean UsuarioRepetido(Usuario nuevoUsuario)
         {
             bool usuarioRepetido = false;
@@ -329,6 +385,10 @@ namespace SistemaDireccionGeneral.Vista
             return usuarioRepetido;
         }
 
+        /// <summary>
+        /// Crea un usuario nuevo usando los valores de la ventana
+        /// </summary>
+        /// <returns>Nuevo usuario creado</returns>
         private Usuario RecuperarUsarioNuevo()
         {
             Usuario verificarUsuario = new Usuario();
