@@ -255,6 +255,11 @@ namespace SistemaDireccionGeneral.Vista
             ManejoRegistroDelegacion();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el boton "Cancelar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             MenuAdministrativo_DireccionGeneral regresarMenuAdministrativo = new MenuAdministrativo_DireccionGeneral();
@@ -262,6 +267,11 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Verifica que la delegacion especificada no este repetida en la base de datos
+        /// </summary>
+        /// <param name="nuevaDelegacion"></param>
+        /// <returns>Booleano que representa si una delegacion esta repetida</returns>
         private Boolean DelegacionRepetida(DelegacionMunicipal nuevaDelegacion)
         {
             bool delegacionRepetido = false;
@@ -282,6 +292,10 @@ namespace SistemaDireccionGeneral.Vista
             return delegacionRepetido;
         }
 
+        /// <summary>
+        /// Crea una delegacion nueva a partir de los datos introducidos a la ventana
+        /// </summary>
+        /// <returns>Delegacion nueva</returns>
         private DelegacionMunicipal RecuperarDelegacionNuevo()
         {
             DelegacionMunicipal verificarDelegacion = new DelegacionMunicipal();

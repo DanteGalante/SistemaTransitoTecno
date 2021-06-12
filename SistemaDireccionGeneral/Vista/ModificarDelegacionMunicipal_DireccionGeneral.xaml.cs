@@ -30,9 +30,11 @@ namespace SistemaDireccionGeneral.Vista
             CargarDatosDelegacion();
         }
 
+        /// <summary>
+        /// Manejo de modificacion de delegaciones
+        /// </summary>
         public void ManejoModificacionDelegacion()
         {
-            VerificarDelegacion();
             if (DelegacionValida() && !DelegacionRepetida(RecuperarDelegacionNuevo()))
             {
                 DelegacionMunicipal modificarDelegacion = 
@@ -57,18 +59,10 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
-        public void VerificarDelegacion()
-        {
-            NombreDelegacionValida();
-            CalleValida();
-            ColoniaValida();
-            NumeroCasaValido();
-            CodigoPostalValido();
-            CorreoElectronicoValido();
-            TelefonoValido();
-            MunicipioValido();
-        }
-
+        /// <summary>
+        /// Verifica que el nombre de la delegacion sea valida
+        /// </summary>
+        /// <returns>Booleano que representa el nombre de la delegacion valida</returns>
         private Boolean NombreDelegacionValida()
         {
             if (tbNombreDelegacion.Text.Length >= 2 && tbNombreDelegacion.Text.Length <= 50)
@@ -83,6 +77,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el nombre de la calle de la delegación sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre de la calle de la delegacion</returns>
         private Boolean CalleValida()
         {
             if (tbCalle.Text.Length >= 3 && tbCalle.Text.Length <= 50)
@@ -97,6 +95,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el nombre de la colonia de la delegación sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre de la colonia de la delegación</returns>
         private Boolean ColoniaValida()
         {
             if (tbColonia.Text.Length >= 3 && tbColonia.Text.Length <= 50)
@@ -111,6 +113,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica la validez del numero de casa de la delegación
+        /// </summary>
+        /// <returns>Booleano que representa la validez del numero de la casa de la delegacion</returns>
         private Boolean NumeroCasaValido()
         {
             if (tbNumero.Text.Length >= 1 && tbNumero.Text.Length <= 3)
@@ -125,6 +131,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el codigo postal de la delegación sea válido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del codigo postal</returns>
         private Boolean CodigoPostalValido()
         {
             if (tbCodigoPostal.Text.Length >= 5 && tbCodigoPostal.Text.Length <= 10)
@@ -139,6 +149,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica la validez del correo electronico de la delegación
+        /// </summary>
+        /// <returns>Booleano que representa la validez del correo electronico </returns>
         private Boolean CorreoElectronicoValido()
         {
             if (tbCorreoElectronico.Text.Length >= 11 && tbCorreoElectronico.Text.Length <= 50)
@@ -153,6 +167,11 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el numero de la delegación sea valido
+        /// </summary> 
+        /// <returns>
+        /// Booleano que representa la validez del numero telefonico</returns>
         private Boolean TelefonoValido()
         {
             if (tbTelefono.Text.Length == 10)
@@ -167,6 +186,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el municipio de la delegación sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del numero télefonico</returns>
         private Boolean MunicipioValido()
         {
             if (tbCalle.Text.Length >= 3 && tbCalle.Text.Length <= 50)
@@ -181,6 +204,10 @@ namespace SistemaDireccionGeneral.Vista
             return false;
         }
 
+        /// <summary>
+        /// Verifica que la delegación sea valida para el registro
+        /// </summary>
+        /// <returns>Booleano que representa la validez de la delegación</returns>
         public Boolean DelegacionValida()
         {
             bool aux = true;
@@ -220,11 +247,21 @@ namespace SistemaDireccionGeneral.Vista
             return aux;
         }
 
+        /// <summary>
+        /// Maneja el evento del clic en el botón "Modificar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             ManejoModificacionDelegacion();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el boton "Cancelar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             ConsultarDelegacionMunicipal_DireccionGeneral regresarConsultarDelegaciones = 
@@ -233,6 +270,9 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
         
+        /// <summary>
+        /// Carga los datos de la ventana con la informacion de la delegacion elegida
+        /// </summary>
         public void CargarDatosDelegacion()
         {
             tbNombreDelegacion.Text = delegacionElegida.nombre;
@@ -245,6 +285,11 @@ namespace SistemaDireccionGeneral.Vista
             tbMunicipio.Text = delegacionElegida.municipio;
         }
 
+        /// <summary>
+        /// Verifica que la delegacion especificada no este repetida en la base de datos
+        /// </summary>
+        /// <param name="nuevaDelegacion"></param>
+        /// <returns>Booleano que representa si una delegacion esta repetida</returns>
         private Boolean DelegacionRepetida(DelegacionMunicipal nuevaDelegacion)
         {
             bool delegacionRepetido = false;
@@ -265,6 +310,10 @@ namespace SistemaDireccionGeneral.Vista
             return delegacionRepetido;
         }
 
+        /// <summary>
+        /// Crea una delegacion nueva a partir de los datos introducidos a la ventana
+        /// </summary>
+        /// <returns>Delegacion nueva</returns>
         private DelegacionMunicipal RecuperarDelegacionNuevo()
         {
             DelegacionMunicipal verificarDelegacion = new DelegacionMunicipal();
