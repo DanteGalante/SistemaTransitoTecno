@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SistemaDireccionGeneral.Vista
 {
     /// <summary>
+    /// Autor: Emilio Antonio Alarcon Santos
     /// Lógica de interacción para RegistrarDelegacionMunicipal_DireccionGeneral.xaml
     /// </summary>
     public partial class RegistrarDelegacionMunicipal_DireccionGeneral : Window
@@ -25,7 +26,9 @@ namespace SistemaDireccionGeneral.Vista
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Menaja el registro de delegaciones, checando que cumplan ciertas validaciones
+        /// </summary>
         public void ManejoRegistroDelegacion()
         {
             VerificarDelegacion();
@@ -49,7 +52,9 @@ namespace SistemaDireccionGeneral.Vista
                 MessageBox.Show("Registro Delegación Exitoso");
             }
         }
-
+        /// <summary>
+        /// Verifica varias validaciones a la entradas de la ventana
+        /// </summary>
         public void VerificarDelegacion()
         {
             NombreDelegacionValida();
@@ -61,7 +66,10 @@ namespace SistemaDireccionGeneral.Vista
             TelefonoValido();
             MunicipioValido();
         }
-
+        /// <summary>
+        /// Verifica que el nombre de la delegacion sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre de la delegacion</returns>
         private Boolean NombreDelegacionValida()
         {
             if(tbNombreDelegacion.Text.Length >= 2 && tbNombreDelegacion.Text.Length <= 50)
@@ -75,7 +83,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que el nombre de la calle de la delegación sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre de la calle de la delegacion</returns>
         private Boolean CalleValida()
         {
             if (tbCalle.Text.Length >= 3 && tbCalle.Text.Length <= 50)
@@ -89,7 +100,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que el nombre de la colonia de la delegación sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del nombre de la colonia de la delegación</returns>
         private Boolean ColoniaValida()
         {
             if (tbColonia.Text.Length >= 3 && tbColonia.Text.Length <= 50)
@@ -103,7 +117,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica la validez del numero de casa de la delegación
+        /// </summary>
+        /// <returns>Booleano que representa la validez del numero de la casa de la delegacion</returns>
         private Boolean NumeroCasaValido()
         {
             if (tbNumero.Text.Length >= 1 && tbNumero.Text.Length <= 3)
@@ -117,7 +134,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que el codigo postal de la delegación sea válido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del codigo postal</returns>
         private Boolean CodigoPostalValido()
         {
             if (tbCodigoPostal.Text.Length >= 5 && tbCodigoPostal.Text.Length <= 10)
@@ -131,7 +151,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica la validez del correo electronico de la delegación
+        /// </summary>
+        /// <returns>Booleano que representa la validez del correo electronico </returns>
         private Boolean CorreoElectronicoValido()
         {
             if (tbCorreoElectronico.Text.Length >= 11 && tbCorreoElectronico.Text.Length <= 50)
@@ -145,7 +168,11 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que el numero de la delegación sea valido
+        /// </summary> 
+        /// <returns>
+        /// Booleano que representa la validez del numero telefonico</returns>
         private Boolean TelefonoValido()
         {
             if (tbTelefono.Text.Length == 10)
@@ -159,7 +186,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que el municipio de la delegación sea valido
+        /// </summary>
+        /// <returns>Booleano que representa la validez del numero télefonico</returns>
         private Boolean MunicipioValido()
         {
             if (tbCalle.Text.Length >= 3 && tbCalle.Text.Length <= 50)
@@ -173,7 +203,10 @@ namespace SistemaDireccionGeneral.Vista
             }
             return false;
         }
-
+        /// <summary>
+        /// Verifica que la delegación sea valida para el registro
+        /// </summary>
+        /// <returns>Booleano que representa la validez de la delegación</returns>
         public Boolean DelegacionValida()
         {
             bool aux = true;
@@ -212,7 +245,11 @@ namespace SistemaDireccionGeneral.Vista
             }
             return aux;
         }    
-
+        /// <summary>
+        /// Maneja el evento del clic en el botón "Registrar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             ManejoRegistroDelegacion();
