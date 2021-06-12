@@ -31,6 +31,11 @@ namespace SistemaDireccionGeneral.Vista
             this.usuarioIniciado = usuarioIniciado;
         }
 
+        /// <summary>
+        /// Manejador encargado del guardado del dictamen, checando que se cumplan las validaciones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Guardar_Click(object sender, RoutedEventArgs e)
         {
             if (ComprobarCampos())
@@ -62,6 +67,10 @@ namespace SistemaDireccionGeneral.Vista
 
         }
 
+        /// <summary>
+        /// Actualización del reporte
+        /// </summary>
+        /// <param name="nuevoDictamen"></param>
         private void ActualizarReporte(Dictamen nuevoDictamen)
         {
             Reporte modificarReporte = entidadesBD.Reportes.Find(reporteElegido.idReporte);
@@ -72,6 +81,10 @@ namespace SistemaDireccionGeneral.Vista
             entidadesBD.SaveChanges();
         }
 
+        /// <summary>
+        /// Genera los folios para los nuevos dictamenes
+        /// </summary>
+        /// <returns>string</returns>
         private string GenerarFolio()
         {
             Random rdn = new Random();
@@ -89,6 +102,10 @@ namespace SistemaDireccionGeneral.Vista
             return contraseniaAleatoria;
         }
 
+        /// <summary>
+        /// Se validan los campos de la descripción
+        /// </summary>
+        /// <returns>bool</returns>
         private bool ComprobarCampos()
         {
             bool resultado = false;
@@ -101,11 +118,19 @@ namespace SistemaDireccionGeneral.Vista
             return resultado;
         }
 
+        /// <summary>
+        /// Manejador encargado del evento del botón "Regresar" 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
             cerrarVentana();
         }
 
+        /// <summary>
+        /// Cierra la ventana
+        /// </summary>
         private void cerrarVentana()
         {
             MenuPerito menuPerito = new MenuPerito(usuarioIniciado);
