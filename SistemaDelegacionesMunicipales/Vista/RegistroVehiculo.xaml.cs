@@ -50,7 +50,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             {
                 foreach (Conductor conductor in conductoresDBSet)
                 {
-                    cb_conductor.Items.Add(conductor.nombres + " " + conductor.apellidoPaterno + " " + conductor.apellidoMaterno);
+                    cb_conductor.Items.Add(conductor.nombres + " " +
+                                           conductor.apellidoPaterno + " " +
+                                           conductor.apellidoMaterno);
                     conductores.Add(conductor);
                 }
             }
@@ -86,7 +88,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                 nuevoVehiculo.numeroPlaca = tb_numeroPlacas.Text;
                 string seleccionComboBox = cb_conductor.Text;
 
-                if (("Otro conductor").Equals(seleccionComboBox))
+                if ((seleccionComboBox).Equals("Otro conductor"))
                 {
                     MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?","",MessageBoxButton.YesNo);
                     if (respuesta == MessageBoxResult.Yes)
@@ -163,7 +165,7 @@ namespace SistemaDelegacionesMunicipales.Vista
                     vehiculo.color == nuevoVehiculo.color &&
                     vehiculo.marca == nuevoVehiculo.marca &&
                     vehiculo.modelo == nuevoVehiculo.modelo &&
-                    vehiculo.nombreAseguradora == nuevoVehiculo.nombreAseguradora &&
+                    vehiculo.nombreAseguradora == nuevoVehiculo.nombreAseguradora ||
                     vehiculo.numeroPlaca == nuevoVehiculo.numeroPlaca &&
                     vehiculo.numeroPolizaSeguro == nuevoVehiculo.numeroPolizaSeguro) != null)
             {
