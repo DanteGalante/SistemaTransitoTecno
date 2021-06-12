@@ -1,4 +1,4 @@
-﻿using BaseDeDatos;
+using BaseDeDatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Alan Adair Morgado Morales
     /// Lógica de interacción para Menu.xaml
     /// </summary>
     public partial class MenuAgente : Window
@@ -32,27 +33,49 @@ namespace SistemaDelegacionesMunicipales.Vista
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Controlador para cambiar a la pantalla "LevantarReporte.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenerarReporte_Click(object sender, RoutedEventArgs e)
         {
-            LevantarReporte levantarReporte = new LevantarReporte();
+            LevantarReporte levantarReporte = new LevantarReporte(usuarioIniciado);
             this.Close();
-            levantarReporte.Show();
+            levantarReporte.ShowDialog();
 
         }
 
+        /// <summary>
+        /// Conrolador para cambiar a la pantalla Reportes.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HistorialReportes_Click(object sender, RoutedEventArgs e)
         {
-            Reportes reportes = new Reportes();
+            Reportes reportes = new Reportes(usuarioIniciado);
 
             this.Close();
-            reportes.Show();
+            reportes.ShowDialog();
         }
 
+        /// <summary>
+        /// Conntrolador para mostrar el IniciarSesion.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
+            IniciarSesion iniciarSesion = new IniciarSesion();
+            iniciarSesion.Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Muestra la ventana del ChatGneral.xaml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);

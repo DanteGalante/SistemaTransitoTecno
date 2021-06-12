@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SistemaDireccionGeneral.Vista
 {
     /// <summary>
+    /// Autor: Alan Adair Morgado Morales
     /// Lógica de interacción para VerDetalleReporte.xaml
     /// </summary>
     public partial class VerDetalleReporte : Window
@@ -32,7 +33,9 @@ namespace SistemaDireccionGeneral.Vista
             CargarDatosReporte();
             LlenarTabla();
         }
-
+        /// <summary>
+        /// Se cargan los datos del reporte, elegido en la ventana previa, en la ventana
+        /// </summary>
         private void CargarDatosReporte()
         {
             LbCalle.Content = reporteElegido.calle;
@@ -42,12 +45,19 @@ namespace SistemaDireccionGeneral.Vista
             TBDescripcion.Text = reporteElegido.descripcion;
         }
 
+        /// <summary>
+        /// Llena la tabla de los vehiculos de un reporte
+        /// </summary>
         private void LlenarTabla()
         {
             dgVehiculo.ItemsSource = reporteElegido.Vehiculos;
             dgVehiculo.Items.Refresh();
         }
-
+        /// <summary>
+        /// Maneja el evento del clic sobre el boton "Regresar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
             VisualizarReportes visualizarReportes = new VisualizarReportes(usuarioIniciado);

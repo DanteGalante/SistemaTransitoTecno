@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaDelegacionesMunicipales.Vista"
         mc:Ignorable="d"
-        Title="PrincipalAdministrativo" Width="600" SizeToContent="Height">
+        Title="Administrativo" Width="600" SizeToContent="Height" ResizeMode="NoResize">
     <Grid >
         <Grid.Background>
             <ImageBrush ImageSource="Imagenes/FondoBlanco.jpg"/>
@@ -37,6 +37,7 @@
                         <Button x:Name="btn_agregarVehiculo" Content="Agregar vehiculo" Height="23" Background="{x:Null}" Click="btn_agregarVehiculo_Click"/>
                     </StackPanel>
                 </Grid>
+                <Button x:Name="btn_cerrarSesion" Content="CerrarSesion" Margin="10,38,164,0" Height="28" Click="btn_cerrarSesion_Click"/>
             </StackPanel>
             <StackPanel Width="268" HorizontalAlignment="Left">
                 <Grid Height="256" HorizontalAlignment="Left" Width="159">

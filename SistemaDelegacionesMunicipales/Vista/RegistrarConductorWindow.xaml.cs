@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Dan Javier Olvera Villeda
     /// Interaction logic for RegistrarConductor.xaml
     /// </summary>
     public partial class RegistrarConductorWindow : Window
@@ -27,11 +28,22 @@ namespace SistemaDelegacionesMunicipales.Vista
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Controla el detenimiento de la ejecucion del programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Controla los metodos de registrar un conductor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_registrar_Click(object sender, RoutedEventArgs e)
         {
             if (InformacionValida())
@@ -40,6 +52,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// Comprueba que la inforacion ingresada sea valida
+        /// </summary>
+        /// <returns></returns>
         private bool InformacionValida()
         {
             bool valido = false;
@@ -52,6 +68,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return valido;
         }
 
+        /// <summary>
+        /// Comprueba que los campos de texto no esten vacios
+        /// </summary>
+        /// <returns></returns>
         private bool CamposTextoVacios()
         {
             bool camposTextVacios = true;
@@ -71,6 +91,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return camposTextVacios;
         }
 
+        /// <summary>
+        /// Comprueba que se selecciono una fecha
+        /// </summary>
+        /// <returns></returns>
         private bool FechaSeleccionada()
         {
             DateTime? fechaNac = dp_fechaNacimiento.SelectedDate;
@@ -88,6 +112,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return fechaSeleccionada;
         }
 
+        /// <summary>
+        /// Controla el registro de la informacion de un 
+        /// nuevo condutor en la base de datos
+        /// </summary>
         private void RegistrarConductor()
         {
             Conductor nuevoConductor = new Conductor();
@@ -115,6 +143,9 @@ namespace SistemaDelegacionesMunicipales.Vista
 
         }
 
+        /// <summary>
+        /// Limpia los campos de texto de la informacion
+        /// </summary>
         private void LimpiarVentana()
         {
             tb_nombre.Text = "";
@@ -124,6 +155,13 @@ namespace SistemaDelegacionesMunicipales.Vista
             tb_numLicenciaConducir.Text = "";
         }
 
+
+        /// <summary>
+        /// Comprueba que el regstro del conductor no este repetido
+        /// en la base de datos del sistema
+        /// </summary>
+        /// <param name="nuevoConductor"></param>
+        /// <returns></returns>
         private bool ConductorRepetido(Conductor nuevoConductor)
         {
             bool conductorRepetido = false;

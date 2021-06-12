@@ -62,7 +62,8 @@ namespace SistemaDireccionGeneral.Vista
             else
             {
                 delegacionElegida = RecuperarDelegacion();
-                ModificarDelegacionMunicipal_DireccionGeneral modificarDelegacion = new ModificarDelegacionMunicipal_DireccionGeneral(delegacionElegida);
+                ModificarDelegacionMunicipal_DireccionGeneral modificarDelegacion = 
+                    new ModificarDelegacionMunicipal_DireccionGeneral(delegacionElegida);
                 modificarDelegacion.Show();
                 this.Close();
             }

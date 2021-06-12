@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Emilio Antonio Alarcon Santos
     /// Lógica de interacción para IniciarSesion.xaml
     /// </summary>
     public partial class IniciarSesion : Window
@@ -33,11 +34,19 @@ namespace SistemaDelegacionesMunicipales.Vista
             CargarListaDelegaciones();
         }
 
+        /// <summary>
+        /// Controlador para manejar el incio de sesion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnIniciarSesion_Click(object sender, RoutedEventArgs e)
         {
             ManejadorLogin();
         }
 
+        /// <summary>
+        /// Comprueba el tipo de usuario y lo deja ingresar al sistema segun el tipo de usuario que sea
+        /// </summary>
         public void ManejadorLogin()
         {
             VerificarInformacionUsuario();
@@ -57,12 +66,19 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// Verifica la informacion ingresada por el usuario, el caso de que sea valida podra iniciar sesion
+        /// </summary>
         private void VerificarInformacionUsuario()
         {
             VerificarUsername();
             VerificarContrasenia();
         }
 
+        /// <summary>
+        /// Se encarga de verificar 
+        /// </summary>
+        /// <returns></returns>
         private Boolean VerificarUsername()
         {
             bool verificar = false;
@@ -78,6 +94,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return verificar;
         }
 
+        /// <summary>
+        /// Comprueba que la contraseña ingresada por el suario es valida en su tamaño
+        /// </summary>
+        /// <returns></returns>
         private Boolean VerificarContrasenia()
         {
             bool verificar = false;
@@ -93,6 +113,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             return verificar;
         }
 
+        /// <summary>
+        /// Controlador para ir a la ventana PrincipalAdministrativo.xaml
+        /// </summary>
         private void IrPantallaPrincipalAdministrativo()
         {
             PrincipalAdministrativo ventanaPrincipalAdministrativo = new PrincipalAdministrativo(usuarioEncontrado);
@@ -100,6 +123,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Controlador para ir a la ventana MenuAgente.xaml 
+        /// </summary>
         private void IrPantallaMenuAgente()
         {
             MenuAgente ventanaMenuAgente = new MenuAgente(usuarioEncontrado);
@@ -107,6 +133,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Busca la informacion ingresada por el usuario para verificar que existe y es verdadera
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public bool BuscarValoresUsuario(string nombre)
         {
             bool existeUsuario = false;
@@ -129,7 +160,8 @@ namespace SistemaDelegacionesMunicipales.Vista
                     }
                     else
                     {
-                        MessageBox.Show("Delegación invalida, por favor comuniquese con la dirección general", "Delegación invalida");
+                        MessageBox.Show("Delegación invalida, por favor comuniquese con la dirección general", 
+                            "Delegación invalida");
                         return existeUsuario = false;
                     }
                 }
@@ -141,6 +173,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             return existeUsuario;
         }
 
+        /// <summary>
+        /// Recupera la instacia del usuario
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public Usuario RecuperarUsuario(string nombre)
         {
             usuarios.Clear();
@@ -161,6 +198,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             return usuarioEncontrado;
         }
 
+        /// <summary>
+        /// Carga la lista de delegaciones que hay registradas en la base de datos del sistema
+        /// </summary>
         public void CargarListaDelegaciones()
         {
             foreach (var item in entidadesBD.DelegacionesMunicipales)

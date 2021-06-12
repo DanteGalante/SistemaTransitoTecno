@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
+    /// Autor: Dan Javier Olvera Villeda
     /// Interaction logic for ModificarRegistroVehiculo.xaml
     /// </summary>
     public partial class ModificarRegistroVehiculo : Window
@@ -34,9 +35,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             CargarDatosVehiculoMod(vehiculoAModificar);
         }
 
-        /**
-         * Llena la ventana de los datos del vehiculo que se desea modificar
-         */
+        /// <summary>
+        /// Muestra la informacion del vehiculo seleccionado
+        /// en los campos de texto para modificar su registro
+        /// </summary>
+        /// <param name="vehiculoMod"></param>
         private void CargarDatosVehiculoMod(Vehiculo vehiculoMod)
         {
             this.vehiculoAModificar = bdTransitoEntities.Vehiculos.SingleOrDefault(vehiculo =>
@@ -54,6 +57,13 @@ namespace SistemaDelegacionesMunicipales.Vista
                                         vehiculoAModificar.Conductor.apellidoMaterno;
         }
 
+
+        /// <summary>
+        /// Llama las validaciones para modificar la informacion
+        /// del registro del vehiculo seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
         {
             if (ValidarInformacion())
@@ -62,6 +72,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
+        /// <summary>
+        /// Controla la modificacion de la informacion del
+        /// vehiculo seleccionado
+        /// </summary>
         private void ModificarVehiculo()
         {
             try
@@ -75,10 +89,12 @@ namespace SistemaDelegacionesMunicipales.Vista
                 vehiculoAModificar.numeroPlaca = tb_numeroPlacas.Text;
                 string seleccionComboBox = cb_conductor.Text;
 
-                //Si en el combobox decide darle a la opción otro, tiene la posibilidad de crear un conductor desde aqui
+                //Si en el combobox decide darle a la opción otro, tiene la posibilidad de crear
+                //un conductor desde aqui
                 if (("Otro conductor").Equals(seleccionComboBox))
                 {
-                    MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?", "", MessageBoxButton.YesNo);
+                    MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?",
+                        "", MessageBoxButton.YesNo);
                     if (respuesta == MessageBoxResult.Yes)
                     {
                         RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
@@ -113,11 +129,12 @@ namespace SistemaDelegacionesMunicipales.Vista
             {
                 MessageBox.Show("Error en la conexion con la base de datos", "Error", MessageBoxButton.OK);
             }
-        }
+        } 
         
-        /**
-         * Recupera un conductor dado una seleccion en el combobox
-         */
+        /// <summary>
+        /// Recupera un conductor dado una seleccion en el combobox
+        /// </summary>
+        /// <returns></returns>
         private Conductor RecuperarConductor()
         {
             Conductor conductorRecuperado = null;
@@ -130,9 +147,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             return conductorRecuperado;
         }
 
-        /**
-         * Busca en la BD la existencia de otra entidad con los mismos atributos
-         */
+        /// <summary>
+        ///Busca en la BD la existencia de otra entidad con los mismos atributos
+        /// </summary>
+        /// <param name="vehiculoModificado"></param>
+        /// <returns></returns>
         private bool VehiculoRepetido(Vehiculo vehiculoModificado)
         {
             bool vehiculoRepetido = false;
@@ -153,9 +172,9 @@ namespace SistemaDelegacionesMunicipales.Vista
             return vehiculoRepetido;
         }
 
-        /**
-         * Carga los conductores que exiten en la BD y los muestra en el combobox
-         */
+        /// <summary>
+        /// Carga los conductores que exiten en la BD y los muestra en el combobox
+        /// </summary>
         private void CargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = bdTransitoEntities.Conductores;
@@ -166,12 +185,18 @@ namespace SistemaDelegacionesMunicipales.Vista
             {
                 foreach (Conductor conductor in conductoresDBSet)
                 {
-                    cb_conductor.Items.Add(conductor.nombres + " " + conductor.apellidoPaterno + " " + conductor.apellidoMaterno);
+                    cb_conductor.Items.Add(conductor.nombres + " " + conductor.apellidoPaterno + " " +
+                        conductor.apellidoMaterno);
                     conductores.Add(conductor);
                 }
             }
         }
 
+        /// <summary>
+        /// Valida que la informacion elegida sea valida para
+        /// modificar el registro del conductor
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarInformacion()
         {
             bool valido = false;
@@ -185,9 +210,11 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
 
-        /**
-         * Verifica que no se introduzcan datos incorrectos en los campos de texto. Por ejemplo, un numero donde solo se permiten letras, o viceversa
-         */
+        /// <summary>
+        /// Verifica que no se introduzcan datos incorrectos en los campos de texto
+        /// Por ejemplo, un numero donde solo se permiten letras, o viceversa
+        /// </summary>
+        /// <returns></returns>
         private bool ValidezInfoCamposTexto()
         {
             bool valida = true;
@@ -209,6 +236,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return valida;
         }
 
+        /// <summary>
+        /// Comprueba que hay una seleccion de conductor
+        /// </summary>
+        /// <returns></returns>
         private bool ConductorElegido()
         {
             bool conductorElegido = false;
@@ -225,9 +256,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return conductorElegido;
         }
 
-        /**
-         * Verifica que los campos de texto de la ventana no esten vacios
-         */
+        /// <summary>
+        /// Verifica que los campos de texto de la ventana no esten vacios
+        /// </summary>
+        /// <returns></returns>
         private bool CamposTextoVacios()
         {
             bool camposTextoVacio = true;
@@ -249,10 +281,19 @@ namespace SistemaDelegacionesMunicipales.Vista
             return camposTextoVacio;
         }
 
+        /// <summary>
+        /// Controla el detenimiento de la ejecucion del programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+        /// <summary>
+        /// Actualiza los conductores que estan registrados en el combobox de seleccion
+        /// </summary>
         private void actualizarConductores()
         {
             conductores.Clear();

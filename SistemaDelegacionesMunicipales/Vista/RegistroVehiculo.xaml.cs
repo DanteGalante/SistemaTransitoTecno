@@ -19,7 +19,8 @@ using System.Windows.Shapes;
 namespace SistemaDelegacionesMunicipales.Vista
 {
     /// <summary>
-    /// Lógica de interacción para IniciarSesion.xaml
+    /// Autor: Dan Javier Olvera Villleda
+    /// Lógica de interacción para RegistrarVehiculo.xaml
     /// </summary>
     public partial class RegistroVehiculo : Window
     {
@@ -33,10 +34,14 @@ namespace SistemaDelegacionesMunicipales.Vista
         public RegistroVehiculo()
         {
             InitializeComponent();
-            cargarConductores();
+            CargarConductores();
         }
 
-        private void cargarConductores()
+        /// <summary>
+        /// Carga los conductores del base de datos
+        /// en un comboBox
+        /// </summary>
+        private void CargarConductores()
         {
             DbSet<Conductor> conductoresDBSet = entidadesBD.Conductores;
             cb_conductor.Items.Add("Otro conductor");
@@ -45,12 +50,18 @@ namespace SistemaDelegacionesMunicipales.Vista
             {
                 foreach (Conductor conductor in conductoresDBSet)
                 {
-                    cb_conductor.Items.Add(conductor.nombres + " " + conductor.apellidoPaterno + " " + conductor.apellidoMaterno);
+                    cb_conductor.Items.Add(conductor.nombres + " " + conductor.apellidoPaterno + " " +
+                        conductor.apellidoMaterno);
                     conductores.Add(conductor);
                 }
             }
         }
 
+        /// <summary>
+        /// Gestiona el registro de un vehiculo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_registrar_Click(object sender, RoutedEventArgs e)
         {
             if (ValidarInformacion())
@@ -58,7 +69,9 @@ namespace SistemaDelegacionesMunicipales.Vista
                 RegistrarVehiculo();
             }
         }
-
+        /// <summary>
+        /// Guarda la informacion de nuevo vehiculo 
+        /// </summary>
         private void RegistrarVehiculo()
         {
             try
@@ -76,12 +89,13 @@ namespace SistemaDelegacionesMunicipales.Vista
 
                 if (("Otro conductor").Equals(seleccionComboBox))
                 {
-                    MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?","",MessageBoxButton.YesNo);
+                    MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?",
+                        "",MessageBoxButton.YesNo);
                     if (respuesta == MessageBoxResult.Yes)
                     {
                         RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();
                         bool conductorRegistrado = (bool)nuevaVentana.ShowDialog();
-                        actualizarConductores();
+                        ActualizarConductores();
                         if (conductorRegistrado)
                         {
                             cb_conductor.SelectedIndex = cb_conductor.Items.Count - 1;
@@ -124,13 +138,23 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
         }
 
-        private void actualizarConductores()
+        /// <summary>
+        /// Actualiza los componentes de las tablas y los conbobox
+        /// que tiene la ventana RegistroVehiculo.xaml
+        /// </summary>
+        private void ActualizarConductores()
         {
             conductores.Clear();
             cb_conductor.Items.Clear();
-            cargarConductores();
+            CargarConductores();
         }
 
+        /// <summary>
+        /// Valida que el registro del conductor no 
+        /// este repetido en la base de datos
+        /// </summary>
+        /// <param name="nuevoVehiculo"></param>
+        /// <returns></returns>
         private bool VehiculoRepetido(Vehiculo nuevoVehiculo)
         {
             bool vehiculoRepetido = false;
@@ -150,6 +174,11 @@ namespace SistemaDelegacionesMunicipales.Vista
             return vehiculoRepetido;
         }
 
+
+        /// <summary>
+        /// Recupera la instacia del vehiculo seleccionado
+        /// </summary>
+        /// <returns></returns>
         private Conductor RecuperarConductor()
         {
             Conductor conductorRecuperado = null;
@@ -162,6 +191,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return conductorRecuperado;
         }
 
+        /// <summary>
+        /// Llama las funciones apra comprobar que la informacion ingresada
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarInformacion()
         {
             bool valido = false;
@@ -174,6 +207,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return valido;
         }
 
+        /// <summary>
+        /// Valida que la informacion de los campos de texto
+        /// </summary>
+        /// <returns></returns>
         private bool ValidezInfoCamposTexto()
         {
             bool valida = true;
@@ -195,6 +232,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return valida;
         }
 
+        /// <summary>
+        /// Comprueba que se selecciono un conductor
+        /// </summary>
+        /// <returns></returns>
         private bool ConductorElegido()
         {
             bool conductorElegido = false;
@@ -211,6 +252,10 @@ namespace SistemaDelegacionesMunicipales.Vista
             return conductorElegido;
         }
 
+        /// <summary>
+        /// Comprueba que los campos de texto no esten vacios
+        /// </summary>
+        /// <returns></returns>
         private bool CamposTextoVacios()
         {
             bool camposTextoVacio = true;
@@ -253,11 +298,16 @@ namespace SistemaDelegacionesMunicipales.Vista
             return camposTextoVacio;
         }
 
+
         private void c_seguro_Checked(object sender, RoutedEventArgs e)
         {
             AgregarComponentes_Seguro();
         }
 
+        /// <summary>
+        /// Agrega componentes a la ventana en caso de que
+        /// se marque la casilla de seguro
+        /// </summary>
         private void AgregarComponentes_Seguro()
         {
             lb_numPolizaSeguro.Content = "Número de poliza de seguro";
@@ -272,6 +322,12 @@ namespace SistemaDelegacionesMunicipales.Vista
             componentes.Insert(componentes.IndexOf(tb_nombreAseguradora), lb_nombreAseguradora);
         }
 
+        /// <summary>
+        /// Quita los componentes a la vetnana en caso de que
+        /// no se marque la casilla de seguro
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void c_seguro_Unchecked(object sender, RoutedEventArgs e)
         {
             UIElementCollection componentes = sp_componentes.Children;
@@ -281,11 +337,19 @@ namespace SistemaDelegacionesMunicipales.Vista
             componentes.Remove(tb_nombreAseguradora);
         }
 
+        /// <summary>
+        /// Concluye la ejecucion del programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Limpia los campos de texto
+        /// </summary>
         private void LimpiarVentana()
         {
             tb_numPolizaSeguro.Text = "";
