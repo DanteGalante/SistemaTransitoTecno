@@ -53,7 +53,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
         /// <summary>
-        /// Se actualiza el datagrid de la ventana.Para esto reinicia el proceso de llenado de tablas, borrando el contenido tabla y volviendolo con una mejor
+        /// Se actualiza el datagrid de la ventana.Para esto reinicia el proceso de llenado de tablas, 
+        /// borrando el contenido tabla y volviendolo con una mejor
         /// </summary>
         private void ActualizarTabla()
         {
@@ -76,7 +77,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
         /// <summary>
-        /// Abre la pantalla de ModificarConductor.Una vez se cierra la ventana de modificar conductor, se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
+        /// Abre la pantalla de ModificarConductor.Una vez se cierra la ventana de modificar conductor, 
+        /// se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -102,7 +104,8 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
             else if (dg_conductor.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Se ha seleccionado mas de un conductor para modificar, favor de solo seleccionar uno", "Error", MessageBoxButton.OK);
+                MessageBox.Show("Se ha seleccionado mas de un conductor para modificar, favor de solo seleccionar uno",
+                    "Error", MessageBoxButton.OK);
             }
             else
             {
@@ -113,7 +116,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
         /// <summary>
-        /// Abre la ventana RegistroConductorWindow. Una vez se cierra ventana de agregar conductores, se regresa a esta pantalla y se actualiza la tabla
+        /// Abre la ventana RegistroConductorWindow. Una vez se cierra ventana de agregar conductores, 
+        /// se regresa a esta pantalla y se actualiza la tabla
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -143,23 +147,33 @@ namespace SistemaDelegacionesMunicipales.Vista
                 MessageBoxResult respuesta;
                 if (dg_conductor.SelectedItems.Count > 1)
                 {
-                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar los conductores seleccionados?", "", MessageBoxButton.YesNo);
+                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar los conductores seleccionados?",
+                        "", MessageBoxButton.YesNo);
                 }
                 else
                 {
-                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar el conductor seleccionado?", "", MessageBoxButton.YesNo);
+                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar el conductor seleccionado?",
+                        "", MessageBoxButton.YesNo);
                 }
 
                 if (respuesta == MessageBoxResult.Yes)
                 {
                     foreach (Conductor conductorAEliminar in conductoresSeleccionados)
                     {   
-                        /* Si encuentra que el conductor que quiere eliminar tiene una relacion con uno o mas vehiculos, entonces tiene que eliminar todos los vehiculos relacionados a el, o no borrarlo*/
+                        /* Si encuentra que el conductor que quiere eliminar tiene una relacion con uno o 
+                         * mas vehiculos, entonces tiene que eliminar todos los vehiculos relacionados a el, o no borrarlo*/
                         if(conductorAEliminar.Vehiculos.Count > 0)
                         {
-                            MessageBoxResult respuestaElimVehiculos = MessageBox.Show("No se puede eliminar el conductor " + conductorAEliminar.nombres + " " + conductorAEliminar.apellidoPaterno + " " + conductorAEliminar.apellidoMaterno +
-                                                                         "debido a que tiene vehiculos asignados. ¿Deseas eliminar todos los vehiculos de este conductor tambien?", "Advertencia: No se puede eliminar a un conductor con vehiculos", 
-                                                                         MessageBoxButton.YesNo);
+                            MessageBoxResult respuestaElimVehiculos = 
+                                MessageBox.Show("No se puede eliminar el conductor " +
+                                conductorAEliminar.nombres + " " +
+                                conductorAEliminar.apellidoPaterno + " " +
+                                conductorAEliminar.apellidoMaterno +
+                                "debido a que tiene vehiculos asignados. " +
+                                "¿Deseas eliminar todos los vehiculos de este conductor tambien?",
+                                "Advertencia: No se puede eliminar a un conductor con vehiculos", 
+                                MessageBoxButton.YesNo);
+
                             if(respuestaElimVehiculos == MessageBoxResult.Yes)
                             {
                                 EliminarVehiculosConductor(conductorAEliminar);

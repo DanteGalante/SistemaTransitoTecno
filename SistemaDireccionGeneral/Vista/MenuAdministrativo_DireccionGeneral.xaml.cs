@@ -41,14 +41,16 @@ namespace SistemaDireccionGeneral.Vista
 
         private void btnRegistrarDelegacion_Click(object sender, RoutedEventArgs e)
         {
-            RegistrarDelegacionMunicipal_DireccionGeneral registrarDelegacionMunicipal = new RegistrarDelegacionMunicipal_DireccionGeneral();
+            RegistrarDelegacionMunicipal_DireccionGeneral registrarDelegacionMunicipal = 
+                new RegistrarDelegacionMunicipal_DireccionGeneral();
             registrarDelegacionMunicipal.Show();
             this.Close();
         }
 
         private void btnConsultarDelegacion_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarDelegacionMunicipal_DireccionGeneral consultarDelegacionMunicipal = new ConsultarDelegacionMunicipal_DireccionGeneral();
+            ConsultarDelegacionMunicipal_DireccionGeneral consultarDelegacionMunicipal = 
+                new ConsultarDelegacionMunicipal_DireccionGeneral();
             consultarDelegacionMunicipal.Show();
             this.Close();
         }

@@ -35,7 +35,8 @@ namespace SistemaDireccionGeneral.Vista
             VerificarDelegacion();
             if (DelegacionValida() && !DelegacionRepetida(RecuperarDelegacionNuevo()))
             {
-                DelegacionMunicipal modificarDelegacion = entidadesBD.DelegacionesMunicipales.Find(delegacionElegida.idDelegacion);
+                DelegacionMunicipal modificarDelegacion = 
+                    entidadesBD.DelegacionesMunicipales.Find(delegacionElegida.idDelegacion);
 
                 modificarDelegacion.nombre = tbNombreDelegacion.Text;
                 modificarDelegacion.calle = tbCalle.Text;
@@ -226,7 +227,8 @@ namespace SistemaDireccionGeneral.Vista
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarDelegacionMunicipal_DireccionGeneral regresarConsultarDelegaciones = new ConsultarDelegacionMunicipal_DireccionGeneral();
+            ConsultarDelegacionMunicipal_DireccionGeneral regresarConsultarDelegaciones = 
+                new ConsultarDelegacionMunicipal_DireccionGeneral();
             regresarConsultarDelegaciones.Show();
             this.Close();
         }

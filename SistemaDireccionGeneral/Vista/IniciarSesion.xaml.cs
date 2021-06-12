@@ -45,18 +45,21 @@ namespace SistemaDireccionGeneral.Vista
                 if (usuarioEncontrado.tipoUsuario == "Administrativo")
                 {
                     MessageBox.Show("Bienvenido al sistema: " + usuarioEncontrado.nombres + " " +
-                        usuarioEncontrado.apellidoPaterno + " " + usuarioEncontrado.apellidoMaterno, "Usuario encontrado");
+                        usuarioEncontrado.apellidoPaterno + " " + 
+                        usuarioEncontrado.apellidoMaterno, "Usuario encontrado");
                     IrPantallaMenuAdministrativo();
                 }
                 else if (usuarioEncontrado.tipoUsuario == "Perito")
                 {
                     MessageBox.Show("Bienvenido al sistema: " + usuarioEncontrado.nombres + " " +
-                        usuarioEncontrado.apellidoPaterno + " " + usuarioEncontrado.apellidoMaterno, "Usuario encontrado");
+                        usuarioEncontrado.apellidoPaterno + " " + usuarioEncontrado.apellidoMaterno,
+                        "Usuario encontrado");
                     IrPantallaMenuPerito();
                 }
                 else
                 {
-                    MessageBox.Show("Tipo de usuario no valido, comuniquese con la dirección general", "Tipo usuario invalido");
+                    MessageBox.Show("Tipo de usuario no valido, comuniquese con la dirección general", 
+                        "Tipo usuario invalido");
                 }
             }
         }
@@ -140,7 +143,8 @@ namespace SistemaDireccionGeneral.Vista
 
         private void IrPantallaMenuAdministrativo()
         {
-            MenuAdministrativo_DireccionGeneral ventanaMenuAdministrativo = new MenuAdministrativo_DireccionGeneral(usuarioEncontrado);
+            MenuAdministrativo_DireccionGeneral ventanaMenuAdministrativo = 
+                new MenuAdministrativo_DireccionGeneral(usuarioEncontrado);
             ventanaMenuAdministrativo.Show();
             this.Close();
         }

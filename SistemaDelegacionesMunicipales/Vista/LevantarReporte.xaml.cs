@@ -193,7 +193,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         private bool CamposVacios()
         {
             bool resultado = true;
-            if (TbCalle.Text.Trim() != null && TbColonia.Text.Trim() != null && TbDescripcion.Text.Trim() != null && CbVehiculos.SelectedItem != null && CbDelegacion.SelectedItem != null)
+            if (TbCalle.Text.Trim() != null && TbColonia.Text.Trim() != null && TbDescripcion.Text.Trim() != null
+                && CbVehiculos.SelectedItem != null && CbDelegacion.SelectedItem != null)
             {
                 resultado = false;
             }

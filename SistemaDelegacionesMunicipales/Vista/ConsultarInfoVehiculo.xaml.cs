@@ -63,7 +63,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
         /// <summary>
-        /// Abre la pantalla de ModificarRegistroVehiculo.Una vez se cierra la ventana de modificar vehiculos, se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
+        /// Abre la pantalla de ModificarRegistroVehiculo.Una vez se cierra la ventana de modificar vehiculos,
+        /// se regresa a esta pantalla y se actualiza la tabla con los nuevos datos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -71,7 +72,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             if (SoloUnVehiculoSeleccionado())
             {
-                ModificarRegistroVehiculo nuevaVentana = new ModificarRegistroVehiculo((Vehiculo)dg_vehiculos.SelectedItem);
+                ModificarRegistroVehiculo nuevaVentana =
+                    new ModificarRegistroVehiculo((Vehiculo)dg_vehiculos.SelectedItem);
                 nuevaVentana.ShowDialog();
                 ActualizarTabla();
             }
@@ -89,7 +91,8 @@ namespace SistemaDelegacionesMunicipales.Vista
             }
             else if (dg_vehiculos.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Se ha seleccionado mas de un vehiculo para modificar, favor de solo seleccionar uno", "Error", MessageBoxButton.OK);
+                MessageBox.Show("Se ha seleccionado mas de un vehiculo para modificar," +
+                    " favor de solo seleccionar uno", "Error", MessageBoxButton.OK);
             }
             else
             {
@@ -100,7 +103,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
 
         /// <summary>
-        /// Abre la ventana RegistroVehiculo.Una vez se cierra ventana de agregar vehiculos, se regresa a esta pantalla y se actualiza la tabla
+        /// Abre la ventana RegistroVehiculo.Una vez se cierra ventana de agregar vehiculos,
+        /// se regresa a esta pantalla y se actualiza la tabla
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -131,11 +135,13 @@ namespace SistemaDelegacionesMunicipales.Vista
                 MessageBoxResult respuesta;
                 if(dg_vehiculos.SelectedItems.Count > 1)
                 {
-                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar los vehiculos seleccionados?","",MessageBoxButton.YesNo);
+                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar los vehiculos seleccionados?",
+                        "",MessageBoxButton.YesNo);
                 }
                 else
                 {
-                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar el vehiculo seleccionado?", "", MessageBoxButton.YesNo);
+                    respuesta = MessageBox.Show("¿Estas seguro que quieres eliminar el vehiculo seleccionado?",
+                        "", MessageBoxButton.YesNo);
                 }
 
                 if (respuesta == MessageBoxResult.Yes)
@@ -165,7 +171,8 @@ namespace SistemaDelegacionesMunicipales.Vista
         }
         
         /// <summary>
-        /// Se actualiza el datagrid de la ventana.Para esto reinicia el proceso de llenado de tablas, borrando el contenido tabla y volviendolo con una mejor
+        /// Se actualiza el datagrid de la ventana.Para esto reinicia el proceso de llenado de tablas,
+        /// borrando el contenido tabla y volviendolo con una mejor
         /// </summary>
         private void ActualizarTabla()
         {
