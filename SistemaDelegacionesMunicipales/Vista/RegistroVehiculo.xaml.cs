@@ -161,11 +161,7 @@ namespace SistemaDelegacionesMunicipales.Vista
  
             if(entidadesBD.Vehiculos.SingleOrDefault(
                     vehiculo => 
-                    vehiculo.año == nuevoVehiculo.año &&
-                    vehiculo.color == nuevoVehiculo.color &&
-                    vehiculo.marca == nuevoVehiculo.marca &&
-                    vehiculo.modelo == nuevoVehiculo.modelo &&
-                    vehiculo.nombreAseguradora == nuevoVehiculo.nombreAseguradora ||
+                    vehiculo.idVehiculo == nuevoVehiculo.idVehiculo ||
                     vehiculo.numeroPlaca == nuevoVehiculo.numeroPlaca &&
                     vehiculo.numeroPolizaSeguro == nuevoVehiculo.numeroPolizaSeguro) != null)
             {
