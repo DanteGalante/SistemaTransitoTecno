@@ -28,6 +28,11 @@ namespace SistemaDireccionGeneral.Vista
             this.usuarioIniciado = usuarioIniciado;
         }
 
+        /// <summary>
+        /// Manejador de eventos del botón "Cerrar Sesión"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             IniciarSesion iniciarSesion = new IniciarSesion();
@@ -36,6 +41,11 @@ namespace SistemaDireccionGeneral.Vista
             iniciarSesion.Show();
         }
 
+        /// <summary>
+        /// Manejador de eventos del botón "Visualizar reportes"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VisualizarReportes_Click(object sender, RoutedEventArgs e)
         {
             VisualizarReportes visualizarReportes = new VisualizarReportes(usuarioIniciado);
@@ -44,6 +54,11 @@ namespace SistemaDireccionGeneral.Vista
             visualizarReportes.Show();
         }
 
+        /// <summary>
+        /// Manejador de eventos del botón "Chat"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ChatGeneral nuevaVentana = new ChatGeneral(usuarioIniciado);
