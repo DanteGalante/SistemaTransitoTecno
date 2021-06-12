@@ -32,6 +32,11 @@ namespace SistemaDireccionGeneral.Vista
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Manejador del evento del botón "Registrar Usuario"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegistrarUsuario_Click(object sender, RoutedEventArgs e)
         {
             RegistrarUsuario_DireccionGeneral registrarUsuario = new RegistrarUsuario_DireccionGeneral();
@@ -39,6 +44,11 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador del evento del botón "Registrar Delegación"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegistrarDelegacion_Click(object sender, RoutedEventArgs e)
         {
             RegistrarDelegacionMunicipal_DireccionGeneral registrarDelegacionMunicipal = 
@@ -47,6 +57,11 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador del evento del botón "Consultar Delegación"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConsultarDelegacion_Click(object sender, RoutedEventArgs e)
         {
             ConsultarDelegacionMunicipal_DireccionGeneral consultarDelegacionMunicipal = 
@@ -55,6 +70,11 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador del evento del botón "Consultar Usuario"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConsultarUsuario_Click(object sender, RoutedEventArgs e)
         {
             ConsultarUsuario_DireccionGeneral consultarUsuario = new ConsultarUsuario_DireccionGeneral();
@@ -62,12 +82,22 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador del evento del botón "Chat"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChat_Click(object sender, RoutedEventArgs e)
         {
             ChatGeneral ventanaChatGeneral = new ChatGeneral(usuarioIniciado);
             ventanaChatGeneral.ShowDialog();
         }
 
+        /// <summary>
+        /// Manejador del evento del botón "Cerrar Sesión"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             IniciarSesion iniciarSesion = new IniciarSesion();
