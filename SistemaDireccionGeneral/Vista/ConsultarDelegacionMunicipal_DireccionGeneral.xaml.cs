@@ -34,6 +34,10 @@ namespace SistemaDireccionGeneral.Vista
             LlenarTabla();
         }
 
+        
+        /// <summary>
+        /// Llena la tabla con delegaciones municipales
+        /// </summary>
         private void LlenarTabla()
         {
             DbSet<DelegacionMunicipal> delegaciones = entidadesBD.DelegacionesMunicipales;
@@ -46,6 +50,9 @@ namespace SistemaDireccionGeneral.Vista
             dgDelegaciones.ItemsSource = listaDelegaciones;
         }
 
+        /// <summary>
+        /// Vacia la tabla que contiene las validaciones municipales
+        /// </summary>
         private void VaciarTabla()
         {
             listaDelegaciones.Clear();
@@ -53,6 +60,11 @@ namespace SistemaDireccionGeneral.Vista
             dgDelegaciones.ItemsSource = null;
         }
 
+        /// <summary>
+        /// Maneja el evento del clic en el botón "Modificar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (dgDelegaciones.SelectedItem == null)
@@ -69,16 +81,20 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Recupera una delegación elegida
+        /// </summary>
+        /// <returns>DelegacionMunicipal</returns>
         private DelegacionMunicipal RecuperarDelegacion()
         {
             return delegacionElegida = listaDelegaciones.ElementAt<DelegacionMunicipal>(dgDelegaciones.SelectedIndex);
         }
 
-        public ConsultarDelegacionMunicipal_DireccionGeneral(DelegacionMunicipal delegacionElegida)
-        {
-            this.delegacionElegida = delegacionElegida;
-        }
-
+        /// <summary>
+        /// Maneja el evento del clic en el botón "Eliminar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             int indiceSeleccion = dgDelegaciones.SelectedIndex;
@@ -125,6 +141,11 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Recupera una lista de los usuarios relacionados con la delegación a eliminar
+        /// </summary>
+        /// <param name="idEliminar"></param>
+        /// <returns></returns>
         private List<Usuario> RecuperarUsuariosDeDelegacion(int idEliminar)
         {
             DbSet<Usuario> usuarios = entidadesBD.Usuarios;
@@ -166,6 +187,11 @@ namespace SistemaDireccionGeneral.Vista
             return listaUsuarios;
         } 
 
+        /// <summary>
+        /// Maneja el evento del botón "Regresar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
         {
             MenuAdministrativo_DireccionGeneral regresarMenu = new MenuAdministrativo_DireccionGeneral();
