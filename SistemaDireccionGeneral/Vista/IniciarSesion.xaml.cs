@@ -30,11 +30,20 @@ namespace SistemaDireccionGeneral.Vista
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Recibe el evento del clic y direcciona hacía el manejador del Login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnIniciarSesion_Click(object sender, RoutedEventArgs e)
         {
             ManejadorLogin();
         }
 
+        /// <summary>
+        /// LLeva a cabo las verificaciones correspondientes con la finalidad de decidir si el usuario ingresado,
+        /// puede o no entrar al sistema y si es el caso saber a que ventana será dirigido.
+        /// </summary>
         public void ManejadorLogin()
         {
             VerificarInformacionUsuario();
@@ -64,12 +73,19 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Llama a métodos que verificaran la información del usuario ingresado
+        /// </summary>
         private void VerificarInformacionUsuario()
         {
             VerificarUsername();
             VerificarContrasenia();
         }
 
+        /// <summary>
+        /// Verifica si el username ingresado cumple con las características correspondientes
+        /// </summary>
+        /// <returns>Boolean</returns>
         private Boolean VerificarUsername()
         {
             bool verificar = false;
@@ -84,6 +100,10 @@ namespace SistemaDireccionGeneral.Vista
             return verificar;
         }
 
+        /// <summary>
+        /// Verifica si la contraseña ingresada cumple con las características correspondientes
+        /// </summary>
+        /// <returns>Boolean</returns>
         private Boolean VerificarContrasenia()
         {
             bool verificar = false;
@@ -98,6 +118,12 @@ namespace SistemaDireccionGeneral.Vista
             return verificar;
         }
 
+        /// <summary>
+        /// Verifica que los valores introducidos por el usuario sean correspondientes a un usuario
+        /// dentro de la base de datos
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>bool</returns>
         public bool BuscarValoresUsuario(string nombre)
         {
             bool existeUsuario = false;
@@ -121,6 +147,11 @@ namespace SistemaDireccionGeneral.Vista
             return existeUsuario;
         }
 
+        /// <summary>
+        /// Recupera al usuariEncontrado que sera el que ingresara en el sistema
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>Usuario</returns>
         public Usuario RecuperarUsuario(string nombre)
         {
             usuarios.Clear();
@@ -141,6 +172,9 @@ namespace SistemaDireccionGeneral.Vista
             return usuarioEncontrado;
         }
 
+        /// <summary>
+        /// Es la navegabilidad que dirige a la pantalla de de Menú administrativo
+        /// </summary>
         private void IrPantallaMenuAdministrativo()
         {
             MenuAdministrativo_DireccionGeneral ventanaMenuAdministrativo = 
@@ -149,6 +183,9 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+        /// <summary>
+        /// Es la navegabilidad que dirige a la pantalla de Menú perito
+        /// </summary>
         public void IrPantallaMenuPerito()
         {
             MenuPerito ventanaMenuAdministrativo = new MenuPerito(usuarioEncontrado);
