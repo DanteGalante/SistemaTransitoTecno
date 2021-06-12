@@ -32,6 +32,9 @@ namespace SistemaDireccionGeneral.Vista
             LlenarTabla();
         }
 
+        /// <summary>
+        /// Llena la tabla con una lista de usuarios que llena en este mismo método
+        /// </summary>
         private void LlenarTabla()
         {
             DbSet<Usuario> usuarios = entidadesBD.Usuarios;
@@ -44,6 +47,9 @@ namespace SistemaDireccionGeneral.Vista
             dgUsuarios.ItemsSource = listaUsuarios;
         }
 
+        /// <summary>
+        /// Vacía la tabla y la lista de los usuarios
+        /// </summary>
         private void VaciarTabla()
         {
             listaUsuarios.Clear();
@@ -51,6 +57,12 @@ namespace SistemaDireccionGeneral.Vista
             dgUsuarios.ItemsSource = null;
         }
 
+
+        /// <summary>
+        /// Manejador del evento del  botón "Regresar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
         {
             MenuAdministrativo_DireccionGeneral menuAdministrativo = new MenuAdministrativo_DireccionGeneral();
@@ -58,6 +70,12 @@ namespace SistemaDireccionGeneral.Vista
             this.Close();
         }
 
+
+        /// <summary>
+        /// Manejador del evento del botón "Modificar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (dgUsuarios.SelectedItem == null)
@@ -74,11 +92,20 @@ namespace SistemaDireccionGeneral.Vista
             }
         }
 
+        /// <summary>
+        /// Recupera al usuario elegido
+        /// </summary>
+        /// <returns>Usuario</returns>
         private Usuario RecuperarUsuario()
         {
             return usuarioElegido = listaUsuarios.ElementAt<Usuario>(dgUsuarios.SelectedIndex);
         }
 
+        /// <summary>
+        /// Manejador del evento botón "Eliminar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             int indiceSeleccion = dgUsuarios.SelectedIndex;
