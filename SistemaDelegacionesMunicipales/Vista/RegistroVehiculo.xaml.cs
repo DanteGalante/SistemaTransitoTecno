@@ -50,6 +50,7 @@ namespace SistemaDelegacionesMunicipales.Vista
             {
                 foreach (Conductor conductor in conductoresDBSet)
                 {
+
                     cb_conductor.Items.Add(conductor.nombres + " " +
                                            conductor.apellidoPaterno + " " +
                                            conductor.apellidoMaterno);
@@ -90,7 +91,8 @@ namespace SistemaDelegacionesMunicipales.Vista
 
                 if ((seleccionComboBox).Equals("Otro conductor"))
                 {
-                    MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?","",MessageBoxButton.YesNo);
+                    MessageBoxResult respuesta = MessageBox.Show("Quieres crear un nuevo conductor?",
+                        "",MessageBoxButton.YesNo);
                     if (respuesta == MessageBoxResult.Yes)
                     {
                         RegistrarConductorWindow nuevaVentana = new RegistrarConductorWindow();

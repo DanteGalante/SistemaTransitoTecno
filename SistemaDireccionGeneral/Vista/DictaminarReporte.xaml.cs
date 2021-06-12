@@ -37,7 +37,8 @@ namespace SistemaDireccionGeneral.Vista
             {
                 Dictamen nuevoDictamen = new Dictamen();
 
-                string nombreCompleto = usuarioIniciado.nombres + " " + usuarioIniciado.apellidoPaterno + " " + usuarioIniciado.apellidoMaterno;
+                string nombreCompleto = usuarioIniciado.nombres + " " + usuarioIniciado.apellidoPaterno + " " + 
+                    usuarioIniciado.apellidoMaterno;
 
                 nuevoDictamen.descripcion = TbDescripcion.Text;
                 nuevoDictamen.fecha = DateTime.Today;

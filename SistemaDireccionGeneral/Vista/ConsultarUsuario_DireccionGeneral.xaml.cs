@@ -67,7 +67,8 @@ namespace SistemaDireccionGeneral.Vista
             else
             {
                 usuarioElegido = RecuperarUsuario();
-                ModificarUsuario_DireccionGeneral modificarUsuario = new ModificarUsuario_DireccionGeneral(usuarioElegido);
+                ModificarUsuario_DireccionGeneral modificarUsuario = 
+                    new ModificarUsuario_DireccionGeneral(usuarioElegido);
                 modificarUsuario.Show();
                 this.Close();
             }
@@ -85,7 +86,8 @@ namespace SistemaDireccionGeneral.Vista
             {
                 Usuario usuarioEliminar = listaUsuarios[indiceSeleccion];
                 MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar al usuario?" +
-                    usuarioEliminar.nombres + usuarioEliminar.apellidoPaterno + usuarioEliminar.apellidoMaterno + "?", "Confirmar acción",
+                    usuarioEliminar.nombres + usuarioEliminar.apellidoPaterno + usuarioEliminar.apellidoMaterno +
+                    "?", "Confirmar acción",
                     MessageBoxButton.OKCancel);
                 if (resultado == MessageBoxResult.OK)
                 {

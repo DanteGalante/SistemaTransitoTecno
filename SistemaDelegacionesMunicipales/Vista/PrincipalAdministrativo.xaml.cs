@@ -26,7 +26,10 @@ namespace SistemaDelegacionesMunicipales.Vista
         {
             InitializeComponent();
             this.usuarioIniciado = usuarioIniciado;
-            lb_titulo.Content = "BIENVENIDO ADMINISTRADOR: " + usuarioIniciado.nombres.ToUpper() + " " + usuarioIniciado.apellidoPaterno.ToUpper() + " " + usuarioIniciado.apellidoMaterno.ToUpper();
+            lb_titulo.Content = "BIENVENIDO ADMINISTRADOR: " + 
+                usuarioIniciado.nombres.ToUpper() + " " + 
+                usuarioIniciado.apellidoPaterno.ToUpper() + " " + 
+                usuarioIniciado.apellidoMaterno.ToUpper();
         }
 
         /// <summary>

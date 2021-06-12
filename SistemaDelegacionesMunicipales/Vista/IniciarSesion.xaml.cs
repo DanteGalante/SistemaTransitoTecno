@@ -160,7 +160,8 @@ namespace SistemaDelegacionesMunicipales.Vista
                     }
                     else
                     {
-                        MessageBox.Show("Delegación invalida, por favor comuniquese con la dirección general", "Delegación invalida");
+                        MessageBox.Show("Delegación invalida, por favor comuniquese con la dirección general", 
+                            "Delegación invalida");
                         return existeUsuario = false;
                     }
                 }
